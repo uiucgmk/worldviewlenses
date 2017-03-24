@@ -1,0 +1,671 @@
+<!doctype html>
+<html lang="en-US">
+ <!--including html files-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Article Page</title>
+
+<link href="css/articlestyles.css" rel="stylesheet" type="text/css">
+<!--For comment-->
+<link rel="stylesheet" type="text/css" href="css/jquery-comments.css">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> 
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;lang=en" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,700,800&amp;lang=en" />
+
+<!-- Data -->
+<script type="text/javascript" src="js/comments-data.js"></script>
+
+<!-- Libraries -->
+<!--The following script tag downloads a font from the Adobe Edge Web Fonts server for use within the web page. We recommend that you do not modify it. (DREAMWEAVER DEFAULT)-->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.textcomplete/1.8.0/jquery.textcomplete.js"></script>
+<!--For comment-->
+<script type="text/javascript" src="js/jquery-comments.js"></script>
+
+<style type="text/css">
+table.comments {
+	font-family: "Raleway",arial,sans-serif;
+	font-size:14px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #666666;
+	border-collapse: collapse;
+	
+}
+
+tr.bigtr:nth-child(even) {
+    background-color: #9BC1BC;
+}
+td.bigtd{
+	font-size: 20px;
+	font-weight: 500;
+	text-align: center;
+}
+
+/*if we need table selection : not too needed now*/
+	
+	table.pos {
+	border-width: 0px;
+	border-style: solid;
+	border-color: #666666;
+}
+	table.pos1 {
+	border-width: 0px;
+	border-style: solid;
+	border-color: #666666;
+}
+	
+	table.neg {
+	border-width: 0px;
+	border-color: #666666;
+}
+	table.neg1 {
+	border-width: 0px;
+	border-color: #666666;
+}
+</style>
+
+<!--comment function-->
+<script type="text/javascript">
+      $(function() {
+        var saveComment = function(data) {
+
+          // Convert pings to human readable format
+          $(data.pings).each(function(index, id) {
+            var user = usersArray.filter(function(user){return user.id == id})[0];
+            data.content = data.content.replace('@' + id, '@' + user.fullname);
+          });
+
+          return data;
+        }
+        $('#comments-container').comments({
+    profilePictureURL: 'https://app.viima.com/static/media/user_profiles/user-icon.png',
+    getComments: function(success, error) {
+        var commentsArray = [{
+            id: 1,
+            created: '2017-03-06',
+            content: 'TEST',
+            fullname: 'TEST',
+            upvote_count: 1,
+            user_has_upvoted: false
+        }];
+        success(commentsArray);
+    }
+});;
+      });
+    </script>
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+<!-- Main Container -->
+<div class="container"> 
+  <!-- Navigation -->
+  <header> 
+    <h2 class="title">Obama: Concept of race isn't genetic</h2>
+    <nav>
+      <ul>
+        <li><a href="http://ycpark103.com/research/index.html">HOME</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- news Section -->
+  <section class="news" id="news">
+    <!--<h2 class="news_header">news <span class="light">LIGHT</span></h2>
+    <p class="tagline">Light is a simple one page website</p>-->
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/pZN_BVXGSnU" frameborder="0" allowfullscreen></iframe>
+  </section>
+  
+  <!--Facebook commenting here-->
+  <div id="comments-container">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+  
+  <hr color="#9BC1BC">
+   <table class="comments" width="100%" border="0" cellpadding="5">
+    <tbody>
+      <tr class="bigtr">
+        <td class = "bigtd" width="10%">Aspects</td>
+        <td class = "bigtd" width="45%">Positive</td>
+        <td class = "bigtd" width="45%">Negative</td>
+      </tr>
+      <tr class="bigtr">
+        <td  class = "bigtd">Ally</td>
+        <td>
+        	<div style="height: 150px; overflow: auto">
+        	<table class="pos" border="0" cellpadding="5" cellspacing="0" width="100%">
+          <colgroup>
+            <col width="100%">
+            </colgroup>
+          <tbody>
+            <tr height="20">
+              <td height="20" width="100%">Nothing wrong with being allies with other countries.  It's just like being friends with people in real life. We don't need to be okay with all our friends choices but that doesn't mean we necessarily aren't friends. Russia would be a great ally of the United states. Like they were in world War 2. Maybe that will even help them loosen up some of their not so good qualities.  People still think they're communist I mean come on people lol</td>
+            </tr>
+            <tr height="20">
+              <td height="20">Putin our best friend!!! Bye NATO</td>
+            </tr>
+          </tbody>
+        </table>
+		</div>
+        </td>
+        <td>
+        <div style="height: 150px; overflow: auto">
+         <table class="neg" border="0" cellpadding="5" cellspacing="0" width="100%">
+          <colgroup>
+            <col width="1068">
+            </colgroup>
+          <tbody>
+            <tr height="20">
+              <td height="20" width="100%">Putin is no friend to the United States.</td>
+            </tr>
+            <tr height="20">
+              <td height="20">We cannot be allies with war criminals!</td>
+            </tr>
+            <tr height="20">
+              <td height="20">Just what we feared.  Roll over \Mr. President\" your about to get screwed by your friend Putin.  He's going  doing what ever he wants and there is no one to stop him."</td>
+            </tr>
+          </tbody>
+        </table>
+		</div>
+        </td>
+      </tr>
+      <tr class="bigtr">
+        <td class = "bigtd">Americans</td>
+        <td>
+         <div style="height: 150px; overflow: auto">
+        <table class="pos1" border="0" cellpadding="5" cellspacing="0" width="100%">
+          <colgroup>
+            <col width="100%">
+            </colgroup>
+          <tbody>
+            <tr height="20">
+              <td height="20" width="100%">
+				Well appreciated at this point Putin   Let's try our best to keep the peace. You need us and we need you to rid our planet of ISSIS. And a majority of Americans feel this way. At the same time along with our you along with your fellow countries like Germany and such will have a lot to do to rebuild these countries that are devastated by bombs now. These people who have fled need to return and rebuild their lives and show them that they can make their countries as great as ours with unity. As both our countries have had to do ourselves in the past</td>
+            </tr>
+            <tr height="20">
+              <td height="20">What matter is if the American people are safe. And if other country's are safe as well. No one should be at war we all need to be at peace. And we all need to love more. That's what we need to do more. Simple as that.</td>
+            </tr>
+            <tr height="20">
+              <td height="20">Great ... now lots get Isis and control north Corea ... I bet there aren't letters from them ah! The party is over! Time to make a country of American dreams no a house of refugees!</td>
+            </tr>
+            <tr height="20">
+              <td height="20">Peace=Trump. War=Hillary. That's really what this election came down to for us educated Americans. And that's why trump won with college educated whites and college educated women 45% Ask Dr.Jill Stein she made it crystal clear Hillary was dangerous and would almost certainty start a nuclear war with Russia, she spoke the truth. We should be thankful that she lost because her loss means millions of lives are saved.
+              </td>
+            </tr>
+            <tr height="20">
+              <td height="20">WELL HE SHOULD! Obama is a whimp! He recognizes the American people want a STRONG respectable President!</td>
+            </tr>
+            <tr height="20">
+              <td height="20">The only reason Putin likes Trump. Is because Putin loves the sterotypical American. Also, Trump might talk with Putin. Putin likes it when people just talk with him. Hence why W. could keep him in control.</td>
+            </tr>
+            <tr height="20">
+              <td height="20">American is scared of Russia..that's why mostly Americans voted trump.....The president of America is now Vilad mir putin</td>
+            </tr>
+          </tbody>
+        </table>
+		</div>
+		</td>
+        <td>
+        <div style="height: 150px; overflow: auto">
+			<table class="neg1" border="0" cellpadding="5" cellspacing="0" width="100%">
+			  <colgroup>
+				<col width="100%">
+				</colgroup>
+			  <tbody>
+				<tr height="20">
+				  <td height="20" width="100%"> He is Putin' puppet! Americans,your baseless decision will play into Putin's hands to exacerbate and destroy you!</td>
+				</tr>
+				<tr height="20">
+				  <td height="20">Wonderful just wonderful. Best friends with Russia, a dream come true to make American great again. Thanks so much. God be with us.</td>
+				</tr>
+				<tr height="20">
+				  <td height="20">Pinko scum bag loves the new American fascist.</td>
+				</tr>
+				<tr height="20">
+				  <td height="20">Bad news for Americans......it is so sad but American get what it vote for .....</td>
+				</tr>
+			  </tbody>
+			</table>
+			</div>
+		</td>
+      </tr>
+      <tr class="bigtr">
+        <td class = "bigtd">Celebrate</td>
+        <td><div style="height: 150px; overflow: auto">
+        <table class="pos" border="0" cellpadding="5" cellspacing="0" width="100%">
+			  <colgroup>
+				<col width="100%">
+				</colgroup>
+			  <tbody>
+				<tr height="20">
+				  <td height="20" width="100%">Well appreciated at this point Putin Let's try our best to keep the peace. You need us and we need you to rid our planet of ISSIS. And a majority of Americans feel this way. At the same time along with our you along with your fellow countries like Germany and such will have a lot to do to rebuild these countries that are devastated by bombs now. These people who have fled need to return and rebuild their lives and show them that they can make their countries as great as ours with unity. As both our countries have had to do ourselves in the past.
+				  </td>
+				</tr>
+				<tr height="20">
+				  <td height="20">The only reason Putin likes Trump. Is because Putin loves the sterotypical American. Also, Trump might talk with Putin. Putin likes it when people just talk with him. Hence why W. could keep him in control.
+				  </td>
+				</tr>
+				
+			  </tbody>
+			</table>
+			</div>
+       </td>
+        <td>
+        <div style="height: 150px; overflow: auto">
+        <table class="neg" border="0" cellpadding="5" cellspacing="0" width="100%">
+			  <colgroup>
+				<col width="100%">
+				</colgroup>
+			  <tbody>
+				<tr height="20">
+				  <td height="20" width="100%">I find it strange that now the very people who have been fanning the flames of hate and division telling us to unite and come together.  Seriously?! I want nothing to do with the values you hold dear. I can't associate with such vile and hatred. I will keep my head down, raise my family in love, teach my little ones that doing the right thing is not always the easy thing and hopefully in four years we will wake up from this nightmare.
+				  </td>
+				</tr>
+			  </tbody>
+			</table>
+			</div>
+     </td>
+      </tr>
+      <tr class="bigtr">
+        <td class = "bigtd">Choose</td>
+        <td>
+        <div style="height: 150px; overflow: auto">
+        <table class="pos1" border="0" cellpadding="5" cellspacing="0" width="100%">
+			  <colgroup>
+				<col width="100%">
+				</colgroup>
+			  <tbody>
+				
+			  </tbody>
+			</table>
+			</div>
+       </td>
+        <td>
+        <div style="height: 150px; overflow: auto">
+        <table class="neg1" border="0" cellpadding="5" cellspacing="0" width="100%">
+			  <colgroup>
+				<col width="100%">
+				</colgroup>
+			  <tbody>
+				<tr height="20">
+				  <td height="20" width="100%">Surprised it took Putin that long to congratulate. I assume he knew Trump would win beforehand, we have very unsecured electronic voting machines after all.
+				  </td>
+				</tr>
+				<tr height="20">
+				  <td height="20">There are many of us that take it very seriously and I am very sad for our country today but there's another election in 4 years. I'm thinking about who to vote for then. It's really embarrassing for our country.
+				  </td>
+				</tr>
+				<tr height="20">
+				  <td height="20">They are plotting taking over the world.
+				  </td>
+				</tr>
+				<tr height="20">
+				  <td height="20">Is someone trying to take down the Internet on election day?" http://americablog.com/2016/11/someone-trying-take-internet-election-day.html"
+				  </td>
+				</tr>
+				<tr height="20">
+				  <td height="20">They are plotting taking over the world.
+				  </td>
+				</tr>
+			  </tbody>
+			</table>
+			</div>
+     </td>
+      </tr>
+      <tr class="bigtr">
+        <td class = "bigtd">Congratulate</td>
+        <td>
+        <div style="height: 150px; overflow: auto">
+        <table class="pos" border="0" cellpadding="5" cellspacing="0" width="100%">
+			  <colgroup>
+				<col width="100%">
+				</colgroup>
+			  <tbody>
+				<tr height="20">
+				  <td height="20" width="100%">The two countries, thanks to the President. Who wishes to congratulate the newly appointed President Donald tramp thanks to Vladimir Putin. However, the sole aim of counter-terrorism together. Must be committed to maintaining world peace and harmony.
+				  </td>
+				</tr>
+				<tr height="20">
+				  <td height="20">
+				  Trump is our next president...<br>To the people who say that Trump is racist and sexist, I don't think he is. He's just an all-around rude person. <br><br>To be fair, he hired females in the 70's to be high level directors. Trump critics can't fight against that. Plus, he insults and degrade men as well.<br>As for the racist portion, Trump is extremely against illegal and undocumented immigrants. To the democrats who advocate fairness and equality", how is it fair that the legal immigrants have to go through a stringent immigration process to get into the United States while illegals should get a easy, free path? If you really advocate equality, shouldn't you adhere to stricter border security while making legal immigration easier? While Trump's position is radical, he has a point. And remember, his wife is an immigrant. <br>So while I absolutely hate Trump's extremism, I congratulate him on winning over a cheater, killer, and shameless politician who undermines minority rights, Hillary Rodham Clinton."
+
+				  </td>
+				</tr>
+				
+			  </tbody>
+			</table>
+			</div>
+       </td>
+        <td>
+        <div style="height: 150px; overflow: auto">
+        <table class="neg" border="0" cellpadding="5" cellspacing="0" width="100%">
+			  <colgroup>
+				<col width="100%">
+				</colgroup>
+			  <tbody>
+				<tr height="20">
+				  <td height="20" width="100%">Imagine that. His buddy congratulates him. Oh wait, he doesn't know him. Smh
+				  </td>
+				</tr>
+				<tr height="20">
+				  <td height="20" width="100%">Surprised it took Putin that long to congratulate. I assume he knew Trump would win beforehand, we have very unsecured electronic voting machines after all.
+				  </td>
+				</tr>
+			  </tbody>
+			</table>
+			</div>
+     </td>
+      </tr>
+      <tr class="bigtr">
+        <td class = "bigtd">Donald Trump</td>
+		  <td><div style="height: 150px; overflow: auto">
+			  <table class="pos1" border="0" cellpadding="5" cellspacing="0" width="100%">
+			  <colgroup>
+				<col width="100%">
+				</colgroup>
+			  <tbody>
+				<tr height="20">
+				  <td height="20" width="100%">The two countries, thanks to the President. Who wishes to congratulate the newly appointed President Donald tramp thanks to Vladimir Putin. However, the sole aim of counter-terrorism together. Must be committed to maintaining world peace and harmony.
+				  </td>
+				</tr>
+				<tr height="20">
+				  <td height="20">Trump is our next president...<br>To the people who say that Trump is racist and sexist, I don't think he is. He's just an all-around rude person. <br>To be fair, he hired females in the 70's to be high level directors. Trump critics can't fight against that. Plus, he insults and degrade men as well.<br>As for the racist portion, Trump is extremely against illegal and undocumented immigrants. \nTo the democrats who advocate \fairness and equality\", how is it fair that the legal immigrants have to go through a stringent immigration process to get into the United States while illegals should get a easy, free path? If you really advocate equality, shouldn't you adhere to stricter border security while making legal immigration easier? While Trump's position is radical, he has a point. And remember, his wife is an immigrant. <br>So while I absolutely hate Trump's extremism, I congratulate him on winning over a cheater, killer, and shameless politician who undermines minority rights, Hillary Rodham Clinton."
+				  </td>
+				</tr>
+				<tr height="20">
+				  <td height="20">Peace=Trump<br>War=Hillary<br><br>That's really what this election came down to for us educated Americans. And that's why trump won with college educated whites and college educated women 45% Ask Dr.Jill Stein she made it crystal clear Hillary was dangerous and would almost certainty start a nuclear war with Russia, she spoke the truth. We should be thankful that she lost because her loss means millions of lives are saved.
+				  </td>
+				</tr>
+				<tr height="20">
+				  <td height="20">This is one my reason why I voted for Trump, I want peace all over the world!! Go mr president Trump 
+				  </td>
+				</tr>
+				<tr height="20">
+				  <td height="20">President Trump could become Ronald Reagan Jr. .... and much more..
+				  </td>
+				</tr>
+				<tr height="20">
+				  <td height="20">PStocks have jumped up as well as DOW to almost a record high now that the BF is over. And Russia wants peace, trumps already making America great again
+				  </td>
+				</tr>
+				<tr height="20">
+				  <td height="20">Everyone knew Putin liked trump even before the 8th.
+				  </td>
+				</tr>
+				<tr height="20">
+				  <td height="20">Congrats Mr. Trump, from Romania!
+				  </td>
+				</tr>
+				<tr height="20">
+				  <td height="20">Go Trump go. <br>Make America great again
+				  </td>
+				</tr>
+				<tr height="20">
+				  <td height="20">I love it. All the convicts couldn't vote, didn't think of that killary hahaha.  Trump wins and if you don't like it. Bye bye.
+				  </td>
+				</tr><tr height="20">
+				  <td height="20">Putin respects Donald cause Donald has a wife from Russia. Better women out there!  I'm Ukrainian so gotta represent.
+				  </td>
+				</tr><tr height="20">
+				  <td height="20">Tie together all along????? Ronald R flipping in his grave. Write off Trump debt now. He will give them what they want . WOW First time for this . If that happen as posted
+				  </td>
+				</tr><tr height="20">
+				  <td height="20">I'm sure he is happy and I'm sure trump thanked him for his help.
+				  </td>
+				</tr><tr height="20">
+				  <td height="20">Trump has had ties with Putin all along
+				  </td>
+				</tr><tr height="20">
+				  <td height="20">The only reason Putin likes Trump. Is because Putin loves the sterotypical American. Also, Trump might talk with Putin. Putin likes it when people just talk with him. Hence why W. could keep him in control.
+				  </td>
+				</tr><tr height="20">
+				  <td height="20">Putin said \ did the Emails help you out\", Trump replied, \"not as much as Hillary's corruption\""
+				  </td>
+				</tr><tr height="20">
+				  <td height="20">This is the reason behind that made Trump won the election.
+				  </td>
+				</tr><tr height="20">
+				  <td height="20">Croatia's Nevistich pleased as Trump win shocks world (y)
+				  </td>
+				</tr><tr height="20">
+				  <td height="20">American is scared of Russia..that's why mostly Americans voted trump.....The president of America is now Vilad mir putin
+				  </td>
+				</tr><tr height="20">
+				  <td height="20">Yeah, I bet Putin was pleased with Trump's win over Clinton. We now have a knucklehead in the White House... an easy victory for the Russians.
+				  </td>
+				</tr>
+			  </tbody>
+			</table>
+			  </div></td>
+		  <td><div style="height: 150px; overflow: auto">
+		    <table class="neg1" border="0" cellpadding="5" cellspacing="0" width="100%">
+			  <colgroup>
+				<col width="100%">
+				</colgroup>
+			  <tbody>
+				<tr height="20">
+				  <td height="20" width="100%">Electing Trump such an embarrassment for the USA. What have you done?
+				  </td>
+				</tr>
+				<tr height="20">
+				  <td height="20" width="100%">The tyrant (Putin) & the clown (Trump)!
+				  </td>
+				</tr>
+				<tr height="20"> <td height="20" width="100%">Yep Trump and Putin are a scary prospect...</td></tr>
+				<tr height="20"> <td height="20" width="100%">Surprised it took Putin that long to congratulate. I assume he knew Trump would win beforehand, we have very unsecured electronic voting machines after all.</td></tr>
+				<tr height="20"> <td height="20" width="100%">And Trump supported called our democratic socialist Bernie a communist... but it's ok that their ruler is aligned with the true communist nations.</td></tr>
+				<tr height="20"> <td height="20" width="100%">And Trump said he don't know Putin... It's all a bunch of BS</td></tr>
+				<tr height="20"> <td height="20" width="100%">Seriously. I hope you're happy, America. Putin is a sly fox and he will bamboozle the hell out of Trump.</td></tr>
+				<tr height="20"> <td height="20" width="100%">This was what was just posted by a Trump supporter and you wonder why I'm scared shitless!!! Is this the America you want??? Makes me sick<br>Welcome to President Trump & Trump World with Republicans controlling Congress & SCOTUS !!!!\nThe Liberal USA Citizens will not know what hit them.\n--Immigrants Deported\n--Religious Discrimination - Christians only\n--Wall built between our neighbors\n--Banking regulations lifted\n--EPA regulations lifted\n--Tax Cuts for Wealthy\n--Tax Cuts for Corporations\n--Tax Payer Funded Christian Schools\n--No more Health Insurance under PPACA\n--Female Reproductive Rights eliminated\n--Increased prices in Imported goods\n--Federal Lands & Parks turned over to Corporations\n--Highways & Bridges sold off to highest bidders with Future Tolls\n--Breitbart, RadicalRightWingers, will determine USA laws\n--SCOTUS Justice Appointments will rule for many many years</td></tr>
+				<tr height="20"> <td height="20" width="100%">Sure he did but remember Trump said he didn't know Putin!!!!</td></tr>
+				<tr height="20"> <td height="20" width="100%">Putin and Trump chemistry related relations for a long time.</td></tr>
+				<tr height="20"> <td height="20" width="100%">Putin might give trump surplus ak rifles which might backfire after the great retaliation</td></tr>
+				<tr height="20"> <td height="20" width="100%">No more taxes President Trump doesn't pay so sorry am not pay either !!!</td></tr>
+				<tr height="20"> <td height="20" width="100%">Trump is already cozying up to a dictator. This is terrifying.</td></tr>
+				<tr height="20"> <td height="20" width="100%">Trump will be Putin's puppet.</td></tr>
+				<tr height="20"> <td height="20" width="100%">I bet Putin could fill us in on how Trump managed to win this election.  Hacking emails is just one step away from flipping an election.  Especially since Trump used reverse psychology on all of us by saying Hillary would rig the election.  Makes me sick !!</td></tr>
+				<tr height="20"> <td height="20" width="100%">Trump is his new puppet</td></tr>
+				<tr height="20"> <td height="20" width="100%">Trump needs to be dead right now!</td></tr>
+				<tr height="20"> <td height="20" width="100%">TRAITOR=president trump!!</td></tr>
+				<tr height="20"> <td height="20" width="100%">Trump will destroy America</td></tr>
+				<tr height="20"> <td height="20" width="100%">No! Not my president trump! He is dumb!</td></tr>
+				<tr height="20"> <td height="20" width="100%">Oh I bet! Trump sold his soul to the devil</td></tr>
+				  <tr height="20"> <td height="20" width="100%">Donald is a guinea pig \ud</td></tr>
+				<tr height="20"> <td height="20" width="100%">The former head of the KGB is happy that Mr Trump won?  A communist is happy that Mr Trump won?  Ronald Reagan is turning over in his grave!!!!</td></tr>
+				<tr height="20"> <td height="20" width="100%">Hate trump.  And I don't use hate lightly.</td></tr>
+			  </tbody>
+			</table>
+			  </div></td>
+      </tr>
+      <tr class="bigtr">
+        <td class = "bigtd">Headaches</td>
+        <td><div style="height: 150px; overflow: auto">
+        	<table class="neg" border="0" cellpadding="5" cellspacing="0" width="100%">
+          <colgroup>
+            <col width="1068">
+            </colgroup>
+          <tbody>
+            <tr height="20">
+              <td height="20" width="100%">At least this is positive news!!! That's one \enemy\" we don't have to worry about!"</td>
+            </tr>
+            </tbody>
+        </table>
+        </div></td>
+		<td><div style="height: 150px; overflow: auto">
+			<table class="neg" border="0" cellpadding="5" cellspacing="0" width="100%">
+          <colgroup>
+            <col width="1068">
+            </colgroup>
+          <tbody>
+            <tr height="20">
+              <td height="20" width="100%">Does this not worry anyone?</td>
+            </tr>
+            <tr height="20">
+              <td height="20" width="100%">This alliance could be a worry :/</td>
+            </tr>
+            <tr height="20">
+              <td height="20" width="100%">If this doesn't make you worry then you're an idiot</td>
+            </tr>
+            </tbody>
+        </table>
+		</div></td>
+      </tr>
+      <tr class="bigtr">
+        <td class = "bigtd">Order</td>
+        <td><div style="height: 150px; overflow: auto">
+			<table class="pos" border="0" cellpadding="5" cellspacing="0" width="100%">
+			  <colgroup>
+				<col width="100%">
+				</colgroup>
+			  <tbody>
+				<tr height="20">
+				  <td height="20" width="100%">Trump is our next president...<br>To the people who say that Trump is racist and sexist, I don't think he is. He's just an all-around rude person. <br>To be fair, he hired females in the 70's to be high level directors. Trump critics can't fight against that. Plus, he insults and degrade men as well.<br>As for the racist portion, Trump is extremely against illegal and undocumented immigrants. \nTo the democrats who advocate \fairness and equality\", how is it fair that the legal immigrants have to go through a stringent immigration process to get into the United States while illegals should get a easy, free path? If you really advocate equality, shouldn't you adhere to stricter border security while making legal immigration easier? While Trump's position is radical, he has a point. And remember, his wife is an immigrant. <br>So while I absolutely hate Trump's extremism, I congratulate him on winning over a cheater, killer, and shameless politician who undermines minority rights, Hillary Rodham Clinton."
+				  </td>
+				</tr>
+				<tr height="20">
+				  <td height="20" width="100%">You're so ignorant. Go to your safe place while real world issues are handled. We would probably be getting nuked by Russia right now is Killary would've been elected.
+				  </td>
+				</tr>
+				<tr height="20">
+				  <td height="20" width="100%">For Hillary not to meet with her supporters to thank them for their hard work, but realized that she wasn't going to be POTUS was pretty low. IMO You face failure just as you face anything else if you believe you were right. They just sent them home with not even a thank you. What does this say about her character??? She did this in Benghazi and now to those who stayed at NY HQ until 3am.
+				  </td>
+				</tr>
+				<tr height="20">
+				  <td height="20" width="100%">Putin said \ did the Emails help you out\", Trump replied, \"not as much as Hillary's corruption\""
+				  </td>
+				</tr>
+				<tr height="20">
+				  <td height="20" width="100%">like no one saw this coming , maybe he will now give grump a reduced interest rate on his loan :P
+				  </td>
+				</tr>
+			  </tbody>
+			</table>
+		</div></td>
+		<td><div style="height: 150px; overflow: auto">
+		<table class="neg" border="0" cellpadding="5" cellspacing="0" width="100%">
+			  <colgroup>
+				<col width="100%">
+				</colgroup>
+			  <tbody>
+				<tr height="20">
+				  <td height="20" width="100%">
+				  I find it strange that now the very people who have been fanning the flames of hate and division telling us to unite and come together.  Seriously?! I want nothing to do with the values you hold dear. I can't associate with such vile and hatred. I will keep my head down, raise my family in love, teach my little ones that doing the right thing is not always the easy thing and hopefully in four years we will wake up from this nightmare.
+				  </td>
+				</tr>
+				<tr height="20">
+				  <td height="20" width="100%">And Trump said he don't know Putin... It's all a bunch of BS
+				  </td>
+				</tr>
+				<tr height="20">
+				  <td height="20" width="100%">Here we go. In a nation that said we should only speak English, I refuse to learn a word of Russian.
+				  </td>
+				</tr>
+				<tr height="20">
+				  <td height="20" width="100%">Well, I'm trying hard to maintain my sanity in this election.  BUT I have to say that I wish Putin would \STUFF IT\""
+				  </td>
+				</tr>
+				<tr height="20">
+				  <td height="20" width="100%">Sure he did but remember Trump said he didn't know Putin!!!!
+				  </td>
+				</tr>
+				<tr height ="20"> <td height="20" width="100%">I bet Putin could fill us in on how Trump managed to win this election.  Hacking emails is just one step away from flipping an election.  Especially since Trump used reverse psychology on all of us by saying Hillary would rig the election.  Makes me sick !!</td></tr>
+				<tr height ="20"> <td height="20" width="100%">Can anyone say Puppet</td></tr>
+				<tr height ="20"> <td height="20" width="100%">What does this tell you?</td></tr>
+				<tr height ="20"> <td height="20" width="100%">And he said he don't know Him</td></tr>
+				<tr height ="20"> <td height="20" width="100%">Can you say puppet I knew you could</td></tr>
+				<tr height ="20"> <td height="20" width="100%">can you say sex offender, idiot, puppet!</td></tr>
+				<tr height ="20"> <td height="20" width="100%">Hey future president trumputo!!!  You said his dick taste like jello!!!  LOL!!!  PUTOS!!!</td></tr>
+			  </tbody>
+			</table>	
+     	</div></td>
+      </tr>
+      <tr class="bigtr">
+        <td class = "bigtd">Please</td>
+        <td><div style="height: 150px; overflow: auto">
+        	<table class="pos" border="0" cellpadding="5" cellspacing="0" width="100%">
+			  <colgroup>
+				<col width="100%">
+				</colgroup>
+			  <tbody>
+			  <tr height ="20"> <td height="20" width="100%">Of course he's pleased lol i \ud</td></tr>
+				<tr height ="20"> <td height="20" width="100%">Of course he is pleased. He wants to see America crumbled.</td></tr>
+				<tr height ="20"> <td height="20" width="100%">Croatia's Nevistich pleased as Trump win shocks world (y)</td></tr>
+				<tr height ="20"> <td height="20" width="100%">Of course he is pleased.  His candidate won.</td></tr>
+				<tr height ="20"> <td height="20" width="100%">Yeah, I bet Putin was pleased with Trump's win over Clinton. We now have a knucklehead in the White House... an easy victory for the Russians.</td></tr>
+			  </tbody>
+			</table>
+        </div></td>
+		<td><div style="height: 150px; overflow: auto">
+		<table class="pos" border="0" cellpadding="5" cellspacing="0" width="100%">
+			  <colgroup>
+				<col width="100%">
+			  </colgroup>
+			  <tbody>
+			  <tr height ="20"> <td height="20" width="100%">Of course he's pleased... it should not be surprising!!</td></tr>
+			  <tr height ="20"> <td height="20" width="100%">Of course he's pleased. Absolutely unreal.</td></tr>
+			  <tr height ="20"> <td height="20" width="100%">Well he got what he wanted naturally he's pleased</td></tr>
+			  </tbody>
+			</table>	
+     </div></td>
+      </tr>
+      <tr class="bigtr">
+        <td class = "bigtd">Putin</td>
+        <td><div style="height: 150px; overflow: auto">&nbsp;</div></td>
+		<td><div style="height: 150px; overflow: auto">&nbsp;</div></td>
+      </tr>
+      <tr class="bigtr">
+        <td class = "bigtd">Restore</td>
+        <td><div style="height: 150px; overflow: auto">&nbsp;</div></td>
+        <td><div style="height: 150px; overflow: auto">&nbsp;</div></td>
+      </tr>
+      <tr class="bigtr">
+        <td class = "bigtd">Russia</td>
+        <td><div style="height: 150px; overflow: auto">&nbsp;</div></td>
+        <td><div style="height: 150px; overflow: auto">&nbsp;</div></td>
+      </tr>
+      <tr class="bigtr">
+        <td class = "bigtd">Russian</td>
+        <td><div style="height: 150px; overflow: auto">&nbsp;</div></td>
+        <td><div style="height: 150px; overflow: auto">&nbsp;</div></td>
+      </tr>
+      <tr class="bigtr">
+        <td class = "bigtd">Speech</td>
+        <td><div style="height: 150px; overflow: auto">&nbsp;</div></td>
+        <td><div style="height: 150px; overflow: auto">&nbsp;</div></td>
+      </tr>
+      <tr class="bigtr">
+        <td class = "bigtd">Tie</td>
+        <td><div style="height: 150px; overflow: auto">&nbsp;</div></td>
+        <td><div style="height: 150px; overflow: auto">&nbsp;</div></td>
+      </tr>
+      <tr class="bigtr">
+        <td class = "bigtd">Trump Victory</td>
+        <td><div style="height: 150px; overflow: auto">&nbsp;</div></td>
+        <td><div style="height: 150px; overflow: auto">&nbsp;</div></td>
+      </tr>
+      <tr class="bigtr">
+        <td class = "bigtd">United States</td>
+        <td><div style="height: 150px; overflow: auto">&nbsp;</div></td>
+        <td><div style="height: 150px; overflow: auto">&nbsp;</div></td>
+      </tr>
+
+    </tbody>
+  </table>
+  <!-- About Section --><!-- Stats Gallery Section --><!-- Parallax Section --><!-- More Info Section -->
+  <footer>
+	  <p>IDUNNOWHATTOWRITEHERESOI'MGONNAWRITEANYTHINGRIGHTNOW</p>
+  </footer>
+</div>
+<!-- Main Container Ends -->
+</body>
+</html>
