@@ -59,7 +59,7 @@ def test():
 
 @app.route("/hello")
 def hello():
-    #return render_template('newuser.html', error=None)
+    #return render_template('hello.html')
     return index_dict_desc.keys()[0]
 
 
