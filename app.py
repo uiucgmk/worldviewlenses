@@ -9,6 +9,8 @@ from datetime import datetime
 import re
 import math
 import sys
+import urlparse
+import psycopg2
 reload(sys)
 sys.setdefaultencoding("utf-8")
 # try:
@@ -52,10 +54,10 @@ def run_sql(sql):
 @app.route("/")
 def test():
 
-    sql = "CREATE TABLE Users ( \
-    Id  serial primary key,\
-    Password   VARCHAR(255) not null,);"
-    run_sql(sql)
+    #sql = "CREATE TABLE Users ( \
+    #Id  serial primary key,\
+    #Password   VARCHAR(255) not null,);"
+    #run_sql(sql)
 
     return render_template('article.html')
 
