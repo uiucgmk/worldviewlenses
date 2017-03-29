@@ -10,8 +10,6 @@ import re
 import math
 import sys
 reload(sys)
-import urlparse
-import psycopg2
 sys.setdefaultencoding("utf-8")
 # try:
 #     from BeautifulSoup import BeautifulSoup
@@ -53,15 +51,17 @@ def run_sql(sql):
 
 @app.route("/")
 def test():
-    #sql = "CREATE TABLE Users (Id  serial primary key, Password   VARCHAR(255) not null);"
-    #run_sql(sql)
-    # retrieve the data from data base
-    # comment = run_sql(....)
+
+    sql = "CREATE TABLE Users ( \
+    Id  serial primary key,\
+    Password   VARCHAR(255) not null,);"
+    run_sql(sql)
+
     return render_template('article.html')
 
 @app.route("/hello")
 def hello():
-    #return render_template('hello.html')
+    #return render_template('newuser.html', error=None)
     return index_dict_desc.keys()[0]
 
 
