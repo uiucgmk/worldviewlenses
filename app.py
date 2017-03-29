@@ -55,6 +55,8 @@ def run_sql(sql):
 def test():
     #sql = "CREATE TABLE Users (Id  serial primary key, Password   VARCHAR(255) not null);"
     #run_sql(sql)
+    # retrieve the data from data base
+    # comment = run_sql(....)
     return render_template('article.html')
 
 @app.route("/hello")
