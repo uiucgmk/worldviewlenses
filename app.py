@@ -51,16 +51,28 @@ def run_sql(sql):
     cursor.close()
     return records
 
-@app.route("/")
-def test():
+@app.route("/",methods=['GET', 'POST'])
+def login():
 
     #sql = "CREATE TABLE Users ( \
     #Id  serial primary key,\
     #Password   VARCHAR(255) not null,);"
     #run_sql(sql)
-
+    if request.method == 'POST':
+        username =  request.form['username']
+        intertype =  request.form['interfacetype']
+        #print username
+        #print intertype
+        session['username'] = username
+        sql= "INSERT INTO users (Username,InterfaceType, Happy, Love, Surprise, Cry,Angry) VALUES ('"+username+"','"+intertype+"', 0,0,0,0,0);"
+        print sql
+        run_sql(sql)
+        return redirect(url_for('article'))
+    return render_template('login.html')
+@app.route('/article', methods=['GET', 'POST'])
+def article():
+    username = session['username']
     return render_template('article.html')
-
 @app.route("/hello")
 def hello():
     #return render_template('newuser.html', error=None)
