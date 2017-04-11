@@ -1,0 +1,61 @@
+{% extends './base.html' %}
+
+<!doctype html>
+ {% block title %}
+Title 1        
+{% endblock title %}
+{% block content %}
+{% for aspect in dic %}
+ <tr class="bigtr">
+
+<td  class = "bigtd">{{aspect}}</td>
+        
+        
+        <td><div style="height: 150px; overflow: auto">
+                  <table class="pos" border="0" cellpadding="5" cellspacing="0" width="100%">
+                          <colgroup><col width="100%"></colgroup>    
+                          <tbody>
+                          {% for list in dic[aspect] %}
+                          {% if list[0]=='positive' %}
+                            <tr height="20">
+                              <td height="20" width="100%"><input type="checkbox" id="Check"> &nbsp;       
+                               {{list[1]}}
+                               &nbsp;<a href="#" class="commentsharebutton" onclick="alert('Shared!')">Share</a></td>
+                               
+                            </tr>
+                          {% endif %}
+                          {% endfor %}
+                            <!-- <tr height="20">
+                              <td height="20"><input type="checkbox" id="Check"> &nbsp;Content2 &nbsp;<a href="#" class="commentsharebutton" onclick="alert('Shared!')">Share</a></td>
+                            </tr> -->
+                          </tbody>
+                  </table></div></td>
+        
+        
+        
+        <td>
+          <div style="height: 150px; overflow: auto">
+                  <table class="neg" border="0" cellpadding="5" cellspacing="0" width="100%">
+                          <colgroup><col width="1068"></colgroup>
+                          <tbody>
+                          {% for list in dic[aspect] %}
+                              {% if list[0]=='negative' %}
+                            <tr height="20">
+                              <td height="20" width="100%"><input type="checkbox" id="Check"> &nbsp;       
+                               {{list[1]}}
+                               &nbsp;<a href="#" class="commentsharebutton" onclick="alert('Shared!')">Share</a></td>
+                               
+                            </tr>
+                          {% endif %}
+                          {% endfor %}
+                          </tbody>
+                    </table>
+            </div>
+        </td>
+        {% endfor %}
+</tr>
+
+{% endblock content %}
+
+
+
