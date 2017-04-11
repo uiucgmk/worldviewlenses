@@ -2,8 +2,15 @@
 
 <!doctype html>
  {% block title %}
-Title 1        
+America, meet your new first lady  
 {% endblock title %}
+{% block post %}
+<h3>Melania Trump will become just the second foreign-born first lady in US history.</h3>
+{% endblock post %}
+{% block postimage %}
+<td width="40%" rowspan="2"><a href="http://www.cnn.com/2016/11/09/politics/america-new-first-lady/index.html?sr=fbCNN111016america-new-first-lady1116AMVODtopLink&linkId=31002953" target="_blank"><img src="../static/images/thumb1.gif"  width="100%" height="100%" alt="Melania Trump: From Slovenia to the White House" ></a></td>
+{% endblock postimage %}
+
 {% block content %}
 {% for aspect in dic %}
  <tr class="bigtr">
@@ -11,7 +18,7 @@ Title 1
 <td  class = "bigtd">{{aspect}}</td>
         
         
-        <td><div style="height: 150px; overflow: auto">
+        <td><div style=" height: 150px; width:650px; overflow-y: auto; overflow-x: hidden">
                   <table class="pos" border="0" cellpadding="5" cellspacing="0" width="100%">
                           <colgroup><col width="100%"></colgroup>    
                           <tbody>
@@ -34,9 +41,9 @@ Title 1
         
         
         <td>
-          <div style="height: 150px; overflow: auto">
+          <div style="height: 150px; width:670px; overflow-y: auto; overflow-x: hidden">
                   <table class="neg" border="0" cellpadding="5" cellspacing="0" width="100%">
-                          <colgroup><col width="1068"></colgroup>
+                          <colgroup><col width="100%"></colgroup>
                           <tbody>
                           {% for list in dic[aspect] %}
                               {% if list[0]=='negative' %}

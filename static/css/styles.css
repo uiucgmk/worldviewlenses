@@ -130,11 +130,13 @@ h3{
 #content .mainContent .articleRow {
 	overflow: visible;
 	color: rgba(146,146,146,1.00);
+	text-align: center;
 }
 /* Each article Information in the catalog */
 .mainContent .articleRow .articleInfo {
 	float: left;
-	/*padding-left: 5%;
+	/*
+	padding-left: 5%;
 	padding-right: 5%;*/
 	width: 25%;
 }
@@ -205,6 +207,7 @@ footer div a {
 	width: 300px;
 	height: 200px;
 }
+
 /*Links in sidebar */
 .sidebar #menubar .menu ul li a {
 	color: rgba(146,146,146,1.00);
@@ -308,6 +311,8 @@ footer .footerlinks {
 	
 	font-size: 19px;
 }
+
+
 /* Content holders in catalog view */
 .articleRow .articleInfo .articleContent {
 	font-size: 16px;

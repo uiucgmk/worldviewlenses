@@ -6,7 +6,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Article Page 1</title>
+<title>Article Page</title>
 
 <link href="../static/css/articlestyles.css" rel="stylesheet" type="text/css">
 <!--For comment-->
@@ -32,7 +32,7 @@
 
 <style type="text/css">
 h3{
-  font-size: 36px;
+  font-size: 30px;
 }
 ul{
   margin-left: -35px;
@@ -359,14 +359,19 @@ function myFunction() {
         {% endblock title %}
       
     </h2>
-    <a href="./index"><img src="http://ycpark103.com/images/home-white.png" alt="sample" width="32" height="32" align="right"></a>
+    <a href="./index"><img src="http://ycpark103.com/images/home-white.png" alt="sample" width="42" height="42" margin="30" align="right"></a>
   </header>
   <!-- news Section -->
   <section class="news" id="news" style="text-align:left;">
   <table width="100%" border="0" cellpadding="15">
   <tr>
-    <td width="40%" rowspan="2"><a href="http://cnn.it/2hv6Avo" target="_blank"><img src="../static/images/placeholder.png"  width="100%" height="30%" alt="Obama" ></a></td>
-    <td><h3>“The concept of race in America is not just genetic… It’s cultural.&nbsp; It’s this notion of a people who look different than the mainstream” <br>&nbsp;- President Obama</h3> </td>
+    <!--<td width="40%" rowspan="2"><a href="http://cnn.it/2hv6Avo" target="_blank"><img src="../static/images/placeholder.png"  width="100%" height="30%" alt="Obama" ></a></td>-->
+    {% block postimage %}
+    {% endblock postimage %}
+    <td>
+      {% block post %}
+      {% endblock post %}
+     </td>
   </tr>
   <tr>
     <td height = "10%">

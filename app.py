@@ -61,11 +61,11 @@ def login():
     #run_sql(sql)
     if request.method == 'POST':
         username =  request.form['username']
-        intertype =  request.form['interfacetype']
+        password =  request.form['password']
         #print username
         #print intertype
         session['username'] = username
-        sql= "INSERT INTO users (Username,InterfaceType, Happy, Love, Surprise, Cry,Angry) VALUES ('"+username+"','"+intertype+"', 0,0,0,0,0);"
+        sql= "INSERT INTO users (Username,InterfaceType, Happy, Love, Surprise, Cry,Angry) VALUES ('"+username+"','"+password+"', 0,0,0,0,0);"
         print sql
         run_sql(sql)
         return redirect(url_for('index'))

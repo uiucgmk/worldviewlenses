@@ -74,10 +74,14 @@ nav {
 	margin-top: 15px;
 	list-style: none;
 	float: left;
-	margin-left: 25px;
+	margin-left: 75px;
 }
 h2{
 	font-size: 40px;
+	padding-bottom: 25px;
+}
+h3{
+	font-size: 30px;
 	padding-bottom: 25px;
 }
 nav ul li {
