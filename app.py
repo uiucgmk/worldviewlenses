@@ -11,6 +11,7 @@ import math
 import sys
 import urlparse
 import psycopg2
+import json
 reload(sys)
 sys.setdefaultencoding("utf-8")
 # try:
@@ -67,19 +68,43 @@ def login():
         sql= "INSERT INTO users (Username,InterfaceType, Happy, Love, Surprise, Cry,Angry) VALUES ('"+username+"','"+intertype+"', 0,0,0,0,0);"
         print sql
         run_sql(sql)
-        return redirect(url_for('article'))
+        return redirect(url_for('index'))
     return render_template('login.html')
-@app.route('/article', methods=['GET', 'POST'])
-def article():
+
+@app.route('/index', methods=['GET', 'POST'])
+def index():
     username = session['username']
-    return render_template('article.html')
-@app.route("/hello")
-def hello():
-    #return render_template('newuser.html', error=None)
-    return index_dict_desc.keys()[0]
+    return render_template('index.html')
 
+@app.route('/article1', methods=['GET', 'POST'])
+def article1():
+    username = session['username']
+    dic={}
+    f=open("templates/article1/final_out_10155584306476509.txt","r")
+    for line in f.readlines():
+    	arr=eval(line)
+    	print arr[0]
+    	if dic.has_key(arr[0]):
+    		dic[arr[0]].append(arr[1:])
+    	else:
+			dic[arr[0]]=[arr[1:]]
+    
+    return render_template('article1.html',user=username,dic=dic)
 
-
+@app.route('/article2', methods=['GET', 'POST'])
+def article2():
+    username = session['username']
+    dic={}
+    f=open("templates/article2/final_out_10155792006356509.txt","r")
+    for line in f.readlines():
+    	arr=eval(line)
+    	print arr[0]
+    	if dic.has_key(arr[0]):
+    		dic[arr[0]].append(arr[1:])
+    	else:
+			dic[arr[0]]=[arr[1:]]
+    
+    return render_template('article2.html',user=username,dic=dic)
 
 
 
