@@ -105,8 +105,36 @@ def article2():
 			dic[arr[0]]=[arr[1:]]
     
     return render_template('article2.html',user=username,dic=dic)
+    
+@app.route('/article3', methods=['GET', 'POST'])
+def article3():
+    username = session['username']
+    dic={}
+    f=open("templates/article2/final_out_10155792006356509.txt","r")
+    for line in f.readlines():
+    	arr=eval(line)
+    	print arr[0]
+    	if dic.has_key(arr[0]):
+    		dic[arr[0]].append(arr[1:])
+    	else:
+			dic[arr[0]]=[arr[1:]]
+    
+    return render_template('article3.html',user=username,dic=dic)
 
-
+@app.route('/article4', methods=['GET', 'POST'])
+def article4():
+    username = session['username']
+    dic={}
+    f=open("templates/article2/final_out_10155792006356509.txt","r")
+    for line in f.readlines():
+    	arr=eval(line)
+    	print arr[0]
+    	if dic.has_key(arr[0]):
+    		dic[arr[0]].append(arr[1:])
+    	else:
+			dic[arr[0]]=[arr[1:]]
+    
+    return render_template('article4.html',user=username,dic=dic)
 
 
 
