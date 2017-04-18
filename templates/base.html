@@ -13,12 +13,13 @@
 <link rel="stylesheet" type="text/css" href="../static/css/jquery-comments.css">
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
-<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;lang=en" />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,700,800&amp;lang=en" />
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Bree+Serif&amp;lang=en" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,800&amp;lang=en" />
 
 <!-- Data -->
 <script type="text/javascript" src="../static/js/comments-data.js"></script>
   <script type="text/javascript" src="../static/js/reaction.js"></script>
+
 
 <!-- Libraries -->
 <!--The following script tag downloads a font from the Adobe Edge Web Fonts server for use within the web page. We recommend that you do not modify it. (DREAMWEAVER DEFAULT)-->
@@ -31,6 +32,9 @@
 </script>
 
 <style type="text/css">
+iframe {
+    border: none;
+}
 h3{
   font-size: 30px;
 }
@@ -38,7 +42,7 @@ ul{
   margin-left: -35px;
 }
 table.comments {
-  font-family: "Raleway",arial,sans-serif;
+  font-family: "Bree Serif",arial,serif;
   font-size:16px;
   color:#333333;
   border-width: 1px;
@@ -53,7 +57,7 @@ th{
 }
 
 tr.bigtr:nth-child(even) {
-    background-color: #9BC1BC;
+    background-color: #8F9F88;
 }
 td.bigtd{
   font-size: 20px;
@@ -67,11 +71,11 @@ td.bigtd{
   padding: 0.3em;
   margin-top: 70px;
   margin-left: 50px;
-  color: #fff;
+  color: #8F9F88;
   font-size: 1.1em;
   line-height: 2;
-  border: 1px solid #ddd;
-  border-radius: .25em;
+  border: 2px solid #8F9F88;
+  border-radius: .1em;
 }
 
 .commentsharebutton {
@@ -336,6 +340,13 @@ function myFunction() {
     x.checked = true;
 }
 </script>
+<script type="text/javascript">
+
+function popup(){
+  cuteLittleWindow = window.open("https://goo.gl/forms/IGkiVFpYqP98tPdo2", "littleWindow", "location=no,width=760,height=500"); 
+}
+
+</script>
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -359,7 +370,7 @@ function myFunction() {
         {% endblock title %}
       
     </h2>
-    <a href="./index"><img src="http://ycpark103.com/images/home-white.png" alt="sample" width="42" height="42" margin="30" align="right"></a>
+    <a href="index.html"><img src="http://ycpark103.com/images/home-white.png" alt="sample" width="42" height="42" margin="30" align="right"></a>
   </header>
   <!-- news Section -->
   <section class="news" id="news" style="text-align:left;">
@@ -411,7 +422,7 @@ function myFunction() {
         <p id="emoji-5">0</p>
       </div>
     </div>
-    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//www.facebook.com/cnn/videos/10155734458936509/" target="_blank"><ul class="sharebutton">Share on Facebook</ul></a>
+   <a href="javascript:popup()"><ul class="sharebutton">Share on Facebook</ul></a>
 </div>
 </section>
   </td>

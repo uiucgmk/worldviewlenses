@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /* Body */
 body {
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Bree Serif', serif;
 	background-color: #333;
 	margin-top: 0px;
 	margin-right: 0px;
@@ -31,9 +31,9 @@ iframe {
 header {
 	width: 100%;
 	height: 60px;
-	background-color: #43563D;
+	background-color:#3D4A39;
 	padding-bottom: 20px;
-	border-bottom: 1px solid #43563D;
+	border-bottom: 1px solid #3D4A39;
 }
 .logo {
 	color: #fff;
@@ -69,7 +69,7 @@ nav {
 	top: -2px;
 }
 .title {
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Roboto', sans-serif;
 	color: #fff;
 	margin-top: 15px;
 	list-style: none;
@@ -116,7 +116,7 @@ ul li:hover a {
 }
 /* news Section */
 .news {
-	background-color: #B3B3B3;
+	background-color: #EFEEED;
 	padding-top: 30px;
 	padding-bottom: 30px;
 	margin-bottom: 20px;
