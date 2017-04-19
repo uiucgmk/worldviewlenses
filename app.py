@@ -95,7 +95,6 @@ def article1():
 
 @app.route('/checkeditems', methods=['GET', 'POST'])
 def checkeditems():
-	
 	#create table checkeditems ( Username VARCHAR(255),Post int,Sentiment VARCHAR(255),Aspect VARCHAR(255),Comment TEXT );
 	post=session['post']
 	all_data=[]
@@ -118,7 +117,6 @@ def article2():
 	f=open("templates/article2/final_out_10155792006356509.txt","r")
 	for line in f.readlines():
 		arr=eval(line)
-		print arr[0]
 		if dic.has_key(arr[0]):
 			dic[arr[0]].append(arr[1:])
 		else:
@@ -134,7 +132,6 @@ def article3():
 	f=open("templates/article2/final_out_10155792006356509.txt","r")
 	for line in f.readlines():
 		arr=eval(line)
-		print arr[0]
 		if dic.has_key(arr[0]):
 			dic[arr[0]].append(arr[1:])
 		else:
@@ -150,7 +147,7 @@ def article4():
 	f=open("templates/article2/final_out_10155792006356509.txt","r")
 	for line in f.readlines():
 		arr=eval(line)
-		print arr[0]
+		#print arr[0]
 		if dic.has_key(arr[0]):
 			dic[arr[0]].append(arr[1:])
 		else:

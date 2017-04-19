@@ -41,7 +41,7 @@ America, meet your new first lady
                             <tr height="20">
 
                             
-                              <td height="20" width="100%"><input type="checkbox" id="Check_positive" value="{{list[1]}}" name="{{aspect}}">     
+                              <td height="20" width="100%"><input type="checkbox" id="positive" value="{{list[1]}}" name="{{aspect}}">     
                                 
                                 <span id="textArea">{{list[1]}}</span>
 
@@ -67,7 +67,7 @@ America, meet your new first lady
                               {% if list[0]=='negative' %}
                             <tr height="20">
 
-                              <td height="20" width="100%"><input type="checkbox" id="Check_negative" value="{{list[1]}}" name="{{aspect}}">       
+                              <td height="20" width="100%"><input type="checkbox" id="negative" value="{{list[1]}}" name="{{aspect}}">       
                                {{list[1]}}
                                <a href="#" class="commentsharebutton" onclick="alert('Shared!')">Share</a></td>
                                
@@ -79,8 +79,9 @@ America, meet your new first lady
                     </table>
             </div>
         </td>
-        {% endfor %}
+       
 </tr>
+ {% endfor %}
 </form> 
 {% endblock content %}
 
