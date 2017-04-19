@@ -26,6 +26,7 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.textcomplete/1.8.0/jquery.textcomplete.js"></script>
 <!--For comment-->
 <script type="text/javascript" src="../static/js/jquery-comments.js"></script>
+<script type="text/javascript" src="../static/js/readmore.js"></script>
 <!--React Imojis-->
 <script src="//production-assets.codepen.io/assets/editor/live/css_live_reload_init-2c0dc5167d60a5af3ee189d570b1835129687ea2a61bee3513dee3a50c115a77.js">
 </script>
@@ -504,6 +505,32 @@ function myFunction() {
 
   <!-- About Section --><!-- Stats Gallery Section --><!-- Parallax Section --><!-- More Info Section -->
   <footer>
+
+<button type="button" onclick='storeChecked()' >Submit</button>
+    <p id="result"></p>
+    <script>
+ 
+function storeChecked() {
+    var x = document.forms[0];
+    var textappend;
+    var content=[];
+    for (i = 0; i < x.length; i++) {
+        if (x[i].checked) {
+           textappend=x[i].id+"\t\t"+x[i].name+"\t\t"+x[i].value;
+           content.push(textappend);
+            
+        }
+    }
+    
+    //document.getElementById("result").innerHTML = "You selected : " + content;
+    
+    $.post( "/checkeditems", { 'all_data[]': content } );
+    alert("Your response is submitted!")
+}
+    </script>
+
+    {% block footer %}
+    {% endblock footer %}
     <p>2017 Research Project By : Hyo Jin Do, Ming Kun Gao, Yerim Park</p>
   </footer>
 </div>

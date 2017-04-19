@@ -29,112 +29,134 @@ url = urlparse.urlparse(DATABASE_URL)
 
 def run_sql(sql):
 
-    conn = psycopg2.connect(
-        database=url.path[1:],
-        user=url.username,
-        password=url.password,
-        host=url.hostname,
-        port=url.port
-        #sslmode = 'require'
-    )
+	conn = psycopg2.connect(
+		database=url.path[1:],
+		user=url.username,
+		password=url.password,
+		host=url.hostname,
+		port=url.port
+		#sslmode = 'require'
+	)
 
-    cursor = conn.cursor()
-    cursor.execute(sql)
-    conn.commit()
+	cursor = conn.cursor()
+	cursor.execute(sql)
+	conn.commit()
 
-    try:
-        records = cursor.fetchall()
-    except Exception as e:
-        records = []
-        print 'Exception-----'
-        print 'sql: ' + str(sql)
-        print 'error: '+ str(e)
-    cursor.close()
-    return records
+	try:
+		records = cursor.fetchall()
+	except Exception as e:
+		records = []
+		print 'Exception-----'
+		print 'sql: ' + str(sql)
+		print 'error: '+ str(e)
+	cursor.close()
+	return records
 
 @app.route("/",methods=['GET', 'POST'])
 def login():
 
-    #sql = "CREATE TABLE Users ( \
-    #Id  serial primary key,\
-    #Password   VARCHAR(255) not null,);"
-    #run_sql(sql)
-    if request.method == 'POST':
-        username =  request.form['username']
-        password =  request.form['password']
-        #print username
-        #print intertype
-        session['username'] = username
-        sql= "INSERT INTO users (Username,InterfaceType, Happy, Love, Surprise, Cry,Angry) VALUES ('"+username+"','"+password+"', 0,0,0,0,0);"
-        print sql
-        run_sql(sql)
-        return redirect(url_for('index'))
-    return render_template('login.html')
+	#sql = "CREATE TABLE Users ( \
+	#Id  serial primary key,\
+	#Password   VARCHAR(255) not null,);"
+	#run_sql(sql)
+
+	if request.method == 'POST':
+		username =  request.form['username']
+		password =  request.form['password']
+		#print username
+		#print intertype
+		session['username'] = username
+		sql= "INSERT INTO users (Username,InterfaceType, Happy, Love, Surprise, Cry,Angry) VALUES ('"+username+"','"+password+"', 0,0,0,0,0);"
+		print sql
+		run_sql(sql)
+		return redirect(url_for('index'))
+	return render_template('login.html')
 
 @app.route('/index', methods=['GET', 'POST'])
 def index():
-    username = session['username']
-    return render_template('index.html')
+	username = session['username']
+	return render_template('index.html')
 
 @app.route('/article1', methods=['GET', 'POST'])
 def article1():
-    username = session['username']
-    dic={}
-    f=open("templates/article1/final_out_10155584306476509.txt","r")
-    for line in f.readlines():
-    	arr=eval(line)
-    	print arr[0]
-    	if dic.has_key(arr[0]):
-    		dic[arr[0]].append(arr[1:])
-    	else:
+	session['post'] = 1
+	username = session['username']
+	dic={}
+	f=open("templates/article1/final_out_10155584306476509.txt","r")
+	for line in f.readlines():
+		arr=eval(line)
+		if dic.has_key(arr[0]):
+			dic[arr[0]].append(arr[1:])
+		else:
 			dic[arr[0]]=[arr[1:]]
-    
-    return render_template('article1.html',user=username,dic=dic)
+	
+	
+	return render_template('article1.html',user=username,dic=dic)
+
+@app.route('/checkeditems', methods=['GET', 'POST'])
+def checkeditems():
+	
+	#create table checkeditems ( Username VARCHAR(255),Post int,Sentiment VARCHAR(255),Aspect VARCHAR(255),Comment TEXT );
+	post=session['post']
+	all_data=[]
+	all_data_raw=[]
+	username = session['username']
+	if request.method == 'POST':
+		all_data_raw = request.form.getlist('all_data[]')
+		for i in range(0,len(all_data_raw)):
+			all_data=all_data_raw[i].split("\t\t")	 		
+			sql= "INSERT INTO checkeditems (Username,Post,Sentiment,Aspect,Comment) VALUES ('"+username+"','"+str(post)+"','"+all_data[0]+"','"+all_data[1]+"','"+all_data[2]+"');"
+			print sql
+			run_sql(sql)
+		return 'OK'
 
 @app.route('/article2', methods=['GET', 'POST'])
 def article2():
-    username = session['username']
-    dic={}
-    f=open("templates/article2/final_out_10155792006356509.txt","r")
-    for line in f.readlines():
-    	arr=eval(line)
-    	print arr[0]
-    	if dic.has_key(arr[0]):
-    		dic[arr[0]].append(arr[1:])
-    	else:
+	username = session['username']
+	session['post'] = 2
+	dic={}
+	f=open("templates/article2/final_out_10155792006356509.txt","r")
+	for line in f.readlines():
+		arr=eval(line)
+		print arr[0]
+		if dic.has_key(arr[0]):
+			dic[arr[0]].append(arr[1:])
+		else:
 			dic[arr[0]]=[arr[1:]]
-    
-    return render_template('article2.html',user=username,dic=dic)
-    
+	
+	return render_template('article2.html',user=username,dic=dic)
+	
 @app.route('/article3', methods=['GET', 'POST'])
 def article3():
-    username = session['username']
-    dic={}
-    f=open("templates/article2/final_out_10155792006356509.txt","r")
-    for line in f.readlines():
-    	arr=eval(line)
-    	print arr[0]
-    	if dic.has_key(arr[0]):
-    		dic[arr[0]].append(arr[1:])
-    	else:
+	username = session['username']
+	session['post'] = 3
+	dic={}
+	f=open("templates/article2/final_out_10155792006356509.txt","r")
+	for line in f.readlines():
+		arr=eval(line)
+		print arr[0]
+		if dic.has_key(arr[0]):
+			dic[arr[0]].append(arr[1:])
+		else:
 			dic[arr[0]]=[arr[1:]]
-    
-    return render_template('article3.html',user=username,dic=dic)
+	
+	return render_template('article3.html',user=username,dic=dic)
 
 @app.route('/article4', methods=['GET', 'POST'])
 def article4():
-    username = session['username']
-    dic={}
-    f=open("templates/article2/final_out_10155792006356509.txt","r")
-    for line in f.readlines():
-    	arr=eval(line)
-    	print arr[0]
-    	if dic.has_key(arr[0]):
-    		dic[arr[0]].append(arr[1:])
-    	else:
+	username = session['username']
+	session['post'] = 4
+	dic={}
+	f=open("templates/article2/final_out_10155792006356509.txt","r")
+	for line in f.readlines():
+		arr=eval(line)
+		print arr[0]
+		if dic.has_key(arr[0]):
+			dic[arr[0]].append(arr[1:])
+		else:
 			dic[arr[0]]=[arr[1:]]
-    
-    return render_template('article4.html',user=username,dic=dic)
+	
+	return render_template('article4.html',user=username,dic=dic)
 
 
 
@@ -147,6 +169,6 @@ def article4():
 
 
 if __name__ == '__main__':
-    # Bind to PORT if defined, otherwise default to 5000.
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port,debug=True)
+	# Bind to PORT if defined, otherwise default to 5000.
+	port = int(os.environ.get('PORT', 5000))
+	app.run(host='0.0.0.0', port=port,debug=True)

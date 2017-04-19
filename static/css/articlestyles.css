@@ -11,6 +11,18 @@ body {
 	font-size: 15px;
 	font-weight: 500;
 }
+/*comment*/
+.complete{
+    display:none;
+}
+
+.more{
+    background:lightblue;
+    color:navy;
+    font-size:13px;
+    padding:3px;
+    cursor:pointer;
+}
 /* Container */
 .container {
 	width: 90%;
@@ -45,6 +57,7 @@ header {
 	margin-left: 25px;
 	letter-spacing: 4px;
 }
+
 nav {
 	position: absolute;
 	left: 941px;

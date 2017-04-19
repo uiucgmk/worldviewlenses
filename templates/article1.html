@@ -1,6 +1,9 @@
 {% extends './base.html' %}
 
 <!doctype html>
+<script type="text/javascript"
+  src="http://viralpatel.net/blogs/demo/jquery/jquery.shorten.1.0.js"></script>
+
  {% block title %}
 America, meet your new first lady  
 {% endblock title %}
@@ -12,8 +15,15 @@ America, meet your new first lady
 <td width="40%" rowspan="2"><a href="http://www.cnn.com/2016/11/09/politics/america-new-first-lady/index.html?sr=fbCNN111016america-new-first-lady1116AMVODtopLink&linkId=31002953" target="_blank"><img src="../static/images/thumb1.png"  width="100%" height="100%" alt="Melania Trump: From Slovenia to the White House" ></a></td>
 {% endblock postimage %}
 
+
+
+
 {% block content %}
+<form>
+
+
 {% for aspect in dic %}
+
  <tr class="bigtr">
 
 <td  class = "bigtd">{{aspect}}</td>
@@ -23,13 +33,18 @@ America, meet your new first lady
                   <table class="pos" border="0" cellpadding="5" cellspacing="0" width="100%">
                           <colgroup><col width="100%"></colgroup>    
                           <tbody>
+                          
                           {% for list in dic[aspect] %}
+                            
                           {% if list[0]=='positive' %}
+                          
                             <tr height="20">
-                              <td height="20" width="100%"><input type="checkbox" id="Check"> &nbsp;       
-                               {{list[1]}}
-                               &nbsp;<a href="#" class="commentsharebutton" onclick="alert('Shared!')">Share</a></td>
-                               
+                            
+                              <td height="20" width="100%"><input type="checkbox" id="Check_positive" value="{{list[1]}}" name="{{aspect}}">     
+                                
+                                <span id="textArea">{{list[1]}}</span>
+
+                               <a href="#" class="commentsharebutton" onclick="alert('Shared!')">Share</a></td>
                             </tr>
                           {% endif %}
                           {% endfor %}
@@ -49,9 +64,9 @@ America, meet your new first lady
                           {% for list in dic[aspect] %}
                               {% if list[0]=='negative' %}
                             <tr height="20">
-                              <td height="20" width="100%"><input type="checkbox" id="Check"> &nbsp;       
+                              <td height="20" width="100%"><input type="checkbox" id="Check_negative" value="{{list[1]}}" name="{{aspect}}">       
                                {{list[1]}}
-                               &nbsp;<a href="#" class="commentsharebutton" onclick="alert('Shared!')">Share</a></td>
+                               <a href="#" class="commentsharebutton" onclick="alert('Shared!')">Share</a></td>
                                
                             </tr>
                           {% endif %}
@@ -62,8 +77,12 @@ America, meet your new first lady
         </td>
         {% endfor %}
 </tr>
-
+</form> 
 {% endblock content %}
 
+{%block footer%}
+
+
+{%endblock footer%}
 
 
