@@ -468,60 +468,15 @@ World Through Different Lenses-->
     <tbody>
       <tr class="bigtr">
         <th width="10%">Keywords</th>
-        <th width="45%">Positive</th>
-        <th width="45%">Negative</th>
+        <th width="45%">Agree</th>
+        <th width="45%">Disagree</th>
       </tr>
       
         {% block content %}
         
         {% endblock content %}
       
-      
-
-
-
-
-      <!-- <tr class="bigtr">
-        <td class = "bigtd">Americans</td>
-        <td>
-
-          <div>
-            <input type="checkbox" class="read-more-state" id="post-2" />
-
-            <ul class="read-more-wrap">
-              <p><input type="checkbox" id="Check"> &nbsp;aa &nbsp;<a href="#" class="commentsharebutton" onclick="alert('Shared!')">Share</a></p>
-              <p><input type="checkbox" id="Check"> &nbsp;bb &nbsp;<a href="#" class="commentsharebutton" onclick="alert('Shared!')">Share</a></p>
-              <p class="read-more-target"><input type="checkbox" id="Check"> &nbsp;cc &nbsp;<a href="#" class="commentsharebutton" onclick="alert('Shared!')">Share</a></p>
-              <p class="read-more-target"><input type="checkbox" id="Check"> &nbsp;dd &nbsp;<a href="#" class="commentsharebutton" onclick="alert('Shared!')">Share</a></p>
-              <p class="read-more-target"><input type="checkbox" id="Check"> &nbsp;ee &nbsp;<a href="#" class="commentsharebutton" onclick="alert('Shared!')">Share</a></p>
-              <p class="read-more-target"><input type="checkbox" id="Check"> &nbsp;ff</p>
-              <p class="read-more-target"><input type="checkbox" id="Check"> &nbsp;gg &nbsp;<a href="#" class="commentsharebutton" onclick="alert('Shared!')">Share</a></p>
-
-            </ul>
-
-            <label for="post-2" class="read-more-trigger"></label>
-          </div>
-
-        </td>
-        <td>
-      <div>
-            <input type="checkbox" class="read-more-state" id="post-3" />
-
-            <ul class="read-more-wrap">
-              <p><input type="checkbox" id="Check"> &nbsp;He is Putin' puppet! Americans,your baseless decision will play into Putin's hands to exacerbate and destroy you! &nbsp;<a href="#" class="commentsharebutton" onclick="alert('Shared!')">Share</a></p>
-              <p><input type="checkbox" id="Check"> &nbsp;Wonderful just wonderful. Best friends with Russia, a dream come true to make American great again. Thanks so much. God be with us. &nbsp;<a href="#" class="commentsharebutton" onclick="alert('Shared!')">Share</a></p>
-              <p class="read-more-target"><input type="checkbox" id="Check"> &nbsp;Great ... now lots get Isis and control north Corea ... I bet there aren't letters from them ah! The party is over! Time to make a country of American dreams no a house of refugees! &nbsp;<a href="#" class="commentsharebutton" onclick="alert('Shared!')">Share</a></p>
-              <p class="read-more-target"><input type="checkbox" id="Check"> &nbsp;Wonderful just wonderful. Best friends with Russia, a dream come true to make American great again. Thanks so much. God be with us. &nbsp;<a href="#" class="commentsharebutton" onclick="alert('Shared!')">Share</a></p>
-              <p class="read-more-target"><input type="checkbox" id="Check"> &nbsp;Pinko scum bag loves the new American fascist. &nbsp;<a href="#" class="commentsharebutton" onclick="alert('Shared!')">Share</a></p>
-              <p class="read-more-target"><input type="checkbox" id="Check"> &nbsp;Bad news for Americans......it is so sad but American get what it vote for ..... &nbsp;<a href="#" class="commentsharebutton" onclick="alert('Shared!')">Share</a></p>
-
-            </ul>
-
-            <label for="post-3" class="read-more-trigger"></label>
-          </div>
-    </td>
-      </tr>
- -->
+    
     </tbody>
   </table>
 
@@ -532,11 +487,12 @@ World Through Different Lenses-->
   <!-- About Section --><!-- Stats Gallery Section --><!-- Parallax Section --><!-- More Info Section -->
   <footer>
 
-<button type="button" onclick='storeChecked()' >Submit</button>
+    <button type="button" onclick='storeChecked_and_reaction()' >Submit</button>
     <p id="result"></p>
     <script>
  
-function storeChecked() {
+function storeChecked_and_reaction() {
+    //for checked items
     var x = document.forms[0];
     var textappend;
     var content=[];
@@ -550,8 +506,20 @@ function storeChecked() {
     
     //document.getElementById("result").innerHTML = "You selected : " + content;
     
-    $.post( "/checkeditems", { 'all_data[]': content } );
-    alert("Your response is submitted!")
+    //for reactions
+    var reaction=[];
+    var count=0;
+    var divName;
+    for (id = 1; id < 6; id++) {
+      divName = "emoji-" + id;
+      count = document.getElementById(divName).innerHTML;
+      reaction.push(count);
+    }
+    $.post( "/checkeditems", { 'all_data[]': content, 'reaction_data[]':reaction } );
+
+    alert("Your response is submitted!");
+    //$.post( "/checkeditems", { 'all_data[]': content } );
+    //alert("Your response is submitted!"+reaction);
 }
     </script>
 

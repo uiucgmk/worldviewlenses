@@ -60,13 +60,17 @@ def login():
 	#Password   VARCHAR(255) not null,);"
 	#run_sql(sql)
 
+	#create table user_info ( Username VARCHAR(255) NOT NULL, Password VARCHAR(255) NOT NULL, Post1 int, Post2 int, Post3 int, Post4 int, PRIMARY KEY(Username));
+	#create table reaction ( Username VARCHAR(255) NOT NULL, Post int, Happy int, Love int, Surprise int, Sad int, Anger int);
 	if request.method == 'POST':
 		username =  request.form['username']
 		password =  request.form['password']
 		#print username
 		#print intertype
 		session['username'] = username
-		sql= "INSERT INTO users (Username,InterfaceType, Happy, Love, Surprise, Cry,Angry) VALUES ('"+username+"','"+password+"', 0,0,0,0,0);"
+		#sql= "INSERT INTO users (Username,Password, Happy, Love, Surprise, Cry,Angry) VALUES ('"+username+"','"+password+"', 0,0,0,0,0);"
+		sql= "INSERT INTO user_info (Username,Password,Post1, Post2, Post3, Post4 ) VALUES ('"+username+"','"+password+"', 0,0,0,0);"
+		
 		print sql
 		run_sql(sql)
 		return redirect(url_for('index'))
@@ -99,14 +103,28 @@ def checkeditems():
 	post=session['post']
 	all_data=[]
 	all_data_raw=[]
+	reaction_data=[]
 	username = session['username']
 	if request.method == 'POST':
 		all_data_raw = request.form.getlist('all_data[]')
+		reaction_data = request.form.getlist('reaction_data[]')
+		#for checked items
 		for i in range(0,len(all_data_raw)):
-			all_data=all_data_raw[i].split("\t\t")	 		
+			all_data=all_data_raw[i].split("\t\t")	 	
 			sql= "INSERT INTO checkeditems (Username,Post,Sentiment,Aspect,Comment) VALUES ('"+username+"','"+str(post)+"','"+all_data[0]+"','"+all_data[1]+"','"+all_data[2]+"');"
-			print sql
+			#print sql
 			run_sql(sql)
+		
+
+		#for reaction data
+		sql= "INSERT INTO reaction (Username,Post,Happy, Love, Surprise, Sad, Anger ) VALUES ('"+username+"','"+str(post)+"','"+str(reaction_data[0])+"','"+str(reaction_data[1])+"','"+str(reaction_data[2])+"','"+str(reaction_data[3])+"','"+str(reaction_data[4])+"');"
+		#print sql
+		run_sql(sql)
+
+		#update the worked post 0-->1
+		sql= "UPDATE user_info SET Post"+str(post)+"= 1 WHERE Username='"+username+"';"
+		run_sql(sql)
+
 		return 'OK'
 
 @app.route('/article2', methods=['GET', 'POST'])
