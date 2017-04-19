@@ -3,7 +3,7 @@
 /*@import url('https://fonts.googleapis.com/css?family=Open+Sans');*/
 
 body{
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Bree Serif', serif;
 	width: 100%;}
 a:hover {
 	color: rgba(255,255,255,1.00);
@@ -62,7 +62,8 @@ h3{
 #head_title {
 	font-family: 'Montserrat', sans-serif;
 	clear: both;
-	background-color: #43563D;
+	/*background-color: #43563D;*/
+	background-color: #3D4A39;
 	color: #FFFFFF;
 	padding-left: 3%;
 	padding-top: 1px;
@@ -75,7 +76,7 @@ h3{
 }
 /* Sidebar */
 #content .sidebar {
-	font-family: 'Raleway', sans-serif;
+	font-family: 'Bree Serif', sans-serif;
 	color: rgba(146,146,146,1.00);
 	float: left;
 	width: 20%;
@@ -142,7 +143,7 @@ h3{
 }
 /* Prices of a articles in catalog */
 .articleRow .articleInfo .price {
-	font-family: 'Raleway', sans-serif;
+	font-family: 'Bree Serif', sans-serif;
 	color: darkslategray;
 	font-size: 30px;
 	position: relative;

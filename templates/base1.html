@@ -27,7 +27,6 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.textcomplete/1.8.0/jquery.textcomplete.js"></script>
 <!--For comment-->
 <script type="text/javascript" src="../static/js/jquery-comments.js"></script>
-<script type="text/javascript" src="../static/js/readmore.js"></script>
 <!--React Imojis-->
 <script src="//production-assets.codepen.io/assets/editor/live/css_live_reload_init-2c0dc5167d60a5af3ee189d570b1835129687ea2a61bee3513dee3a50c115a77.js">
 </script>
@@ -49,27 +48,16 @@ table.comments {
   border-width: 1px;
   border-color: #666666;
   border-collapse: collapse;
-  padding: 50px;
-  border-top: 1px solid #9BC1BC;
 
 }
 th{
   font-size: 21px;
   font-weight: bold;
   text-align: center;
-
 }
 
-/*tr.bigtr:nth-child(even) {
+tr.bigtr:nth-child(even) {
     background-color: #8F9F88;
-}*/
-tr{border-top: 3px solid #9BC1BC;
-  padding: 20px;
-}
-td{border-top: 1px solid #9BC1BC;
-}
-tr.bigtr:{
-  border-top: 1px solid #9BC1BC;
 }
 td.bigtd{
   font-size: 20px;
@@ -374,20 +362,16 @@ function popup(){
 <body>
 <!-- Main Container -->
 <div class="container">
-<!--<a href="index.html"><img src="../static/images/logo_color.png" alt="home" width="100" height="100" margin="0"></a>
-World Through Different Lenses-->
-<div class="header">
-<h2 class="title">
+  <!-- Navigation -->
+  <header>
+    <h2 class="title">
         {% block title %}
         
         {% endblock title %}
       
     </h2>
-    </div>
-</div>
-<div class="container">
-  <!-- Navigation -->
- 
+    <a href="index.html"><img src="http://ycpark103.com/images/home-white.png" alt="sample" width="42" height="42" margin="30" align="right"></a>
+  </header>
   <!-- news Section -->
   <section class="news" id="news" style="text-align:left;">
   <table width="100%" border="0" cellpadding="15">
@@ -531,32 +515,6 @@ World Through Different Lenses-->
 
   <!-- About Section --><!-- Stats Gallery Section --><!-- Parallax Section --><!-- More Info Section -->
   <footer>
-
-<button type="button" onclick='storeChecked()' >Submit</button>
-    <p id="result"></p>
-    <script>
- 
-function storeChecked() {
-    var x = document.forms[0];
-    var textappend;
-    var content=[];
-    for (i = 0; i < x.length; i++) {
-        if (x[i].checked) {
-           textappend=x[i].id+"\t\t"+x[i].name+"\t\t"+x[i].value;
-           content.push(textappend);
-            
-        }
-    }
-    
-    //document.getElementById("result").innerHTML = "You selected : " + content;
-    
-    $.post( "/checkeditems", { 'all_data[]': content } );
-    alert("Your response is submitted!")
-}
-    </script>
-
-    {% block footer %}
-    {% endblock footer %}
     <p>2017 Research Project By : Hyo Jin Do, Ming Kun Gao, Yerim Park</p>
   </footer>
 </div>

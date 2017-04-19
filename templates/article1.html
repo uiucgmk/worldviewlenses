@@ -5,7 +5,7 @@
   src="http://viralpatel.net/blogs/demo/jquery/jquery.shorten.1.0.js"></script>
 
  {% block title %}
-America, meet your new first lady  
+America, meet your new first lady
 {% endblock title %}
 {% block post %}
 <h3>Melania Trump will become just the second foreign-born first lady in US history.</h3>
@@ -27,11 +27,11 @@ America, meet your new first lady
  <tr class="bigtr">
 
 <td  class = "bigtd">{{aspect}}</td>
-        
-        
+
+
         <td><div style=" height: 150px; width:650px; overflow-y: auto; overflow-x: hidden">
                   <table class="pos" border="0" cellpadding="5" cellspacing="0" width="100%">
-                          <colgroup><col width="100%"></colgroup>    
+                          <colgroup><col width="100%"></colgroup>
                           <tbody>
                           
                           {% for list in dic[aspect] %}
@@ -39,12 +39,14 @@ America, meet your new first lady
                           {% if list[0]=='positive' %}
                           
                             <tr height="20">
+
                             
                               <td height="20" width="100%"><input type="checkbox" id="Check_positive" value="{{list[1]}}" name="{{aspect}}">     
                                 
                                 <span id="textArea">{{list[1]}}</span>
 
                                <a href="#" class="commentsharebutton" onclick="alert('Shared!')">Share</a></td>
+
                             </tr>
                           {% endif %}
                           {% endfor %}
@@ -53,9 +55,9 @@ America, meet your new first lady
                             </tr> -->
                           </tbody>
                   </table></div></td>
-        
-        
-        
+
+
+
         <td>
           <div style="height: 150px; width:670px; overflow-y: auto; overflow-x: hidden">
                   <table class="neg" border="0" cellpadding="5" cellspacing="0" width="100%">
@@ -64,10 +66,12 @@ America, meet your new first lady
                           {% for list in dic[aspect] %}
                               {% if list[0]=='negative' %}
                             <tr height="20">
+
                               <td height="20" width="100%"><input type="checkbox" id="Check_negative" value="{{list[1]}}" name="{{aspect}}">       
                                {{list[1]}}
                                <a href="#" class="commentsharebutton" onclick="alert('Shared!')">Share</a></td>
                                
+
                             </tr>
                           {% endif %}
                           {% endfor %}
@@ -79,10 +83,4 @@ America, meet your new first lady
 </tr>
 </form> 
 {% endblock content %}
-
-{%block footer%}
-
-
-{%endblock footer%}
-
 
