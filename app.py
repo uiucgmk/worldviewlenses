@@ -62,6 +62,8 @@ def login():
 
 	#create table user_info ( Username VARCHAR(255) NOT NULL, Password VARCHAR(255) NOT NULL, Post1 int, Post2 int, Post3 int, Post4 int, PRIMARY KEY(Username));
 	#create table reaction ( Username VARCHAR(255) NOT NULL, Post int, Happy int, Love int, Surprise int, Sad int, Anger int);
+	
+	
 	if request.method == 'POST':
 		username =  request.form['username']
 		password =  request.form['password']
@@ -96,6 +98,17 @@ def article1():
 	
 	
 	return render_template('article1.html',user=username,dic=dic)
+@app.route('/share', methods=['GET', 'POST'])
+def share():
+	#create table share (Username VARCHAR(255) NOT NULL, Post int,Sentiment VARCHAR(255),Aspect VARCHAR(255),Comment TEXT,Whowhy TEXT);
+	post=session['post']
+	username = session['username']
+	if request.method == 'POST':
+		user_data = request.form.getlist('id[]')
+		whowhy_data = request.form['whowhy']
+		sql= "INSERT INTO share (Username,Post,Sentiment,Aspect,Comment,whowhy) VALUES ('"+username+"','"+str(post)+"','"+user_data[1]+"','"+user_data[0]+"','"+user_data[2]+"','"+whowhy_data+"');"
+		run_sql(sql)
+		return 'OK'
 
 @app.route('/checkeditems', methods=['GET', 'POST'])
 def checkeditems():

@@ -45,7 +45,11 @@ America, meet your new first lady
                                 
                                 <span id="textArea">{{list[1]}}</span>
 
-                               <a href="#" class="commentsharebutton" onclick="alert('Shared!')">Share</a></td>
+                               <!--<a href="#" class="commentsharebutton" onclick="alert('Shared!')">Share</a></td>-->
+                               {% set shareid=aspect+"\t\tpositive\t\t"+list[1] %}
+                               <button type="button" class="commentsharebutton" onclick="shareFunction('{{shareid}}')">Share</button>
+                                <!--<a href="#" class="commentsharebutton" onclick="shareFunction('{{shareid}}')">Share</a></td>-->
+                                
 
                             </tr>
                           {% endif %}
@@ -69,7 +73,8 @@ America, meet your new first lady
 
                               <td height="20" width="100%"><input type="checkbox" id="negative" value="{{list[1]}}" name="{{aspect}}">       
                                {{list[1]}}
-                               <a href="#" class="commentsharebutton" onclick="alert('Shared!')">Share</a></td>
+                               {% set shareid=aspect+"\t\tnegative\t\t"+list[1] %}
+                               <button type="button" class="commentsharebutton" onclick="shareFunction('{{shareid}}')">Share</button>
                                
 
                             </tr>

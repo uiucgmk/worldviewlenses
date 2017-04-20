@@ -37,7 +37,9 @@ It's official: Clinton swamps Trump in popular vote
                             <tr height="20">
                               <td height="20" width="100%"><input type="checkbox" id="positive" value="{{list[1]}}" name="{{aspect}}"> 
                                {{list[1]}}
-                               <a href="#" class="commentsharebutton" onclick="alert('Shared!')">Share</a>
+                               
+                               {% set shareid=aspect+"\t\tpositive\t\t"+list[1] %}
+                               <button type="button" class="commentsharebutton" onclick="shareFunction('{{shareid}}')">Share</button>
                              <button onclick="myFunction('{{divid}}')">Reply</button>
                              {% set myDIVID = divid%}
                              <div id={{myDIVID}} style = "display: none;">
@@ -73,7 +75,8 @@ It's official: Clinton swamps Trump in popular vote
                             <tr height="20">
                               <td height="20" width="100%"><input type="checkbox" id="negative" value="{{list[1]}}" name="{{aspect}}"> 
                                {{list[1]}}
-                               <a href="#" class="commentsharebutton" onclick="alert('Shared!')">Share</a></td>
+                               {% set shareid=aspect+"\t\tnegative\t\t"+list[1] %}
+                               <button type="button" class="commentsharebutton" onclick="shareFunction('{{shareid}}')">Share</button>
 
                             </tr>
                           {% endif %}
