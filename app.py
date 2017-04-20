@@ -88,7 +88,7 @@ def article1():
 	session['post'] = 1
 	username = session['username']
 	dic={}
-	f=open("templates/article1/final_out_10155584306476509.txt","r")
+	f=open("static/article/final_out_10155584306476509.txt","r")
 	for line in f.readlines():
 		arr=eval(line)
 		if dic.has_key(arr[0]):
@@ -98,6 +98,54 @@ def article1():
 	
 	
 	return render_template('article1.html',user=username,dic=dic)
+
+@app.route('/article2', methods=['GET', 'POST'])
+def article2():
+	username = session['username']
+	session['post'] = 2
+	dic={}
+	f=open("static/article/final_out_10155792006356509.txt","r")
+	for line in f.readlines():
+		arr=eval(line)
+		if dic.has_key(arr[0]):
+			dic[arr[0]].append(arr[1:])
+		else:
+			dic[arr[0]]=[arr[1:]]
+	
+	return render_template('article2.html',user=username,dic=dic)
+	
+@app.route('/article3', methods=['GET', 'POST'])
+def article3():
+	username = session['username']
+	session['post'] = 3
+	dic={}
+	f=open("static/article/final_out_10155749891186509.txt","r")
+	for line in f.readlines():
+		arr=eval(line)
+		if dic.has_key(arr[0]):
+			dic[arr[0]].append(arr[1:])
+		else:
+			dic[arr[0]]=[arr[1:]]
+	
+	return render_template('article3.html',user=username,dic=dic)
+
+@app.route('/article4', methods=['GET', 'POST'])
+def article4():
+	username = session['username']
+	session['post'] = 4
+	dic={}
+	f=open("static/article/final_out_10155699096601509.txt","r")
+	for line in f.readlines():
+		arr=eval(line)
+		#print arr[0]
+		if dic.has_key(arr[0]):
+			dic[arr[0]].append(arr[1:])
+		else:
+			dic[arr[0]]=[arr[1:]]
+	
+	return render_template('article4.html',user=username,dic=dic)
+
+
 @app.route('/share', methods=['GET', 'POST'])
 def share():
 	#create table share (Username VARCHAR(255) NOT NULL, Post int,Sentiment VARCHAR(255),Aspect VARCHAR(255),Comment TEXT,Whowhy TEXT);
@@ -139,54 +187,6 @@ def checkeditems():
 		run_sql(sql)
 
 		return 'OK'
-
-@app.route('/article2', methods=['GET', 'POST'])
-def article2():
-	username = session['username']
-	session['post'] = 2
-	dic={}
-	f=open("templates/article2/final_out_10155792006356509.txt","r")
-	for line in f.readlines():
-		arr=eval(line)
-		if dic.has_key(arr[0]):
-			dic[arr[0]].append(arr[1:])
-		else:
-			dic[arr[0]]=[arr[1:]]
-	
-	return render_template('article2.html',user=username,dic=dic)
-	
-@app.route('/article3', methods=['GET', 'POST'])
-def article3():
-	username = session['username']
-	session['post'] = 3
-	dic={}
-	f=open("templates/article2/final_out_10155792006356509.txt","r")
-	for line in f.readlines():
-		arr=eval(line)
-		if dic.has_key(arr[0]):
-			dic[arr[0]].append(arr[1:])
-		else:
-			dic[arr[0]]=[arr[1:]]
-	
-	return render_template('article3.html',user=username,dic=dic)
-
-@app.route('/article4', methods=['GET', 'POST'])
-def article4():
-	username = session['username']
-	session['post'] = 4
-	dic={}
-	f=open("templates/article2/final_out_10155792006356509.txt","r")
-	for line in f.readlines():
-		arr=eval(line)
-		#print arr[0]
-		if dic.has_key(arr[0]):
-			dic[arr[0]].append(arr[1:])
-		else:
-			dic[arr[0]]=[arr[1:]]
-	
-	return render_template('article4.html',user=username,dic=dic)
-
-
 
 
 
