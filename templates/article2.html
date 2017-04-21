@@ -26,7 +26,7 @@ It's official: Clinton swamps Trump in popular vote
 <td  class = "bigtd">{{aspect}}</td>
 
 
-        <td><div style="height: 150px; width:650px;overflow-y: auto; overflow-x: hidden">
+        <td class="newstd"><div style="height: 250px; width:100%;overflow-y: auto; overflow-x: hidden">
                   <table class="pos" border="0" cellpadding="5" cellspacing="0" width="100%">
                           <colgroup><col width="100%"></colgroup>
                           <tbody>
@@ -37,7 +37,7 @@ It's official: Clinton swamps Trump in popular vote
                           {% if list[0]=='positive' %}
                           {% set divid = count|string + aspectcount|string %}
                             <tr height="20">
-                              <td height="20" width="100%"><input type="checkbox" id="positive" value="{{list[1]}}" name="{{aspect}}"> 
+                              <td class="newstd" height="20" width="100%"><input type="checkbox" id="positive" value="{{list[1]}}" name="{{aspect}}"> 
                                {{list[1]}}
                                
                                {% set shareid=aspect+"\t\tpositive\t\t"+list[1] %}
@@ -67,8 +67,8 @@ It's official: Clinton swamps Trump in popular vote
 
 
 
-        <td>
-          <div style="height: 150px;width:670px; overflow-y: auto; overflow-x: hidden">
+        <td class="newstd">
+          <div style="height: 250px;width:100%; overflow-y: auto; overflow-x: hidden;">
                   <table class="neg" border="0" cellpadding="5" cellspacing="0" width="100%">
                           <colgroup><col width="100%"></colgroup>
                           <tbody>
