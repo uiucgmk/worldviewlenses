@@ -191,7 +191,16 @@ def checkeditems():
 			return 'OK'
 
 
-
+@app.route('/postcomment', methods=['GET', 'POST'])
+def postcomment():
+	#create table postcomment (Username VARCHAR(255) NOT NULL, Post int, Comment TEXT);
+	post=session['post']
+	username = session['username']
+	if request.method == 'POST':
+		comment_data = request.form['post_comment']
+		sql= "INSERT INTO postcomment (Username,Post,Comment) VALUES ('"+username+"','"+str(post)+"','"+comment_data+"');"
+		run_sql(sql)
+		return 'OK'
 
 
 
