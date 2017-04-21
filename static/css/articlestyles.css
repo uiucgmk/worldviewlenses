@@ -129,8 +129,8 @@ ul li:hover a {
 /* news Section */
 .news {
 	background-color: #EFEEED;
-	padding-top: 30px;
-	padding-bottom: 30px;
+	/*padding-top: 30px;
+	padding-bottom: 30px;*/
 	margin-bottom: 20px;
 }
 .light {
@@ -234,7 +234,7 @@ ul li:hover a {
 /* More info */
 footer {
 	width: 100%;
-	background-color: red;
+	background-color: #EFEEED;
 	font-size: 14px;
 	text-align: center;
 	color: #ffffff;
