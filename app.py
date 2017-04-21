@@ -61,7 +61,7 @@ def login():
 	#run_sql(sql)
 
 	#create table user_info ( Username VARCHAR(255) NOT NULL, Password VARCHAR(255) NOT NULL, Post1 int, Post2 int, Post3 int, Post4 int, PRIMARY KEY(Username));
-	#create table reaction ( Username VARCHAR(255) NOT NULL, Post int, Happy int, Love int, Surprise int, Sad int, Anger int);
+	
 	
 	
 	if request.method == 'POST':
@@ -152,7 +152,7 @@ def share():
 	post=session['post']
 	username = session['username']
 	if request.method == 'POST':
-		user_data = request.form.getlist('id[]')
+		user_data = request.form.getlist('shareid[]')
 		whowhy_data = request.form['whowhy']
 		sql= "INSERT INTO share (Username,Post,Sentiment,Aspect,Comment,whowhy) VALUES ('"+username+"','"+str(post)+"','"+user_data[1]+"','"+user_data[0]+"','"+user_data[2]+"','"+whowhy_data+"');"
 		run_sql(sql)
@@ -161,32 +161,34 @@ def share():
 @app.route('/checkeditems', methods=['GET', 'POST'])
 def checkeditems():
 	#create table checkeditems ( Username VARCHAR(255),Post int,Sentiment VARCHAR(255),Aspect VARCHAR(255),Comment TEXT );
-	post=session['post']
-	all_data=[]
-	all_data_raw=[]
-	reaction_data=[]
-	username = session['username']
 	if request.method == 'POST':
-		all_data_raw = request.form.getlist('all_data[]')
-		reaction_data = request.form.getlist('reaction_data[]')
-		#for checked items
-		for i in range(0,len(all_data_raw)):
-			all_data=all_data_raw[i].split("\t\t")	 	
-			sql= "INSERT INTO checkeditems (Username,Post,Sentiment,Aspect,Comment) VALUES ('"+username+"','"+str(post)+"','"+all_data[0]+"','"+all_data[1]+"','"+all_data[2]+"');"
+		post=session['post']
+		all_data=[]
+		all_data_raw=[]
+		reaction_data=[]
+		username = session['username']
+		if request.method == 'POST':
+			all_data_raw = request.form.getlist('all_data[]')
+			reaction_data = request.form.getlist('reaction_data[]')
+			#for checked items
+			for i in range(0,len(all_data_raw)):
+				all_data=all_data_raw[i].split("\t\t")	 	
+				sql= "INSERT INTO checkeditems (Username,Post,Sentiment,Aspect,Comment) VALUES ('"+username+"','"+str(post)+"','"+all_data[0]+"','"+all_data[1]+"','"+all_data[2]+"');"
+				#print sql
+				run_sql(sql)
+			
+
+			#for reaction data
+			#create table reactions ( Username VARCHAR(255) NOT NULL, Post int, Like_reaction int, Love int, Haha int, Surprise int, Sad int, Anger int, Neutral int);
+			sql= "INSERT INTO reactions (Username,Post, Like_reaction, Love, Haha, Surprise, Sad, Anger,Neutral ) VALUES ('"+username+"','"+str(post)+"','"+str(reaction_data[0].split(":")[1])+"','"+str(reaction_data[1].split(":")[1])+"','"+str(reaction_data[2].split(":")[1])+"','"+str(reaction_data[3].split(":")[1])+"','"+str(reaction_data[4].split(":")[1])+"','"+str(reaction_data[5].split(":")[1])+"','"+str(reaction_data[6].split(":")[1])+"');"
 			#print sql
 			run_sql(sql)
-		
 
-		#for reaction data
-		sql= "INSERT INTO reaction (Username,Post,Happy, Love, Surprise, Sad, Anger ) VALUES ('"+username+"','"+str(post)+"','"+str(reaction_data[0])+"','"+str(reaction_data[1])+"','"+str(reaction_data[2])+"','"+str(reaction_data[3])+"','"+str(reaction_data[4])+"');"
-		#print sql
-		run_sql(sql)
+			#update the worked post 0-->1
+			sql= "UPDATE user_info SET Post"+str(post)+"= 1 WHERE Username='"+username+"';"
+			run_sql(sql)
 
-		#update the worked post 0-->1
-		sql= "UPDATE user_info SET Post"+str(post)+"= 1 WHERE Username='"+username+"';"
-		run_sql(sql)
-
-		return 'OK'
+			return 'OK'
 
 
 

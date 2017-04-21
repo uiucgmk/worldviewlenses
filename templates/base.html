@@ -152,34 +152,6 @@ a.commentsharebutton:hover {text-decoration:underline; color:#ddd;}
       });
     </script>
 
-<script type="text/javascript">
-      $(function() {
-        var saveComment = function(data) {
-
-          // Convert pings to human readable format
-          $(data.pings).each(function(index, id) {
-            var user = usersArray.filter(function(user){return user.id == id})[0];
-            data.content = data.content.replace('@' + id, '@' + user.fullname);
-          });
-
-          return data;
-        }
-        $('#comments-container1').comments({
-    profilePictureURL: 'https://app.viima.com/../static/media/user_profiles/user-icon.png',
-    getComments: function(success, error) {
-        var commentsArray = [{
-            id: 1,
-            created: '2017-03-06',
-            content: 'TEST',
-            fullname: 'TEST',
-            upvote_count: 1,
-            user_has_upvoted: false
-        }];
-        success(commentsArray);
-    }
-});;
-      });
-    </script>
 
 <style class="cp-pen-styles">body {
   font-family: 'Roboto', sans-serif;
@@ -226,7 +198,7 @@ a.commentsharebutton:hover {text-decoration:underline; color:#ddd;}
   margin-left: 22px;
   position: relative;
   background: #2c3e50;
-  width: 35px;
+  width: 80px;
   height: 28px;
   border-radius: 7px;
 }
@@ -409,33 +381,53 @@ World Through Different Lenses-->
       <section>
 <div class="center-div">
     <div class="top-emoji-div">
-      <img alt="" class="top-emoji" src="http://emojione.com/wp-content/uploads/assets/emojis/1f600.svg" onclick="increment(1)" />
+      <!--<img alt="" class="top-emoji" src="http://emojione.com/wp-content/uploads/assets/emojis/1f600.svg" onclick="increment(1)" />-->
+      <img alt="" class="top-emoji" src="static/images/like.png" onclick="increment(1)" />
+      
       <div class="emoji-count">
-        <p id="emoji-1">0</p>
+        <p id="emoji-1">Like:0</p>
       </div>
     </div>
     <div class="top-emoji-div">
-      <img alt="" class="top-emoji" src="http://emojione.com/wp-content/uploads/assets/emojis/1f60d.svg" onclick="increment(2)" />
+      <!--<img alt="" class="top-emoji" src="http://emojione.com/wp-content/uploads/assets/emojis/1f60d.svg" onclick="increment(2)" />-->
+      <img alt="" class="top-emoji" src="static/images/love.png" onclick="increment(2)" />
       <div class="emoji-count">
-        <p id="emoji-2">0</p>
+        <p id="emoji-2">Love:0</p>
       </div>
     </div>
     <div class="top-emoji-div">
-      <img alt="" class="top-emoji" src="http://emojione.com/wp-content/uploads/assets/emojis/1f632.svg" onclick="increment(3)" />
+      <!--<img alt="" class="top-emoji" src="http://emojione.com/wp-content/uploads/assets/emojis/1f632.svg" onclick="increment(3)" />-->
+      <img alt="" class="top-emoji" src="static/images/haha.png" onclick="increment(3)" />
       <div class="emoji-count">
-        <p id="emoji-3">0</p>
+        <p id="emoji-3">Haha:0</p>
       </div>
     </div>
     <div class="top-emoji-div">
-      <img alt="" class="top-emoji" src="http://emojione.com/wp-content/uploads/assets/emojis/1f62d.svg" onclick="increment(4)" />
+      <!--<img alt="" class="top-emoji" src="http://emojione.com/wp-content/uploads/assets/emojis/1f62d.svg" onclick="increment(4)" />-->
+      <img alt="" class="top-emoji" src="static/images/wow.png" onclick="increment(4)" />
       <div class="emoji-count">
-        <p id="emoji-4">0</p>
+        <p id="emoji-4">Wow:0</p>
       </div>
     </div>
     <div class="top-emoji-div">
-      <img alt="" class="top-emoji" src="http://emojione.com/wp-content/uploads/assets/emojis/1f621.svg" onclick="increment(5)" />
+      <!--<img alt="" class="top-emoji" src="http://emojione.com/wp-content/uploads/assets/emojis/1f621.svg" onclick="increment(5)" />-->
+      <img alt="" class="top-emoji" src="static/images/sad.png" onclick="increment(5)" />
       <div class="emoji-count">
-        <p id="emoji-5">0</p>
+        <p id="emoji-5">Sad:0</p>
+      </div>
+    </div>
+    <div class="top-emoji-div">
+      <!--NEW-->
+      <img alt="" class="top-emoji" src="static/images/anger.png" onclick="increment(6)" />
+      <div class="emoji-count">
+        <p id="emoji-6">Anger:0</p>
+      </div>
+    </div>
+    <div class="top-emoji-div">
+      <!--NEW-->
+      <img alt="" class="top-emoji" src="static/images/neutral.png" onclick="increment(7)" />
+      <div class="emoji-count">
+        <p id="emoji-7">Neutral:0</p>
       </div>
     </div>
    <a href="javascript:popup()"><ul class="sharebutton">Share on Facebook</ul></a>
@@ -510,7 +502,7 @@ function storeChecked_and_reaction() {
     var reaction=[];
     var count=0;
     var divName;
-    for (id = 1; id < 6; id++) {
+    for (id = 1; id < 8; id++) {
       divName = "emoji-" + id;
       count = document.getElementById(divName).innerHTML;
       reaction.push(count);
