@@ -549,6 +549,7 @@
                         self.addCommentToDataModel(commentModel);
                         self.addComment(commentModel);
                         self.addAttachment(commentModel);
+
                     });
 
                     // Close the commenting field if all the uploads were successfull
@@ -884,10 +885,12 @@
             // Create comment JSON
             var commentJSON = this.createCommentJSON(textarea);
 
+           
             // Reverse mapping
             commentJSON = this.applyExternalMappings(commentJSON);
 
             var success = function(commentJSON) {
+                //alert("a"+commentJSON);
                 self.createComment(commentJSON);
                 commentingField.find('.close').trigger('click');
             };
@@ -929,7 +932,7 @@
             var success = function(commentJSON) {
                 // The outermost parent can not be changed by editing the comment so the childs array
                 // of parent does not require an update
-
+                
                 var commentModel = self.createCommentModel(commentJSON);
 
                 // Delete childs array from new comment model since it doesn't need an update
@@ -1962,6 +1965,13 @@
                 upvoteCount: 0,
                 userHasUpvoted: false
             };
+
+
+            /////by Gina - Save into Database
+            //alert(this.getTextareaContent(textarea));
+            $.post( "/postcomment", { 'post_comment': this.getTextareaContent(textarea) } );
+            
+
             return commentJSON;
         },
 

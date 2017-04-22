@@ -18,13 +18,15 @@ It's official: Clinton swamps Trump in popular vote
 {% block content %}
 <form>
 {% for aspect in dic %}
+
 {% set aspectcount = 0%}
+
  <tr class="bigtr">
 
 <td  class = "bigtd">{{aspect}}</td>
 
 
-        <td><div style="height: 150px; width:650px;overflow-y: auto; overflow-x: hidden">
+        <td class="newstd"><div style="height: 250px; width:100%;overflow-y: auto; overflow-x: hidden">
                   <table class="pos" border="0" cellpadding="5" cellspacing="0" width="100%">
                           <colgroup><col width="100%"></colgroup>
                           <tbody>
@@ -33,17 +35,28 @@ It's official: Clinton swamps Trump in popular vote
 
                           {% for list in dic[aspect] %}
                           {% if list[0]=='positive' %}
-                          {% set divid = count|string + aspectcount|string%}
+                          {% set divid = count|string + aspectcount|string %}
                             <tr height="20">
+<!--<<<<<< HEAD
                               <td height="20" width="100%"><input type="checkbox" id="positive" value="{{list[1]}}" name="{{aspect}}">
+=======-->
+                              <td class="newstd" height="20" width="100%"><input type="checkbox" id="positive" value="{{list[1]}}" name="{{aspect}}">
+
                                {{list[1]}}
 
                                {% set shareid=aspect+"\t\tpositive\t\t"+list[1] %}
                                <button type="button" class="commentsharebutton" onclick="shareFunction('{{shareid}}')">Share</button>
+<!--<<<<<< HEAD
                              <button onclick="myFunction('{{divid}}')">Reply</button>
                              {% set myDIVID = divid%}
                              <div id={{myDIVID}} style = "display: block;">
                                <input type="text" name="test" size = "80"><br>
+=======-->
+
+                              <button type="button" class="commentreplybutton" onclick="replyFunction('{{divid}}')">Reply</button>
+                             <div id={{divid}} style = "display: none;">
+                               <!--<input type="text" name="test" size = "80"><br>-->
+
                                <ul>
                                   <li>Comment1</li>
                                   <li>Comment2</li>
@@ -65,8 +78,8 @@ It's official: Clinton swamps Trump in popular vote
 
 
 
-        <td>
-          <div style="height: 150px;width:670px; overflow-y: auto; overflow-x: hidden">
+        <td class="newstd">
+          <div style="height: 250px;width:100%; overflow-y: auto; overflow-x: hidden;">
                   <table class="neg" border="0" cellpadding="5" cellspacing="0" width="100%">
                           <colgroup><col width="100%"></colgroup>
                           <tbody>
@@ -87,13 +100,16 @@ It's official: Clinton swamps Trump in popular vote
         </td>
 
 </tr>
+
 {% set aspectcount = aspectcount + 1%}
+
 {% endfor %}
+</form>
+
+
 <script>
-function myFunction(id) {
-    console.log(id)
+function replyFunction(id) {
     var x = document.getElementById(id);
-    console.log(x)
     if (x.style.display == 'none') {
         x.style.display = 'block';
     } else {
@@ -101,5 +117,5 @@ function myFunction(id) {
     }
 }
 </script>
-</form>
+
 {% endblock content %}
