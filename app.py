@@ -171,7 +171,7 @@ def carticle1():
 def carticle2():
 	session['post'] = 2
 	username = session['username']
-	dic = pickle.load(open( "./static/article/article2.p", "rb" ))
+	dic = pickle.load(open( "./static/article/article4.p", "rb" ))
 	print dic
 	return render_template('carticle2.html',user=username,dic=dic)
 
@@ -187,7 +187,7 @@ def carticle3():
 def carticle4():
 	session['post'] = 4
 	username = session['username']
-	dic = pickle.load(open( "./static/article/article4.p", "rb" ))
+	dic = pickle.load(open( "./static/article/article2.p", "rb" ))
 	print dic
 	return render_template('carticle4.html',user=username,dic=dic)
 
