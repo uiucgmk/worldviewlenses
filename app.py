@@ -12,6 +12,7 @@ import sys
 import urlparse
 import psycopg2
 import json
+
 reload(sys)
 sys.setdefaultencoding("utf-8")
 # try:
@@ -61,27 +62,40 @@ def login():
 	#run_sql(sql)
 
 	#create table user_info ( Username VARCHAR(255) NOT NULL, Password VARCHAR(255) NOT NULL, Post1 int, Post2 int, Post3 int, Post4 int, PRIMARY KEY(Username));
-	
-	
-	
+
+
+
 	if request.method == 'POST':
 		username =  request.form['username']
 		password =  request.form['password']
+		selection = request.form['selection']
 		#print username
 		#print intertype
 		session['username'] = username
+		session['selection'] = selection
 		#sql= "INSERT INTO users (Username,Password, Happy, Love, Surprise, Cry,Angry) VALUES ('"+username+"','"+password+"', 0,0,0,0,0);"
-		sql= "INSERT INTO user_info (Username,Password,Post1, Post2, Post3, Post4 ) VALUES ('"+username+"','"+password+"', 0,0,0,0);"
-		
+		if selection == 'worldviewlenses':
+			sql= "INSERT INTO user_info (Username,Password,Post1, Post2, Post3, Post4 ) VALUES ('"+username+"','"+password+"', 0,0,0,0);"
+		elif selection == 'control':
+			sql= "INSERT INTO user_info_control (Username,Password,Post1, Post2, Post3, Post4 ) VALUES ('"+username+"','"+password+"', 0,0,0,0);"
+
 		print sql
 		run_sql(sql)
-		return redirect(url_for('index'))
+		if selection == 'worldviewlenses':
+			return redirect(url_for('index'))
+		if selection == 'control':
+			return redirect(url_for('cindex'))
 	return render_template('login.html')
 
 @app.route('/index', methods=['GET', 'POST'])
 def index():
 	username = session['username']
 	return render_template('index.html')
+
+@app.route('/cindex', methods=['GET', 'POST'])
+def cindex():
+	username = session['username']
+	return render_template('cindex.html')
 
 @app.route('/article1', methods=['GET', 'POST'])
 def article1():
@@ -95,8 +109,8 @@ def article1():
 			dic[arr[0]].append(arr[1:])
 		else:
 			dic[arr[0]]=[arr[1:]]
-	
-	
+
+
 	return render_template('article1.html',user=username,dic=dic)
 
 @app.route('/article2', methods=['GET', 'POST'])
@@ -111,9 +125,9 @@ def article2():
 			dic[arr[0]].append(arr[1:])
 		else:
 			dic[arr[0]]=[arr[1:]]
-	
+
 	return render_template('article2.html',user=username,dic=dic)
-	
+
 @app.route('/article3', methods=['GET', 'POST'])
 def article3():
 	username = session['username']
@@ -126,7 +140,7 @@ def article3():
 			dic[arr[0]].append(arr[1:])
 		else:
 			dic[arr[0]]=[arr[1:]]
-	
+
 	return render_template('article3.html',user=username,dic=dic)
 
 @app.route('/article4', methods=['GET', 'POST'])
@@ -142,19 +156,55 @@ def article4():
 			dic[arr[0]].append(arr[1:])
 		else:
 			dic[arr[0]]=[arr[1:]]
-	
+
 	return render_template('article4.html',user=username,dic=dic)
 
+@app.route('/carticle1', methods=['GET', 'POST'])
+def carticle1():
+	session['post'] = 1
+	username = session['username']
+	dic = pickle.load(open( "./static/article/article1.p", "rb" ))
+	print dic
+	return render_template('carticle1.html',user=username,dic=dic)
+
+@app.route('/carticle2', methods=['GET', 'POST'])
+def carticle2():
+	session['post'] = 2
+	username = session['username']
+	dic = pickle.load(open( "./static/article/article4.p", "rb" ))
+	print dic
+	return render_template('carticle2.html',user=username,dic=dic)
+
+@app.route('/carticle3', methods=['GET', 'POST'])
+def carticle3():
+	session['post'] = 3
+	username = session['username']
+	dic = pickle.load(open( "./static/article/article3.p", "rb" ))
+	print dic
+	return render_template('carticle3.html',user=username,dic=dic)
+
+@app.route('/carticle4', methods=['GET', 'POST'])
+def carticle4():
+	session['post'] = 4
+	username = session['username']
+	dic = pickle.load(open( "./static/article/article2.p", "rb" ))
+	print dic
+	return render_template('carticle4.html',user=username,dic=dic)
 
 @app.route('/share', methods=['GET', 'POST'])
 def share():
 	#create table share (Username VARCHAR(255) NOT NULL, Post int,Sentiment VARCHAR(255),Aspect VARCHAR(255),Comment TEXT,Whowhy TEXT);
 	post=session['post']
 	username = session['username']
+	selection = session['selection']
 	if request.method == 'POST':
 		user_data = request.form.getlist('shareid[]')
+		print user_data
 		whowhy_data = request.form['whowhy']
-		sql= "INSERT INTO share (Username,Post,Sentiment,Aspect,Comment,whowhy) VALUES ('"+username+"','"+str(post)+"','"+user_data[1]+"','"+user_data[0]+"','"+user_data[2]+"','"+whowhy_data+"');"
+		if selection == 'worldviewlenses':
+			sql= "INSERT INTO share (Username,Post,Sentiment,Aspect,Comment,whowhy) VALUES ('"+username+"','"+str(post)+"','"+user_data[1]+"','"+user_data[0]+"','"+user_data[2].replace("'","")+"','"+whowhy_data+"');"
+		elif selection == 'control':
+			sql= "INSERT INTO share_control (Username,Post,Sentiment,Comment,whowhy) VALUES ('"+username+"','"+str(post)+"','"+user_data[0]+"','"+user_data[1].replace("'","")+"','"+whowhy_data+"');"
 		run_sql(sql)
 		return 'OK'
 
@@ -172,11 +222,11 @@ def checkeditems():
 			reaction_data = request.form.getlist('reaction_data[]')
 			#for checked items
 			for i in range(0,len(all_data_raw)):
-				all_data=all_data_raw[i].split("\t\t")	 	
+				all_data=all_data_raw[i].split("\t\t")
 				sql= "INSERT INTO checkeditems (Username,Post,Sentiment,Aspect,Comment) VALUES ('"+username+"','"+str(post)+"','"+all_data[0]+"','"+all_data[1]+"','"+all_data[2]+"');"
 				#print sql
 				run_sql(sql)
-			
+
 
 			#for reaction data
 			#create table reactions ( Username VARCHAR(255) NOT NULL, Post int, Like_reaction int, Love int, Haha int, Surprise int, Sad int, Anger int, Neutral int);
@@ -196,13 +246,47 @@ def postcomment():
 	#create table postcomment (Username VARCHAR(255) NOT NULL, Post int, Comment TEXT);
 	post=session['post']
 	username = session['username']
+	selection = session['selection']
 	if request.method == 'POST':
 		comment_data = request.form['post_comment']
-		sql= "INSERT INTO postcomment (Username,Post,Comment) VALUES ('"+username+"','"+str(post)+"','"+comment_data+"');"
+		if selection == 'worldviewlenses':
+			sql= "INSERT INTO postcomment (Username,Post,Comment) VALUES ('"+username+"','"+str(post)+"','"+comment_data+"');"
+		elif selection == 'control':
+			sql= "INSERT INTO postcomment_control (Username,Post,Comment) VALUES ('"+username+"','"+str(post)+"','"+comment_data+"');"
 		run_sql(sql)
 		return 'OK'
 
+@app.route('/checkeditems_control', methods=['GET', 'POST'])
+def checkeditems_control():
+	#create table checkeditems ( Username VARCHAR(255),Post int,Sentiment VARCHAR(255),Aspect VARCHAR(255),Comment TEXT );
+	if request.method == 'POST':
+		post=session['post']
+		all_data=[]
+		all_data_raw=[]
+		reaction_data=[]
+		username = session['username']
+		if request.method == 'POST':
+			all_data_raw = request.form.getlist('all_data[]')
+			reaction_data = request.form.getlist('reaction_data[]')
+			#for checked items
+			for i in range(0,len(all_data_raw)):
+				all_data=all_data_raw[i].split("\t\t")
+				sql= "INSERT INTO checkeditems_control (Username,Post,Sentiment,Comment) VALUES ('"+username+"','"+str(post)+"','"+all_data[0]+"','"+all_data[1].replace("'","")+"');"
+				print sql
+				run_sql(sql)
 
+
+			#for reaction data
+			#create table reactions ( Username VARCHAR(255) NOT NULL, Post int, Like_reaction int, Love int, Haha int, Surprise int, Sad int, Anger int, Neutral int);
+			sql= "INSERT INTO reactions_control (Username,Post, Like_reaction, Love, Haha, Surprise, Sad, Anger,Neutral ) VALUES ('"+username+"','"+str(post)+"','"+str(reaction_data[0].split(":")[1])+"','"+str(reaction_data[1].split(":")[1])+"','"+str(reaction_data[2].split(":")[1])+"','"+str(reaction_data[3].split(":")[1])+"','"+str(reaction_data[4].split(":")[1])+"','"+str(reaction_data[5].split(":")[1])+"','"+str(reaction_data[6].split(":")[1])+"');"
+			#print sql
+			run_sql(sql)
+
+			#update the worked post 0-->1
+			sql= "UPDATE user_info_control SET Post"+str(post)+"= 1 WHERE Username='"+username+"';"
+			run_sql(sql)
+
+			return 'OK'
 
 
 
