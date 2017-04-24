@@ -6,21 +6,21 @@
 -->
 <html>
 	<head>
-		<title>Login</title>
-		<link rel="icon" href="../static/images_old/logo.png" />
-  		<link href="../static/css_old/fbstyle.css" rel="stylesheet"></link>
+		<title>Candidates</title>
+		<link rel="icon" href="../static/images/logo.png" />
+  		<link href="../static/css/fbstyle.css" rel="stylesheet"></link>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
 		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
-		<script src="../static/js_old/jquery.min.js"></script>
-		<script src="../static/js_old/jquery.dropotron.min.js"></script>
-		<script src="../static/js_old/skel.min.js"></script>
-		<script src="../static/js_old/skel-layers.min.js"></script>
-		<script src="../static/js_old/init.js"></script>
+		<script src="../static/js/jquery.min.js"></script>
+		<script src="../static/js/jquery.dropotron.min.js"></script>
+		<script src="../static/js/skel.min.js"></script>
+		<script src="../static/js/skel-layers.min.js"></script>
+		<script src="../static/js/init.js"></script>
 		<!--noscript-->
-			<link rel="stylesheet" href="../static/css_old/skel.css" />
-			<link rel="stylesheet" href="../static/css_old/style.css" />
+			<link rel="stylesheet" href="../static/css/skel.css" />
+			<link rel="stylesheet" href="../static/css/style.css" />
 		<!--/noscript-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 		<style>
@@ -40,32 +40,31 @@
 			<!-- Banner -->
 				<div id="banner">
 					<section class="container">
-						<h2>World View Lenses</h2>
+						<h2>Social Opinion Projects</h2>
 					</section>
 				</div>
 
 			</div>
 
 		<!-- Section One -->
-			<div class="wrapper style2" align="center">
+			<div class="wrapper style2">
 				<section class="container">
 					<div class="6u">
-						<h2>Log In</h2><br>
-						<form method="post">
-						<p>ID<input type="text" name="username" ></p>
-							<p>Password<input type="text" name="password"></p>
-							<input type="radio" name="selection" value="worldviewlenses" > Interface 1<br>
-	  					<input type="radio" name="selection" value="control"> Interface 2<br>
-							<!--<a href="signup"><p>New to Weatherbook?</p></a>-->
-							<input type="submit" name="login" value="Log In" class="button" >
+						<h2>Select the interface:</h2><br>
+						<form method="post" style = "width: 600px;">
+						<input type="radio" name="selection" value="worldviewlenses" > Interface 1<br>
+  					<input type="radio" name="selection" value="control"> Interface 2<br>
+						<!--input type="hidden" id = "testid" name="testid"  value={{testid}}>
+						<input type="hidden" id = "pagecount" name="pagecount"  value={{pagecount}}-->
+							<input type="submit" name="start" value="Submit" class="button">
 						</form>
 					</div>
 				</section>
 			</div>
 
 	<!-- Footer -->
-		<div id="footer">
-<!-- 			<section class="container">
+		<!--div id="footer">
+			<section class="container">
 				<header class="major">
 					<h2>Connect with us</h2>
 				</header>
@@ -77,10 +76,11 @@
 				</ul>
 				<hr />
 			</section>
- -->
+
 			<!-- Copyright -->
 				<div id="copyright">
-2017 Research Project By : Hyo Jin Do, Ming Kun Gao, Yerim Park</p>
+					Design: <a href="http://templated.co">TEMPLATED</a>
+					Implement: <p>Copyright@UIUC_CASCADE_LAB_SocialOpinion</p>
 				</div>
 		</div>
 
