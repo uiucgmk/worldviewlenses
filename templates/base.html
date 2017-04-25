@@ -42,7 +42,7 @@ ul.square {
     }
 
 table{
-  width:100%;
+  width:80%;
 }
 
 iframe {
@@ -337,6 +337,11 @@ a.commentsharebutton:hover {text-decoration:underline; color:#ddd;}
 #test{
   background-color: #333;
 }
+table.fixed { table-layout:fixed;
+overflow:hidden;
+  word-wrap:break-word; }
+
+
 </style>
 
 <!--Checkbox-->
@@ -385,7 +390,7 @@ function popup(){
 
   <!-- news Section -->
   <section class="news" id="news" style="text-align:left;" >
-  <table width="90%" border="0" cellpadding="5" align="center">
+  <table class="fixed" width="90%" border="0" cellpadding="5" align="center">
   <tr>
     <!--<td width="40%" rowspan="2"><a href="http://cnn.it/2hv6Avo" target="_blank"><img src="../static/images/placeholder.png"  width="100%" height="30%" alt="Obama" ></a></td>-->
     {% block postimage %}

@@ -29,9 +29,12 @@ America, meet your new first lady
 <td  class = "bigtd">{{aspect}}</td>
 
 
+
         <td class="newstd"><div style=" height: 250px; width:100%; overflow-y: auto; overflow-x: hidden">
                   <table class="pos" border="0" cellpadding="5" cellspacing="0" >
                           <colgroup><col></colgroup>
+
+
                           <tbody>
 
                           {% for list in dic[aspect] %}
@@ -83,9 +86,10 @@ America, meet your new first lady
 
 
         <td class="newstd">
-          <div style="height: 250px; width:100%; overflow-y: auto; overflow-x: hidden">
-                  <table class="neg" border="0" cellpadding="5" cellspacing="0" >
-                          <colgroup><col ></colgroup>
+          <div style="height: 250px; width:600px; overflow-y: auto; overflow-x: hidden">
+                  <table class="neg" border="0" cellpadding="5" cellspacing="0" width="100%">
+                          <colgroup><col></colgroup>
+
                           <tbody>
                           {% for list in dic[aspect] %}
                               {% if list[0]=='negative' %}
