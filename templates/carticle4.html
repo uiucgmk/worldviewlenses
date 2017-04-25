@@ -42,13 +42,32 @@ Ivanka Trump meeting with Al Gore on climate change
                            <td class="newstd" height="20" width="100%">
                                 <input type="checkbox" id="{{list[0]}}" value="{{list[1]}}">
 
-                                <span id="textArea">{{list[1]}}</span>
+                                <span id="textArea">{{dic[list][0]}}</span> 
 
-                               <!--<a href="#" class="commentsharebutton" onclick="alert('Shared!')">Share</a></td>-->
-                               {% set shareid=list[0]+"\t\t"+list[1].replace("'","") %}
+                               <!--{% set shareid=list[0]+"\t\t"+list[1].replace("'","") %}-->
+                               {% set shareid=dic[list][2:]|join('/')+"\t\t"+dic[list][1]+"\t\t"+dic[list][0].replace("'", "") %}
                                <button type="button" class="commentsharebutton" onclick="shareFunction('{{shareid}}')">Share</button>
-                                <!--<a href="#" class="commentsharebutton" onclick="shareFunction('{{shareid}}')">Share</a></td>-->
 
+                              <button type="button" class="commentreplybutton" onclick="replyFunction('{{shareid}}')">Reply</button>
+                                     <div id="{{shareid}}" style = "display: none">
+
+                                     <span><input id="input{{shareid}}" type="text" name="test" size = "60">
+                                     <button type="button" class="subreplybutton" onclick="subreplyFunction('input{{shareid}}')">Submit</button></span>
+                                     
+
+                                     <ul class="square">
+                                      {% if replydic[list]|length > 1 %}
+                                      {% set replies=replydic[list][0:10] %}
+                                      {% else %}
+                                      {% set replies=replydic[list] %}
+                                      {% endif %}
+
+                                      {% for reply in replies %}
+                                        <li>{{reply}}</li>
+                                      {% endfor %}
+                                    </ul>
+                                   </div>
+                           </td> 
 
                             </tr>
 

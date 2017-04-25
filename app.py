@@ -217,37 +217,158 @@ def article4():
 def carticle1():
 	session['post'] = 1
 	username = session['username']
-	dic = pickle.load(open( "./static/article/article1.p", "rb" ))
-	print dic
-	return render_template('carticle1.html',user=username,dic=dic)
+	# dic = pickle.load(open( "./static/article/article1.p", "rb" ))
+	# print dic
+	# return render_template('carticle1.html',user=username,dic=dic)
+
+	dic={}
+	f=open("static/article/NEW_final_out_10155584306476509.txt","r")
+	for line in f.readlines():
+		arr=eval(line)
+		if not dic.has_key(arr[3]):
+			dic[arr[3]]=[arr[2],arr[1],arr[0]]
+		else:
+			dic[arr[3]].append(arr[0])
+
+	#replies
+	f_reply=open("static/article/2_replies_to_comment_5550296508_10155584306476509.txt","r")
+	arr=[]
+	dic2={}
+	for line in f_reply.readlines():
+		arr=eval(line)
+		arr[5]=arr[5].replace("'","")
+		arr[5]=arr[5].replace('"','')
+		
+		if dic2.has_key(arr[0]):
+			dic2[arr[0]].append(arr[5])
+		else:
+			dic2[arr[0]]=[arr[5]]
+
+	return render_template('carticle1.html',user=username,dic=dic,replydic=dic2)
+
+
 
 @app.route('/carticle2', methods=['GET', 'POST'])
 def carticle2():
 	session['post'] = 2
 	username = session['username']
-	dic = pickle.load(open( "./static/article/article4.p", "rb" ))
-	print dic
-	return render_template('carticle2.html',user=username,dic=dic)
+	dic={}
+	f=open("static/article/NEW_final_out_10155792006356509.txt","r")
+	for line in f.readlines():
+		arr=eval(line)
+		if not dic.has_key(arr[3]):
+			dic[arr[3]]=[arr[2],arr[1],arr[0]]
+		else:
+			dic[arr[3]].append(arr[0])
+
+	#replies
+	f_reply=open("static/article/2_replies_to_comment_5550296508_10155792006356509.txt","r")
+	arr=[]
+	dic2={}
+	for line in f_reply.readlines():
+		arr=eval(line)
+		arr[5]=arr[5].replace("'","")
+		arr[5]=arr[5].replace('"','')
+		
+		if dic2.has_key(arr[0]):
+			dic2[arr[0]].append(arr[5])
+		else:
+			dic2[arr[0]]=[arr[5]]
+
+	return render_template('carticle2.html',user=username,dic=dic,replydic=dic2)
 
 @app.route('/carticle3', methods=['GET', 'POST'])
 def carticle3():
 	session['post'] = 3
 	username = session['username']
-	dic = pickle.load(open( "./static/article/article3.p", "rb" ))
-	print dic
-	return render_template('carticle3.html',user=username,dic=dic)
+	dic={}
+	f=open("static/article/NEW_final_out_10155749891186509.txt","r")
+	for line in f.readlines():
+		arr=eval(line)
+		if not dic.has_key(arr[3]):
+			dic[arr[3]]=[arr[2],arr[1],arr[0]]
+		else:
+			dic[arr[3]].append(arr[0])
+
+	#replies
+	f_reply=open("static/article/2_replies_to_comment_5550296508_10155749891186509.txt","r")
+	arr=[]
+	dic2={}
+	for line in f_reply.readlines():
+		arr=eval(line)
+		arr[5]=arr[5].replace("'","")
+		arr[5]=arr[5].replace('"','')
+		
+		if dic2.has_key(arr[0]):
+			dic2[arr[0]].append(arr[5])
+		else:
+			dic2[arr[0]]=[arr[5]]
+
+	return render_template('carticle3.html',user=username,dic=dic,replydic=dic2)
 
 @app.route('/carticle4', methods=['GET', 'POST'])
 def carticle4():
 	session['post'] = 4
 	username = session['username']
-	dic = pickle.load(open( "./static/article/article2.p", "rb" ))
-	print dic
-	return render_template('carticle4.html',user=username,dic=dic)
+	dic={}
+	f=open("static/article/NEW_final_out_10155699096601509.txt","r")
+	for line in f.readlines():
+		arr=eval(line)
+		if not dic.has_key(arr[3]):
+			dic[arr[3]]=[arr[2],arr[1],arr[0]]
+		else:
+			dic[arr[3]].append(arr[0])
+
+	#replies
+	f_reply=open("static/article/2_replies_to_comment_5550296508_10155699096601509.txt","r")
+	arr=[]
+	dic2={}
+	for line in f_reply.readlines():
+		arr=eval(line)
+		arr[5]=arr[5].replace("'","")
+		arr[5]=arr[5].replace('"','')
+		
+		if dic2.has_key(arr[0]):
+			dic2[arr[0]].append(arr[5])
+		else:
+			dic2[arr[0]]=[arr[5]]
+
+	return render_template('carticle4.html',user=username,dic=dic,replydic=dic2)
+
+
+
+
+
+
+# @app.route('/carticle2', methods=['GET', 'POST'])
+# def carticle2():
+# 	session['post'] = 2
+# 	username = session['username']
+# 	dic = pickle.load(open( "./static/article/article4.p", "rb" ))
+# 	print dic
+# 	return render_template('carticle2.html',user=username,dic=dic)
+
+# @app.route('/carticle3', methods=['GET', 'POST'])
+# def carticle3():
+# 	session['post'] = 3
+# 	username = session['username']
+# 	dic = pickle.load(open( "./static/article/article3.p", "rb" ))
+# 	print dic
+# 	return render_template('carticle3.html',user=username,dic=dic)
+
+# @app.route('/carticle4', methods=['GET', 'POST'])
+# def carticle4():
+# 	session['post'] = 4
+# 	username = session['username']
+# 	dic = pickle.load(open( "./static/article/article2.p", "rb" ))
+# 	print dic
+# 	return render_template('carticle4.html',user=username,dic=dic)
 
 @app.route('/share', methods=['GET', 'POST'])
 def share():
 	#create table share (Username VARCHAR(255) NOT NULL, Post int,Sentiment VARCHAR(255),Aspect VARCHAR(255),Comment TEXT,Whowhy TEXT);
+	#create table share_control2 (Username VARCHAR(255) NOT NULL, Post int,Sentiment VARCHAR(255),Aspect VARCHAR(255),Comment TEXT,Whowhy TEXT);
+	
 	post=session['post']
 	username = session['username']
 	selection = session['selection']
@@ -258,7 +379,9 @@ def share():
 		if selection == 'worldviewlenses':
 			sql= "INSERT INTO share (Username,Post,Sentiment,Aspect,Comment,whowhy) VALUES ('"+username+"','"+str(post)+"','"+user_data[1]+"','"+user_data[0]+"','"+user_data[2].replace("'","")+"','"+whowhy_data+"');"
 		elif selection == 'control':
-			sql= "INSERT INTO share_control (Username,Post,Sentiment,Comment,whowhy) VALUES ('"+username+"','"+str(post)+"','"+user_data[0]+"','"+user_data[1].replace("'","")+"','"+whowhy_data+"');"
+		#	sql= "INSERT INTO share_control (Username,Post,Sentiment,Comment,whowhy) VALUES ('"+username+"','"+str(post)+"','"+user_data[0]+"','"+user_data[1].replace("'","")+"','"+whowhy_data+"');"
+			sql= "INSERT INTO share_control2 (Username,Post,Sentiment,Aspect,Comment,whowhy) VALUES ('"+username+"','"+str(post)+"','"+user_data[1]+"','"+user_data[0]+"','"+user_data[2].replace("'","")+"','"+whowhy_data+"');"
+		
 		run_sql(sql)
 		return 'OK'
 
