@@ -25,13 +25,13 @@ Ohio governor vetoes 'heartbeat' abortion bill -->
         
         
         <td class="newstd"><div style="height: 250px; width:100%;overflow-y: auto; overflow-x: hidden">
-                  <table class="pos" border="0" cellpadding="5" cellspacing="0" width="100%">
-                          <colgroup><col width="100%"></colgroup>    
+                  <table class="pos" border="0" cellpadding="5" cellspacing="0" >
+                          <colgroup><col ></colgroup>    
                           <tbody>
                           {% for list in dic[aspect] %}
                           {% if list[0]=='positive' %}
                             <tr height="20">
-                              <td class="newstd" height="20" width="100%"><input type="checkbox" id="positive" value="{{list[1]}}" name="{{aspect}}">       
+                              <td class="newstd" height="20" ><input type="checkbox" id="positive" value="{{list[1]}}" name="{{aspect}}">       
                                {{list[1]}}
                                
                                {% set shareid=aspect+"\t\tpositive\t\t"+list[1].replace("'", "") %}
@@ -66,13 +66,13 @@ Ohio governor vetoes 'heartbeat' abortion bill -->
         
         <td class="newstd">
           <div style="height: 250px;width:100%; overflow-y: auto; overflow-x: hidden">
-                  <table class="neg" border="0" cellpadding="5" cellspacing="0" width="100%">
-                          <colgroup><col width="100%"></colgroup>
+                  <table class="neg" border="0" cellpadding="5" cellspacing="0" >
+                          <colgroup><col ></colgroup>
                           <tbody>
                           {% for list in dic[aspect] %}
                               {% if list[0]=='negative' %}
                             <tr height="20">
-                              <td class="newstd" height="20" width="100%"><input type="checkbox" id="negative" value="{{list[1]}}" name="{{aspect}}">    
+                              <td class="newstd" height="20" ><input type="checkbox" id="negative" value="{{list[1]}}" name="{{aspect}}">    
                                {{list[1]}}
                           {% set shareid=aspect+"\t\tnegative\t\t"+list[1].replace("'", "") %}
                                <button type="button" class="commentsharebutton" onclick="shareFunction('{{shareid}}')">Share</button>
