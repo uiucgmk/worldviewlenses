@@ -34,7 +34,9 @@
 </script>
 
 <style type="text/css">
-
+table{
+  width:100%;
+}
 ul.b {list-style-type: square;}
 iframe {
     border: none;
@@ -50,7 +52,7 @@ h4{
 ul{
   margin-left: -35px;
 }
-table.comments {
+.comments {
   font-family: "Droid Serif",arial,serif;
   font-size:15px;
   line-height: 1.25;
@@ -58,7 +60,6 @@ table.comments {
   border-width: 1px;
   border-color: #666666;
   border-collapse: collapse;
-  padding: 50px;
   border-top: 1px solid #9BC1BC;
 
 }
@@ -457,7 +458,7 @@ function popup(){
   </tr>
   </table>
   </section>
-
+     
 
 
 
@@ -469,14 +470,15 @@ function popup(){
     <p>&nbsp;</p>
   </div>
 <br>
- <div id = "test">
+
+
   <hr color="#9BC1BC">
-   <table class="comments" width="80%" border="0" cellpadding="5" align="center" bgcolor="#fff">
+   <table width="80%" border="0" cellpadding="5" align="center" bgcolor="#fff">
     <tbody>
-      <tr class="bigtr">
+      <tr class="bigtr" width="80%">
         <th width="10%">Keywords</th>
-        <th width="45%">Agree</th>
-        <th width="45%">Disagree</th>
+        <th width="35%">Agree</th>
+        <th width="35%">Disagree</th>
       </tr>
       
         {% block content %}
@@ -484,9 +486,8 @@ function popup(){
         {% endblock content %}
       
     
-    </tbody>
+    </tbody>  
   </table>
-  </div>
 
 
 
