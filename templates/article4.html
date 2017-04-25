@@ -45,7 +45,13 @@ Ivanka Trump meeting with Al Gore on climate change  -->
                                      
 
                                      <ul class="square">
-                                      {% for reply in replydic[list[2]] %}
+                                      {% if replydic[list[2]]|length > 1 %}
+                                      {% set replies=replydic[list[2]][0:10] %}
+                                      {% else %}
+                                      {% set replies=replydic[list[2]] %}
+                                      {% endif %}
+
+                                      {% for reply in replies %}
                                         <li>{{reply}}</li>
                                       {% endfor %}
                                     </ul>
@@ -86,7 +92,13 @@ Ivanka Trump meeting with Al Gore on climate change  -->
                                      
 
                                      <ul class="square">
-                                      {% for reply in replydic[list[2]] %}
+                                      {% if replydic[list[2]]|length > 1 %}
+                                      {% set replies=replydic[list[2]][0:10] %}
+                                      {% else %}
+                                      {% set replies=replydic[list[2]] %}
+                                      {% endif %}
+
+                                      {% for reply in replies %}
                                         <li>{{reply}}</li>
                                       {% endfor %}
                                     </ul>

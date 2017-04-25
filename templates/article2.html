@@ -19,7 +19,6 @@ It's official: Clinton swamps Trump in popular vote-->
 <form>
 {% for aspect in dic %}
 
-{% set aspectcount = 0%}
 
  <tr class="bigtr">
 
@@ -30,7 +29,6 @@ It's official: Clinton swamps Trump in popular vote-->
                   <table class="pos" border="0" cellpadding="5" cellspacing="0" >
                           <colgroup><col ></colgroup>
                           <tbody>
-                          {% set count = 0%}
 
 
                           {% for list in dic[aspect] %}
@@ -50,15 +48,23 @@ It's official: Clinton swamps Trump in popular vote-->
                                      <div id="{{shareid}}" style = "display: none">
                                      <span><input id="input{{shareid}}" type="text" name="test" size = "60">
                                      <button type="button" class="subreplybutton" onclick="subreplyFunction('input{{shareid}}')">Submit</button></span>
-                              
-                                     <ul>
-                                        <li>Comment1</li>
-                                        <li>Comment2</li>
-                                        <li>Comment3</li> 
+
+                                     
+
+                                     <ul class="square">
+                                      {% if replydic[list[2]]|length > 1 %}
+                                      {% set replies=replydic[list[2]][0:10] %}
+                                      {% else %}
+                                      {% set replies=replydic[list[2]] %}
+                                      {% endif %}
+
+                                      {% for reply in replies %}
+                                        <li>{{reply}}</li>
+                                      {% endfor %}
+
                                     </ul>
                                    </div>
 
-                             {% set count = count + 2%}
                            </td>
 
 
@@ -86,6 +92,30 @@ It's official: Clinton swamps Trump in popular vote-->
                                {% set shareid=aspect+"\t\tnegative\t\t"+list[1] %}
                                <button type="button" class="commentsharebutton" onclick="shareFunction('{{shareid}}')">Share</button>
 
+                              
+                              <button type="button" class="commentreplybutton" onclick="replyFunction('{{shareid}}')">Reply</button>
+                                     <div id="{{shareid}}" style = "display: none">
+
+                                     <span><input id="input{{shareid}}" type="text" name="test" size = "60">
+                                     <button type="button" class="subreplybutton" onclick="subreplyFunction('input{{shareid}}')">Submit</button></span>
+                                     
+
+                                     <ul class="square">
+                                      {% if replydic[list[2]]|length > 1 %}
+                                      {% set replies=replydic[list[2]][0:10] %}
+                                      {% else %}
+                                      {% set replies=replydic[list[2]] %}
+                                      {% endif %}
+
+                                      {% for reply in replies %}
+                                        <li>{{reply}}</li>
+                                      {% endfor %}
+                                    </ul>
+                                   </div>
+                           </td>
+
+
+
                             </tr>
                           {% endif %}
                           {% endfor %}
@@ -96,28 +126,10 @@ It's official: Clinton swamps Trump in popular vote-->
 
 </tr>
 
-{% set aspectcount = aspectcount + 1%}
 
 {% endfor %}
 </form>
 
 
-<script>
-function subreplyFunction(id){
-
-
-}
-function replyFunction(id) {
-  
-  var x=document.getElementById(id);
-
-    if (x.style.display == 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-
-</script>
 
 {% endblock content %}
