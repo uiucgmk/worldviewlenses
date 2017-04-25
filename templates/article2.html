@@ -81,7 +81,7 @@ It's official: Clinton swamps Trump in popular vote-->
                           {% for list in dic[aspect] %}
                               {% if list[0]=='negative' %}
                             <tr height="20">
-                              <td height="20" width="100%"><input type="checkbox" id="negative" value="{{list[1]}}" name="{{aspect}}">
+                              <td class="newstd" height="20" width="100%"><input type="checkbox" id="negative" value="{{list[1]}}" name="{{aspect}}">
                                {{list[1]}}
                                {% set shareid=aspect+"\t\tnegative\t\t"+list[1] %}
                                <button type="button" class="commentsharebutton" onclick="shareFunction('{{shareid}}')">Share</button>
