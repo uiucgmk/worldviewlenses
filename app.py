@@ -88,7 +88,7 @@ def article1():
     		dic[arr[0]].append(arr[1:])
     	else:
 			dic[arr[0]]=[arr[1:]]
-    
+
     return render_template('article1.html',user=username,dic=dic)
 
 @app.route('/article2', methods=['GET', 'POST'])
@@ -103,7 +103,7 @@ def article2():
     		dic[arr[0]].append(arr[1:])
     	else:
 			dic[arr[0]]=[arr[1:]]
-    
+
     return render_template('article2.html',user=username,dic=dic)
 
 
