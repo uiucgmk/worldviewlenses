@@ -56,7 +56,13 @@ America, meet your new first lady
                                      
 
                                      <ul class="square">
-                                      {% for reply in replydic[list[2]] %}
+                                      {% if replydic[list[2]]|length > 1 %}
+                                      {% set replies=replydic[list[2]][0:10] %}
+                                      {% else %}
+                                      {% set replies=replydic[list[2]] %}
+                                      {% endif %}
+
+                                      {% for reply in replies %}
                                         <li>{{reply}}</li>
                                       {% endfor %}
                                     </ul>
@@ -98,7 +104,13 @@ America, meet your new first lady
                                      
 
                                      <ul class="square">
-                                      {% for reply in replydic[list[2]] %}
+                                      {% if replydic[list[2]]|length > 1 %}
+                                      {% set replies=replydic[list[2]][0:10] %}
+                                      {% else %}
+                                      {% set replies=replydic[list[2]] %}
+                                      {% endif %}
+
+                                      {% for reply in replies %}
                                         <li>{{reply}}</li>
                                       {% endfor %}
                                     </ul>
