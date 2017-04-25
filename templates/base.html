@@ -164,7 +164,7 @@ a.commentsharebutton:hover {text-decoration:underline; color:#ddd;}
             upvote_count: 1,
             user_has_upvoted: false
         }];
-        
+
         success(commentsArray);
     }
 });;
@@ -349,7 +349,7 @@ function myFunction() {
 <script type="text/javascript">
 
 function popup(){
-  cuteLittleWindow = window.open("https://goo.gl/forms/IGkiVFpYqP98tPdo2", "littleWindow", "location=no,width=760,height=500"); 
+  cuteLittleWindow = window.open("https://goo.gl/forms/IGkiVFpYqP98tPdo2", "littleWindow", "location=no,width=760,height=500");
 }
 
 </script>
@@ -373,16 +373,16 @@ function popup(){
 <!--<div class="header">
 <h2 class="title">
         {% block title %}
-        
+
         {% endblock title %}
-      
+
     </h2>
     </div> -->
 </div>
 <div>
 <!--<div class="container"> -->
   <!-- Navigation -->
- 
+
   <!-- news Section -->
   <section class="news" id="news" style="text-align:left;" >
   <table width="90%" border="0" cellpadding="5" align="center">
@@ -406,7 +406,7 @@ function popup(){
     <div class="top-emoji-div">
       <!--<img alt="" class="top-emoji" src="http://emojione.com/wp-content/uploads/assets/emojis/1f600.svg" onclick="increment(1)" />-->
       <img alt="" class="top-emoji" src="static/images/like.png" onclick="increment(1)" />
-      
+
       <div class="emoji-count">
         <p id="emoji-1">Like:0</p>
       </div>
@@ -465,7 +465,7 @@ function popup(){
   </tr>
   </table>
   </section>
-     
+
 
 
 
@@ -481,19 +481,21 @@ function popup(){
 
   <hr color="#9BC1BC">
    <table width="80%" border="0" cellpadding="5" align="center" bgcolor="#fff">
+     
     <tbody>
       <tr class="bigtr" width="80%">
-        <th >Keywords</th>
-        <th >Agree</th>
-        <th >Disagree</th>
+
+        <th>Keywords</th>
+        <th>Agree</th>
+        <th>Disagree</th>
       </tr>
-      
+
         {% block content %}
-        
+
         {% endblock content %}
-      
-    
-    </tbody>  
+
+
+    </tbody>
   </table>
 
 
@@ -506,7 +508,7 @@ function popup(){
     <button type="button" onclick='storeChecked_and_reaction()' >Submit</button>
     <p id="result"></p>
     <script>
- 
+
 function storeChecked_and_reaction() {
     //for checked items
     var x = document.forms[0];
@@ -516,12 +518,12 @@ function storeChecked_and_reaction() {
         if (x[i].checked) {
            textappend=x[i].id+"\t\t"+x[i].name+"\t\t"+x[i].value;
            content.push(textappend);
-            
+
         }
     }
-    
+
     //document.getElementById("result").innerHTML = "You selected : " + content;
-    
+
     //for reactions
     var reaction=[];
     var count=0;

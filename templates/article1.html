@@ -31,29 +31,29 @@ America, meet your new first lady
 
         <td class="newstd"><div style=" height: 250px; width:100%; overflow-y: auto; overflow-x: hidden">
                   <table class="pos" border="0" cellpadding="5" cellspacing="0" >
-                          <colgroup><col ></colgroup>
+                          <colgroup><col></colgroup>
                           <tbody>
-                          
+
                           {% for list in dic[aspect] %}
-                            
+
                           {% if list[0]=='positive' %}
-                          
+
                             <tr height="20">
 
-                            
-                              <td class="newstd" height="20" ><input type="checkbox" id="positive" value="{{list[1]}}" name="{{aspect}}">     
-                                
+
+                              <td class="newstd" height="20" ><input type="checkbox" id="positive" value="{{list[1]}}" name="{{aspect}}">
+
                                {{list[1]}}
 
                                {% set shareid=aspect+"\t\tpositive\t\t"+list[1].replace("'", "") %}
                                <button type="button" class="commentsharebutton" onclick="shareFunction('{{shareid}}')">Share</button>
-                              
+
                               <button type="button" class="commentreplybutton" onclick="replyFunction('{{shareid}}')">Reply</button>
                                      <div id="{{shareid}}" style = "display: none">
 
                                      <span><input id="input{{shareid}}" type="text" name="test" size = "60">
                                      <button type="button" class="subreplybutton" onclick="subreplyFunction('input{{shareid}}')">Submit</button></span>
-                                     
+
 
                                      <ul class="square">
                                       {% if replydic[list[2]]|length > 1 %}
@@ -69,7 +69,7 @@ America, meet your new first lady
                                    </div>
                            </td>
 
-  
+
 
                             </tr>
                           {% endif %}
@@ -91,17 +91,17 @@ America, meet your new first lady
                               {% if list[0]=='negative' %}
                             <tr height="20">
 
-                              <td class="newstd" height="20" ><input type="checkbox" id="negative" value="{{list[1]}}" name="{{aspect}}">       
+                              <td class="newstd" height="20" ><input type="checkbox" id="negative" value="{{list[1]}}" name="{{aspect}}">
                                {{list[1]}}
                                {% set shareid=aspect+"\t\tnegative\t\t"+list[1].replace("'", "") %}
                                <button type="button" class="commentsharebutton" onclick="shareFunction('{{shareid}}')">Share</button>
-                              
+
                               <button type="button" class="commentreplybutton" onclick="replyFunction('{{shareid}}')">Reply</button>
                                      <div id="{{shareid}}" style = "display: none">
 
                                      <span><input id="input{{shareid}}" type="text" name="test" size = "60">
                                      <button type="button" class="subreplybutton" onclick="subreplyFunction('input{{shareid}}')">Submit</button></span>
-                                     
+
 
                                      <ul class="square">
                                       {% if replydic[list[2]]|length > 1 %}
@@ -126,9 +126,8 @@ America, meet your new first lady
                     </table>
             </div>
         </td>
-       
+
 </tr>
  {% endfor %}
-</form> 
+</form>
 {% endblock content %}
-
