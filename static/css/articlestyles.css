@@ -25,7 +25,7 @@ body {
 }
 /* Container */
 .container {
-	width: 95%;
+	width: 80%; /*initially 95% hopefully this helps*/
 	margin-left: auto;
 	margin-right: auto;
 	background-color: #FFFFFF;
@@ -82,7 +82,7 @@ nav {
 	top: -2px;
 }
 .title {
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Lato', sans-serif;
 	color: #9BC1BC;
 	margin-top: 15px;
 	list-style: none;
@@ -94,6 +94,7 @@ h2{
 }
 h3{
 	font-size: 30px;
+	font-weight: 700;
 	padding-bottom: 10px;
 }
 h4{
