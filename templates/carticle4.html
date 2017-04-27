@@ -1,0 +1,87 @@
+{% extends './cbase.html' %}
+
+<!doctype html>
+<script type="text/javascript"
+  src="http://viralpatel.net/blogs/demo/jquery/jquery.shorten.1.0.js"></script>
+
+{% block title %}
+Ivanka Trump meeting with Al Gore on climate change
+{% endblock title %}
+{% block post %}
+<h3>Ivanka Trump will be meeting with one of the most vocal advocates fighting climate change. President-elect Donald J. Trump has been skeptical of the role humans play affecting our climate.</h3>
+<!--summary of the news article-->
+<h4> Republicans are critical of the scientific consensus that human activities are exacerbating global climate change. Trump has been skeptical of climate change, though his position has softened since the election</h4>
+{% endblock post %}
+{% block postimage %}
+<td width="40%" rowspan="2"><a href="http://www.cnn.com/2016/12/05/politics/ivanka-trump-al-gore-climate-change/index.html?sr=fbCNN120516ivanka-trump-al-gore-climate-change0528PMStoryLink&linkId=31977886" target="_blank"><img src="../static/images/post4.png"  width="100%" height="100%" alt="Donald Trump's Cabinet takes shape" ></a></td>
+{% endblock postimage %}
+
+{% block content %}
+<form>
+
+
+
+
+ <!--tr class="bigtr">
+
+<!--td  class = "bigtd">Comments</td-->
+
+
+        <!--td class="newstd"><div style=" height: 250px; width:100%; overflow-y: auto; overflow-x: hidden">
+                  <table class="pos" border="0" cellpadding="5" cellspacing="0" width="100%"-->
+                          <colgroup><col width="100%"></colgroup>
+                          <tbody>
+
+                          {% for list in dic %}
+
+
+
+                            <tr height="20">
+
+
+                           <td class="newstd" height="20" width="100%">
+                                <input type="checkbox" id="{{list[0]}}" value="{{list[1]}}">
+
+                                <span id="textArea">{{dic[list][0]}}</span> 
+
+                               <!--{% set shareid=list[0]+"\t\t"+list[1].replace("'","") %}-->
+                               {% set shareid=dic[list][2:]|join('/')+"\t\t"+dic[list][1]+"\t\t"+dic[list][0].replace("'", "") %}
+                               <button type="button" class="commentsharebutton" onclick="shareFunction('{{shareid}}')">Share</button>
+
+                              <button type="button" class="commentreplybutton" onclick="replyFunction('{{shareid}}')">Reply</button>
+                                     <div id="{{shareid}}" style = "display: none">
+
+                                     <span><input id="input{{shareid}}" type="text" name="test" size = "60">
+                                     <button type="button" class="subreplybutton" onclick="subreplyFunction('input{{shareid}}')">Submit</button></span>
+                                     
+
+                                     <ul class="square">
+                                      {% if replydic[list]|length > 1 %}
+                                      {% set replies=replydic[list][0:10] %}
+                                      {% else %}
+                                      {% set replies=replydic[list] %}
+                                      {% endif %}
+
+                                      {% for reply in replies %}
+                                        <li>{{reply}}</li>
+                                      {% endfor %}
+                                    </ul>
+                                   </div>
+                           </td> 
+
+                            </tr>
+
+                          {% endfor %}
+                            <!-- <tr height="20">
+                              <td height="20"><input type="checkbox" id="Check"> &nbsp;Content2 &nbsp;<a href="#" class="commentsharebutton" onclick="alert('Shared!')">Share</a></td>
+                            </tr> -->
+
+                          </tbody>
+
+
+
+<!--/tr-->
+
+
+</form>
+{% endblock content %}

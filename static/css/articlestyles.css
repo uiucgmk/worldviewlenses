@@ -1,8 +1,8 @@
 @charset "UTF-8";
 /* Body */
 body {
-	font-family: 'Open Sans', sans-serif;
-	background-color: #333;
+	font-family: 'Droid Serif', serif;
+	background-color: #fff; /*changed*/
 	margin-top: 0px;
 	margin-right: 0px;
 	margin-bottom: 0px;
@@ -11,12 +11,24 @@ body {
 	font-size: 15px;
 	font-weight: 500;
 }
+/*comment*/
+.complete{
+    display:none;
+}
+
+.more{
+    background:lightblue;
+    color:navy;
+    font-size:13px;
+    padding:3px;
+    cursor:pointer;
+}
 /* Container */
 .container {
-	width: 90%;
+	width: 80%; /*initially 95% hopefully this helps*/
 	margin-left: auto;
 	margin-right: auto;
-	background-color: #FFFFFF;
+	background-color: #fff;
 }
 
 iframe {
@@ -31,9 +43,9 @@ iframe {
 header {
 	width: 100%;
 	height: 60px;
-	background-color: #43563D;
+	background-color:#fff;
 	padding-bottom: 20px;
-	border-bottom: 1px solid #43563D;
+	border-bottom: 1px solid #fff;
 }
 .logo {
 	color: #fff;
@@ -45,6 +57,7 @@ header {
 	margin-left: 25px;
 	letter-spacing: 4px;
 }
+
 nav {
 	position: absolute;
 	left: 941px;
@@ -69,12 +82,11 @@ nav {
 	top: -2px;
 }
 .title {
-	font-family: 'Open Sans', sans-serif;
-	color: #fff;
+	font-family: 'Lato', sans-serif;
+	color: #9BC1BC;
 	margin-top: 15px;
 	list-style: none;
 	float: left;
-	margin-left: 75px;
 }
 h2{
 	font-size: 40px;
@@ -82,6 +94,7 @@ h2{
 }
 h3{
 	font-size: 30px;
+	font-weight: 700;
 	padding-bottom: 10px;
 }
 h4{
@@ -116,9 +129,9 @@ ul li:hover a {
 }
 /* news Section */
 .news {
-	background-color: #B3B3B3;
-	padding-top: 30px;
-	padding-bottom: 30px;
+	background-color: #EFEEED;
+	/*padding-top: 30px;
+	padding-bottom: 30px;*/
 	margin-bottom: 20px;
 }
 .light {
@@ -222,10 +235,10 @@ ul li:hover a {
 /* More info */
 footer {
 	width: 100%;
-	background-color: #43563D;
+	background-color: #EFEEED;
 	font-size: 14px;
 	text-align: center;
-	color: #ffffff;
+	color: #000;
 }
 .footer_column {
 	width: 50%;

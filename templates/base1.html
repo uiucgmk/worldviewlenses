@@ -13,89 +13,55 @@
 <link rel="stylesheet" type="text/css" href="../static/css/jquery-comments.css">
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
-<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Droid+Serif&amp;lang=en" />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900&amp;lang=en" />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900&amp;lang=en" />
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Bree+Serif&amp;lang=en" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,800&amp;lang=en" />
 
 <!-- Data -->
 <script type="text/javascript" src="../static/js/comments-data.js"></script>
-<script type="text/javascript" src="../static/js/reaction.js"></script>
-<script type="text/javascript" src="../static/js/share.js"></script>
-<script type="text/javascript" src="../static/js/reply.js"></script>
+  <script type="text/javascript" src="../static/js/reaction.js"></script>
+
+
 <!-- Libraries -->
 <!--The following script tag downloads a font from the Adobe Edge Web Fonts server for use within the web page. We recommend that you do not modify it. (DREAMWEAVER DEFAULT)-->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.textcomplete/1.8.0/jquery.textcomplete.js"></script>
 <!--For comment-->
 <script type="text/javascript" src="../static/js/jquery-comments.js"></script>
-
 <!--React Imojis-->
 <script src="//production-assets.codepen.io/assets/editor/live/css_live_reload_init-2c0dc5167d60a5af3ee189d570b1835129687ea2a61bee3513dee3a50c115a77.js">
 </script>
 
 <style type="text/css">
-
-ul.square {
-  list-style-type: circle;
-  color: #000080;
-  padding-left: 60px;
-    }
-
-table.bigtable{
-  font-family: "Droid Serif",arial,serif;
-  font-size:15px;
-  line-height: 1.25;
-  width:80%;
-}
-
 iframe {
     border: none;
 }
 h3{
   font-size: 30px;
-  font-weight: 900;
-}
-h4{
-  font-size: 18px;
-  font-weight: 400;
 }
 ul{
   margin-left: -35px;
 }
-.comments {
-  font-family: "Droid Serif",arial,serif;
-  font-size:15px;
-  line-height: 1.25;
-  color:#000;
+table.comments {
+  font-family: "Bree Serif",arial,serif;
+  font-size:16px;
+  color:#333333;
   border-width: 1px;
   border-color: #666666;
   border-collapse: collapse;
-  border-top: 1px solid #9BC1BC;
 
 }
 th{
   font-size: 21px;
   font-weight: bold;
   text-align: center;
-
 }
 
-/*tr.bigtr:nth-child(even) {
+tr.bigtr:nth-child(even) {
     background-color: #8F9F88;
-}*/
-tr{border-top: 3px solid #9BC1BC;
-  padding: 20px;
-}
-td{
-}
-td.newstd{border-top: 1px solid #9BC1BC;
-}
-tr.bigtr:{
-  border-top: 1px solid #9BC1BC;
 }
 td.bigtd{
   font-size: 20px;
-  font-weight: bold;
+  font-weight: 500;
   text-align: center;
 }
 
@@ -113,8 +79,9 @@ td.bigtd{
 }
 
 .commentsharebutton {
-    color: #000;
+    color: #ddd;
     text-align: center;
+    text-decoration: underline;
     font-size: 16px;
     cursor: pointer;
 }
@@ -167,16 +134,43 @@ a.commentsharebutton:hover {text-decoration:underline; color:#ddd;}
             upvote_count: 1,
             user_has_upvoted: false
         }];
-
         success(commentsArray);
     }
 });;
       });
     </script>
 
+<script type="text/javascript">
+      $(function() {
+        var saveComment = function(data) {
+
+          // Convert pings to human readable format
+          $(data.pings).each(function(index, id) {
+            var user = usersArray.filter(function(user){return user.id == id})[0];
+            data.content = data.content.replace('@' + id, '@' + user.fullname);
+          });
+
+          return data;
+        }
+        $('#comments-container1').comments({
+    profilePictureURL: 'https://app.viima.com/../static/media/user_profiles/user-icon.png',
+    getComments: function(success, error) {
+        var commentsArray = [{
+            id: 1,
+            created: '2017-03-06',
+            content: 'TEST',
+            fullname: 'TEST',
+            upvote_count: 1,
+            user_has_upvoted: false
+        }];
+        success(commentsArray);
+    }
+});;
+      });
+    </script>
 
 <style class="cp-pen-styles">body {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .center-div {
@@ -220,7 +214,7 @@ a.commentsharebutton:hover {text-decoration:underline; color:#ddd;}
   margin-left: 22px;
   position: relative;
   background: #2c3e50;
-  width: 65px;
+  width: 35px;
   height: 28px;
   border-radius: 7px;
 }
@@ -337,14 +331,6 @@ a.commentsharebutton:hover {text-decoration:underline; color:#ddd;}
   border: 1px solid #ddd;
   border-radius: .25em;
 }
-#test{
-  background-color: #333;
-}
-table.fixed { table-layout:fixed;
-overflow:hidden;
-  word-wrap:break-word; }
-
-
 </style>
 
 <!--Checkbox-->
@@ -357,7 +343,7 @@ function myFunction() {
 <script type="text/javascript">
 
 function popup(){
-  cuteLittleWindow = window.open("https://goo.gl/forms/IGkiVFpYqP98tPdo2", "littleWindow", "location=no,width=760,height=500");
+  cuteLittleWindow = window.open("https://goo.gl/forms/IGkiVFpYqP98tPdo2", "littleWindow", "location=no,width=760,height=500"); 
 }
 
 </script>
@@ -375,25 +361,20 @@ function popup(){
 
 <body>
 <!-- Main Container -->
-<div class="container" style="text-align:center;" >
-<a href="index.html"><img src="../static/images/logo_color.png" alt="home" width="100" height="100" margin="0"></a>
-<p>World Through Different Lenses</p>
-<!--<div class="header">
-<h2 class="title">
-        {% block title %}
-
-        {% endblock title %}
-
-    </h2>
-    </div> -->
-</div>
-<div>
-<!--<div class="container"> -->
+<div class="container">
   <!-- Navigation -->
-
+  <header>
+    <h2 class="title">
+        {% block title %}
+        
+        {% endblock title %}
+      
+    </h2>
+    <a href="index.html"><img src="http://ycpark103.com/images/home-white.png" alt="sample" width="42" height="42" margin="30" align="right"></a>
+  </header>
   <!-- news Section -->
-  <section class="news" id="news" style="text-align:left;" >
-  <table class="fixed" width="90%" border="0" cellpadding="5" align="center">
+  <section class="news" id="news" style="text-align:left;">
+  <table width="100%" border="0" cellpadding="15">
   <tr>
     <!--<td width="40%" rowspan="2"><a href="http://cnn.it/2hv6Avo" target="_blank"><img src="../static/images/placeholder.png"  width="100%" height="30%" alt="Obama" ></a></td>-->
     {% block postimage %}
@@ -405,80 +386,45 @@ function popup(){
   </tr>
   <tr>
     <td height = "10%">
-    <table width="100%" border="0" cellpadding="50">
+    <table width="100%" border="0">
   <tbody>
     <tr>
       <td>
-
-        <table align="left">
-        <tr>
-          <td>
-
-            <section>
-              <div class="center-div">
-                  <div class="top-emoji-div">
-                    <!--<img alt="" class="top-emoji" src="http://emojione.com/wp-content/uploads/assets/emojis/1f600.svg" onclick="increment(1)" />-->
-                    <img alt="" class="top-emoji" src="static/images/like.png" onclick="increment(1)" />
-
-                    <div class="emoji-count">
-                      <p id="emoji-1">Like : 0</p>
-                    </div>
-                  </div>
-                  <div class="top-emoji-div">
-                    <!--<img alt="" class="top-emoji" src="http://emojione.com/wp-content/uploads/assets/emojis/1f60d.svg" onclick="increment(2)" />-->
-                    <img alt="" class="top-emoji" src="static/images/love.png" onclick="increment(2)" />
-                    <div class="emoji-count">
-                      <p id="emoji-2">Love : 0</p>
-                    </div>
-                  </div>
-                  <div class="top-emoji-div">
-                    <!--<img alt="" class="top-emoji" src="http://emojione.com/wp-content/uploads/assets/emojis/1f632.svg" onclick="increment(3)" />-->
-                    <img alt="" class="top-emoji" src="static/images/haha.png" onclick="increment(3)" />
-                    <div class="emoji-count">
-                      <p id="emoji-3">Haha : 0</p>
-                    </div>
-                  </div>
-                  <div class="top-emoji-div">
-                    <!--<img alt="" class="top-emoji" src="http://emojione.com/wp-content/uploads/assets/emojis/1f62d.svg" onclick="increment(4)" />-->
-                    <img alt="" class="top-emoji" src="static/images/wow.png" onclick="increment(4)" />
-                    <div class="emoji-count">
-                      <p id="emoji-4">Wow : 0</p>
-                    </div>
-                  </div>
-                  <div class="top-emoji-div">
-                    <!--<img alt="" class="top-emoji" src="http://emojione.com/wp-content/uploads/assets/emojis/1f621.svg" onclick="increment(5)" />-->
-                    <img alt="" class="top-emoji" src="static/images/sad.png" onclick="increment(5)" />
-                    <div class="emoji-count">
-                      <p id="emoji-5">Sad : 0</p>
-                    </div>
-                  </div>
-                  <div class="top-emoji-div">
-                    <!--NEW-->
-                    <img alt="" class="top-emoji" src="static/images/anger.png" onclick="increment(6)" />
-                    <div class="emoji-count">
-                      <p id="emoji-6">Anger : 0</p>
-                    </div>
-                  </div>
-                  <div class="top-emoji-div">
-                    <!--NEW-->
-                    <img alt="" class="top-emoji" src="static/images/neutral.png" onclick="increment(7)" />
-                    <div class="emoji-count">
-                      <p id="emoji-7">Neutral : 0</p>
-                    </div>
-                  </div>
-
-              </div>
-              </section>
-
-          </td>
-          <td><a href="javascript:popup()"><ul class="sharebutton">Share on Facebook</ul></a></td>
-        </tr>
-      </table>
-
-
-
-
-
+      <section>
+<div class="center-div">
+    <div class="top-emoji-div">
+      <img alt="" class="top-emoji" src="http://emojione.com/wp-content/uploads/assets/emojis/1f600.svg" onclick="increment(1)" />
+      <div class="emoji-count">
+        <p id="emoji-1">0</p>
+      </div>
+    </div>
+    <div class="top-emoji-div">
+      <img alt="" class="top-emoji" src="http://emojione.com/wp-content/uploads/assets/emojis/1f60d.svg" onclick="increment(2)" />
+      <div class="emoji-count">
+        <p id="emoji-2">0</p>
+      </div>
+    </div>
+    <div class="top-emoji-div">
+      <img alt="" class="top-emoji" src="http://emojione.com/wp-content/uploads/assets/emojis/1f632.svg" onclick="increment(3)" />
+      <div class="emoji-count">
+        <p id="emoji-3">0</p>
+      </div>
+    </div>
+    <div class="top-emoji-div">
+      <img alt="" class="top-emoji" src="http://emojione.com/wp-content/uploads/assets/emojis/1f62d.svg" onclick="increment(4)" />
+      <div class="emoji-count">
+        <p id="emoji-4">0</p>
+      </div>
+    </div>
+    <div class="top-emoji-div">
+      <img alt="" class="top-emoji" src="http://emojione.com/wp-content/uploads/assets/emojis/1f621.svg" onclick="increment(5)" />
+      <div class="emoji-count">
+        <p id="emoji-5">0</p>
+      </div>
+    </div>
+   <a href="javascript:popup()"><ul class="sharebutton">Share on Facebook</ul></a>
+</div>
+</section>
   </td>
     </tr>
   </tbody>
@@ -495,31 +441,71 @@ function popup(){
 
 <hr color="#9BC1BC">
   <!--Commenting here-->
-   <div id="comments-container" >
+   <div id="comments-container">
     <p>&nbsp;</p>
     <p>&nbsp;</p>
   </div>
 <br>
 
-
   <hr color="#9BC1BC">
-
-   <table class="bigtable" width="80%" border="0" cellpadding="5" align="center" bgcolor="#fff">
-
+   <table class="comments" width="100%" border="0" cellpadding="5">
     <tbody>
-      <tr class="bigtr" width="80%">
-
-        <th >Keywords</th>
-        <th >Positive</th>
-        <th >Negative</th>
-
+      <tr class="bigtr">
+        <th width="10%">Keywords</th>
+        <th width="45%">Positive</th>
+        <th width="45%">Negative</th>
       </tr>
-
+      
         {% block content %}
-
+        
         {% endblock content %}
+      
+      
 
 
+
+
+      <!-- <tr class="bigtr">
+        <td class = "bigtd">Americans</td>
+        <td>
+
+          <div>
+            <input type="checkbox" class="read-more-state" id="post-2" />
+
+            <ul class="read-more-wrap">
+              <p><input type="checkbox" id="Check"> &nbsp;aa &nbsp;<a href="#" class="commentsharebutton" onclick="alert('Shared!')">Share</a></p>
+              <p><input type="checkbox" id="Check"> &nbsp;bb &nbsp;<a href="#" class="commentsharebutton" onclick="alert('Shared!')">Share</a></p>
+              <p class="read-more-target"><input type="checkbox" id="Check"> &nbsp;cc &nbsp;<a href="#" class="commentsharebutton" onclick="alert('Shared!')">Share</a></p>
+              <p class="read-more-target"><input type="checkbox" id="Check"> &nbsp;dd &nbsp;<a href="#" class="commentsharebutton" onclick="alert('Shared!')">Share</a></p>
+              <p class="read-more-target"><input type="checkbox" id="Check"> &nbsp;ee &nbsp;<a href="#" class="commentsharebutton" onclick="alert('Shared!')">Share</a></p>
+              <p class="read-more-target"><input type="checkbox" id="Check"> &nbsp;ff</p>
+              <p class="read-more-target"><input type="checkbox" id="Check"> &nbsp;gg &nbsp;<a href="#" class="commentsharebutton" onclick="alert('Shared!')">Share</a></p>
+
+            </ul>
+
+            <label for="post-2" class="read-more-trigger"></label>
+          </div>
+
+        </td>
+        <td>
+      <div>
+            <input type="checkbox" class="read-more-state" id="post-3" />
+
+            <ul class="read-more-wrap">
+              <p><input type="checkbox" id="Check"> &nbsp;He is Putin' puppet! Americans,your baseless decision will play into Putin's hands to exacerbate and destroy you! &nbsp;<a href="#" class="commentsharebutton" onclick="alert('Shared!')">Share</a></p>
+              <p><input type="checkbox" id="Check"> &nbsp;Wonderful just wonderful. Best friends with Russia, a dream come true to make American great again. Thanks so much. God be with us. &nbsp;<a href="#" class="commentsharebutton" onclick="alert('Shared!')">Share</a></p>
+              <p class="read-more-target"><input type="checkbox" id="Check"> &nbsp;Great ... now lots get Isis and control north Corea ... I bet there aren't letters from them ah! The party is over! Time to make a country of American dreams no a house of refugees! &nbsp;<a href="#" class="commentsharebutton" onclick="alert('Shared!')">Share</a></p>
+              <p class="read-more-target"><input type="checkbox" id="Check"> &nbsp;Wonderful just wonderful. Best friends with Russia, a dream come true to make American great again. Thanks so much. God be with us. &nbsp;<a href="#" class="commentsharebutton" onclick="alert('Shared!')">Share</a></p>
+              <p class="read-more-target"><input type="checkbox" id="Check"> &nbsp;Pinko scum bag loves the new American fascist. &nbsp;<a href="#" class="commentsharebutton" onclick="alert('Shared!')">Share</a></p>
+              <p class="read-more-target"><input type="checkbox" id="Check"> &nbsp;Bad news for Americans......it is so sad but American get what it vote for ..... &nbsp;<a href="#" class="commentsharebutton" onclick="alert('Shared!')">Share</a></p>
+
+            </ul>
+
+            <label for="post-3" class="read-more-trigger"></label>
+          </div>
+    </td>
+      </tr>
+ -->
     </tbody>
   </table>
 
@@ -529,45 +515,6 @@ function popup(){
 
   <!-- About Section --><!-- Stats Gallery Section --><!-- Parallax Section --><!-- More Info Section -->
   <footer>
-
-    <button type="button" onclick='storeChecked_and_reaction()' >Submit</button>
-    <p id="result"></p>
-    <script>
-
-function storeChecked_and_reaction() {
-    //for checked items
-    var x = document.forms[0];
-    var textappend;
-    var content=[];
-    for (i = 0; i < x.length; i++) {
-        if (x[i].checked) {
-           textappend=x[i].id+"\t\t"+x[i].name+"\t\t"+x[i].value;
-           content.push(textappend);
-
-        }
-    }
-
-    //document.getElementById("result").innerHTML = "You selected : " + content;
-
-    //for reactions
-    var reaction=[];
-    var count=0;
-    var divName;
-    for (id = 1; id < 8; id++) {
-      divName = "emoji-" + id;
-      count = document.getElementById(divName).innerHTML;
-      reaction.push(count);
-    }
-    $.post( "/checkeditems", { 'all_data[]': content, 'reaction_data[]':reaction } );
-
-    alert("Your response is submitted!");
-    //$.post( "/checkeditems", { 'all_data[]': content } );
-    //alert("Your response is submitted!"+reaction);
-}
-    </script>
-
-    {% block footer %}
-    {% endblock footer %}
     <p>2017 Research Project By : Hyo Jin Do, Ming Kun Gao, Yerim Park</p>
   </footer>
 </div>

@@ -1,62 +1,48 @@
 {% extends './base.html' %}
 
 <!doctype html>
-<script type="text/javascript"
-  src="http://viralpatel.net/blogs/demo/jquery/jquery.shorten.1.0.js"></script>
-
-{% block title %}
-America, meet your new first lady
+ {% block title %}
+  <!--title of the facebook post news article link
+Ohio governor vetoes 'heartbeat' abortion bill -->  
 {% endblock title %}
 {% block post %}
-<h3>Melania Trump will become just the second foreign-born first lady in US history.</h3>
-<h4>Melania Trump will become just the second foreign-born first lady in US history. She has been a balancing force for her husband.</h4>
+<!--facebook post summart-->
+<h3>Ohio Gov. John Kasich vetoes measure that would have banned abortions after a fetal heartbeat is detected, but signs a bill outlawing abortions after 20 weeks.</h3>
+<!--summary of the news article-->
+<h4>While vetoing "heartbeat bill" Ohio governor signs bill that outlaws abortion after 20 weeks. His approval of 20-week bill makes Ohio one of the strictest states for abortion.</h4>
 {% endblock post %}
 {% block postimage %}
-<td width="40%" rowspan="2"><a href="http://www.cnn.com/2016/11/09/politics/america-new-first-lady/index.html?sr=fbCNN111016america-new-first-lady1116AMVODtopLink&linkId=31002953" target="_blank"><img src="../static/images/post1.png"   height="100%" alt="Melania Trump: From Slovenia to the White House" ></a></td>
+<td width="40%" rowspan="2"><a href="http://www.cnn.com/2016/12/13/politics/ohio-abortion-bill-veto/index.html?adkey=bn&sr=fbCNN121316ohio-abortion-bill-veto1010PMStoryLink&linkId=32349865" target="_blank"><img src="../static/images/post3.png"  width="100%" height="100%" alt="Ohio governor bans abortions after 20 weeks while vetoing heartbeat bill" ></a></td>
 {% endblock postimage %}
-
-
 
 
 {% block content %}
 <form>
-
-
 {% for aspect in dic %}
-
- <tr class="bigtr">
+ <tr class="newstr">
 
 <td  class = "bigtd">{{aspect}}</td>
-
-
-
-        <td class="newstd"><div style=" height: 250px; width:600px; overflow-y: auto; overflow-x: hidden" >
-                  <table class="pos" border="0" cellpadding="20" cellspacing="0" width="100%">
-                          <colgroup><col width="100%"></colgroup>
-
-
+        
+        
+        <td class="newstd"><div style="height: 250px; width:600px;overflow-y: auto; overflow-x: hidden">
+                  <table class="pos" border="0" cellpadding="20" cellspacing="0" >
+                          <colgroup><col ></colgroup>    
                           <tbody>
-
                           {% for list in dic[aspect] %}
-
                           {% if list[0]=='positive' %}
-
                             <tr height="20">
-
-
-                              <td class="newstd" height="20" ><input type="checkbox" id="positive" value="{{list[1]}}" name="{{aspect}}">
-
+                              <td class="newstd" height="20" ><input type="checkbox" id="positive" value="{{list[1]}}" name="{{aspect}}">       
                                {{list[1]}}
-
+                               
                                {% set shareid=aspect+"\t\tpositive\t\t"+list[1].replace("'", "") %}
                                <button type="button" class="commentsharebutton" onclick="shareFunction('{{shareid}}')">Share</button>
-
+                              
                               <button type="button" class="commentreplybutton" onclick="replyFunction('{{shareid}}')">Reply</button>
                                      <div id="{{shareid}}" style = "display: none">
 
                                      <span><input id="input{{shareid}}" type="text" name="test" size = "60">
                                      <button type="button" class="subreplybutton" onclick="subreplyFunction('input{{shareid}}')">Submit</button></span>
-
+                                     
 
                                      <ul class="square">
                                       {% if replydic[list[2]]|length > 1 %}
@@ -71,7 +57,6 @@ America, meet your new first lady
                                     </ul>
                                    </div>
                            </td>
-
 
 
                             </tr>
@@ -82,36 +67,28 @@ America, meet your new first lady
                             </tr> -->
                           </tbody>
                   </table></div></td>
-
-
-
+        
+        
+        
         <td class="newstd">
-          <div style="height: 250px; width:600px; overflow-y: auto; overflow-x: hidden">
-<!--<<<<<<< HEAD
-
-                  <table class="neg" border="0" cellpadding="15" cellspacing="0" width="100%">
-=======-->
-                  <table class="neg" border="0" cellpadding="20" cellspacing="0" width="100%">
-
-                          <colgroup><col width="100%"></colgroup>
-
-
+          <div style="height: 250px;width:600px; overflow-y: auto; overflow-x: hidden">
+                  <table class="neg" border="0" cellpadding="20" cellspacing="0" >
+                          <colgroup><col ></colgroup>
                           <tbody>
                           {% for list in dic[aspect] %}
                               {% if list[0]=='negative' %}
                             <tr height="20">
-
-                              <td class="newstd" height="20" ><input type="checkbox" id="negative" value="{{list[1]}}" name="{{aspect}}">
+                              <td class="newstd" height="20" ><input type="checkbox" id="negative" value="{{list[1]}}" name="{{aspect}}">    
                                {{list[1]}}
-                               {% set shareid=aspect+"\t\tnegative\t\t"+list[1].replace("'", "") %}
+                          {% set shareid=aspect+"\t\tnegative\t\t"+list[1].replace("'", "") %}
                                <button type="button" class="commentsharebutton" onclick="shareFunction('{{shareid}}')">Share</button>
-
+                              
                               <button type="button" class="commentreplybutton" onclick="replyFunction('{{shareid}}')">Reply</button>
                                      <div id="{{shareid}}" style = "display: none">
 
                                      <span><input id="input{{shareid}}" type="text" name="test" size = "60">
                                      <button type="button" class="subreplybutton" onclick="subreplyFunction('input{{shareid}}')">Submit</button></span>
-
+                                     
 
                                      <ul class="square">
                                       {% if replydic[list[2]]|length > 1 %}
@@ -128,7 +105,6 @@ America, meet your new first lady
                            </td>
 
 
-
                             </tr>
                           {% endif %}
                           {% endfor %}
@@ -136,8 +112,11 @@ America, meet your new first lady
                     </table>
             </div>
         </td>
-
+        
 </tr>
- {% endfor %}
+{% endfor %}
 </form>
 {% endblock content %}
+
+
+
