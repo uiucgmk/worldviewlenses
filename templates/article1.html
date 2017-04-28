@@ -120,7 +120,7 @@ America, meet your new first lady
 
 
         <td class="newstd">
-          <div style="height: 250px; width:600px; overflow-y: auto; overflow-x: auto">
+          <div style="height: 250px; width:600px; overflow-y: auto; overflow-x: hidden">
 <!--<<<<<<< HEAD
 
                   <table class="neg" border="0" cellpadding="15" cellspacing="0" width="100%">
@@ -137,8 +137,8 @@ America, meet your new first lady
 
                               <td class="newstd" height="20" ><input type="checkbox" id="negative" value="{{list[1]}}" name="{{aspect}}">
 
-                               {% set shareid=aspect+"\t\tnegative\t\t"+list[1].replace("'", "") %}
-                               {% set readmoreid="negative\t\t"+aspect+"\t\t"+list[1].replace("'", "") %}
+                               {% set shareid=aspect+"\t\tnegative\t\t"+list[1][:300].replace("'", "") %}
+                               {% set readmoreid="negative\t\t"+aspect+"\t\t"+list[1][:300].replace("'", "") %}
                                <div class="wrapper">
                                  <div class="smallgmk">
                                    {{list[1]}}
