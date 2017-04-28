@@ -496,7 +496,37 @@ def replycomment():
 		run_sql(sql)
 	return 'OK'
 
+@app.route('/readmore', methods=['GET', 'POST'])
+def readmore():
+	if request.method == 'POST':
+		post=session['post']
+		username = session['username']
+		selection=session['selection']
+		read_data= request.form.get('read_data')
+		all_data=read_data.split("\t\t")
+		print all_data
+		sql= "INSERT INTO readmore (Username,Post,Sentiment,Aspect,Comment) VALUES ('"+username+"','"+str(post)+"','"+all_data[0]+"','"+all_data[1]+"','"+all_data[2]+"');"
+		#print sql
+		run_sql(sql)
 
+		print read_data
+	return 'OK'
+
+@app.route('/readmore_control', methods=['GET', 'POST'])
+def readmore_control():
+	if request.method == 'POST':
+		post=session['post']
+		username = session['username']
+		selection=session['selection']
+		read_data= request.form.get('read_data')
+		all_data=read_data.split("\t\t")
+		print all_data
+		sql= "INSERT INTO readmore_control (Username,Post,Sentiment,Aspect,Comment) VALUES ('"+username+"','"+str(post)+"','"+all_data[0]+"','"+all_data[1]+"','"+all_data[2]+"');"
+		#print sql
+		run_sql(sql)
+
+		print read_data
+	return 'OK'
 if __name__ == '__main__':
 	# Bind to PORT if defined, otherwise default to 5000.
 	port = int(os.environ.get('PORT', 5000))

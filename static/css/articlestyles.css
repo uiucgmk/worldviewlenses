@@ -538,4 +538,13 @@ nav ul li {
 }
 }
 
+.smallgmk {
+  height: 10px;
+  overflow:hidden;
+}
+.biggmk   {
+  height: auto;
+}
+
+
 /*COMMENTS*/
