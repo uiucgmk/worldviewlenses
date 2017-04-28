@@ -28,8 +28,8 @@ body {
 	width: 80%; /*initially 95% hopefully this helps*/
 	margin-left: auto;
 	margin-right: auto;
-	background-color: #3D4A39;
-	/*background-color: #fff;*/
+	background-color: #fff;
+	/*background-color: #3D4A39;;*/
 }
 
 iframe {
@@ -543,6 +543,7 @@ nav ul li {
   font-family: 'Droid Serif', serif;
   height: 10px;
   overflow:hidden;
+   white-space:nowrap;
 }
 .biggmk   {
   font-family: 'Droid Serif', serif;
