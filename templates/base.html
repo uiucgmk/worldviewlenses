@@ -104,11 +104,12 @@ td.bigtd{
   cursor: pointer;
   display: inline-block;
   padding: 0.3em;
-  margin-top: 70px;
-  margin-left: 50px;
+
+  margin-left: 5px;
+  margin-top: -30px;
   color: #8F9F88;
-  font-size: 1.1em;
-  line-height: 2;
+  font-size: 1em;
+  line-height: 1.5;
   border: 2px solid #8F9F88;
   border-radius: .1em;
 }
@@ -195,7 +196,7 @@ a.commentsharebutton:hover {text-decoration:underline; color:#ddd;}
   top: -30px;
   right: 0;
   bottom: 0;
-  left: 0;
+  left: -30px;
   width: 100%;
   height: auto;
   border-radius: 3px;
@@ -206,7 +207,7 @@ a.commentsharebutton:hover {text-decoration:underline; color:#ddd;}
 }
 
 .top-emoji {
-  height: 50px;
+  height: 30px;
   margin: 15px;
   margin-bottom: 0px;
 }
@@ -226,7 +227,7 @@ a.commentsharebutton:hover {text-decoration:underline; color:#ddd;}
 }
 
 .emoji-count {
-  margin-left: 22px;
+  margin-left: 2px;
   position: relative;
   background: #2c3e50;
   width: 65px;
@@ -414,16 +415,16 @@ function popup(){
   </tr>
   <tr>
     <td height = "10%">
-    <table width="100%" border="0" cellpadding="50">
+    <table width="100%" border="0" cellpadding="50" align="left">
   <tbody>
     <tr>
       <td>
 
         <table align="left">
         <tr>
-          <td>
+          <td width="650px">
 
-            <section>
+            <!--section-->
               <div class="center-div">
                   <div class="top-emoji-div">
                     <!--<img alt="" class="top-emoji" src="http://emojione.com/wp-content/uploads/assets/emojis/1f600.svg" onclick="increment(1)" />-->
@@ -477,7 +478,7 @@ function popup(){
                   </div>
 
               </div>
-              </section>
+              <!--/section-->
 
           </td>
           <td><a href="javascript:popup()"><ul class="sharebutton">Share on Facebook</ul></a></td>
