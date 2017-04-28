@@ -76,7 +76,7 @@ def login():
 
 		print sql
 		run_sql(sql)
-		if selection == 'worldviewlenses':			
+		if selection == 'worldviewlenses':
 			return redirect(url_for('index'))
 		if selection == 'control':
 			return redirect(url_for('cindex'))
@@ -97,7 +97,7 @@ def article1():
 	session['post'] = 1
 	username = session['username']
 	dic={}
-	f=open("static/article/NEW_final_out_10155584306476509.txt","r")
+	f=open("static/article/NEW_1.txt","r")
 	for line in f.readlines():
 		arr=eval(line)
 		if dic.has_key(arr[0]):
@@ -105,6 +105,9 @@ def article1():
 		else:
 			dic[arr[0]]=[arr[1:]]
 
+#<<<<<<< HEAD
+#    return render_template('article1.html',user=username,dic=dic)
+#=======
 	#replies
 	f_reply=open("static/article/2_replies_to_comment_5550296508_10155584306476509.txt","r")
 	arr=[]
@@ -113,26 +116,32 @@ def article1():
 		arr=eval(line)
 		arr[5]=arr[5].replace("'","")
 		arr[5]=arr[5].replace('"','')
-		
+
 		if dic2.has_key(arr[0]):
 			dic2[arr[0]].append(arr[5])
 		else:
 			dic2[arr[0]]=[arr[5]]
 
 	return render_template('article1.html',user=username,dic=dic,replydic=dic2)
+#>>>>>>> dev
 
 @app.route('/article2', methods=['GET', 'POST'])
 def article2():
 	username = session['username']
 	session['post'] = 2
 	dic={}
-	f=open("static/article/NEW_final_out_10155792006356509.txt","r")
+	f=open("static/article/NEW_2.txt","r")
 	for line in f.readlines():
 		arr=eval(line)
 		if dic.has_key(arr[0]):
 			dic[arr[0]].append(arr[1:])
 		else:
 			dic[arr[0]]=[arr[1:]]
+#<<<<<<< HEAD
+
+#    return render_template('article2.html',user=username,dic=dic)
+#=======
+#>>>>>>> dev
 
 	#replies
 	f_reply=open("static/article/2_replies_to_comment_5550296508_10155792006356509.txt","r")
@@ -142,12 +151,12 @@ def article2():
 		arr=eval(line)
 		arr[5]=arr[5].replace("'","")
 		arr[5]=arr[5].replace('"','')
-		
+
 		if dic2.has_key(arr[0]):
 			dic2[arr[0]].append(arr[5])
 		else:
 			dic2[arr[0]]=[arr[5]]
-	
+
 
 
 	return render_template('article2.html',user=username,dic=dic,replydic=dic2)
@@ -157,7 +166,7 @@ def article3():
 	username = session['username']
 	session['post'] = 3
 	dic={}
-	f=open("static/article/NEW_final_out_10155749891186509.txt","r")
+	f=open("static/article/NEW_3.txt","r")
 	for line in f.readlines():
 		arr=eval(line)
 		if dic.has_key(arr[0]):
@@ -173,12 +182,12 @@ def article3():
 		arr=eval(line)
 		arr[5]=arr[5].replace("'","")
 		arr[5]=arr[5].replace('"','')
-		
+
 		if dic2.has_key(arr[0]):
 			dic2[arr[0]].append(arr[5])
 		else:
 			dic2[arr[0]]=[arr[5]]
-	
+
 
 	return render_template('article3.html',user=username,dic=dic,replydic=dic2)
 
@@ -187,7 +196,7 @@ def article4():
 	username = session['username']
 	session['post'] = 4
 	dic={}
-	f=open("static/article/NEW_final_out_10155699096601509.txt","r")
+	f=open("static/article/NEW_4.txt","r")
 	for line in f.readlines():
 		arr=eval(line)
 		#print arr[0]
@@ -204,7 +213,7 @@ def article4():
 		arr=eval(line)
 		arr[5]=arr[5].replace("'","")
 		arr[5]=arr[5].replace('"','')
-		
+
 		if dic2.has_key(arr[0]):
 			dic2[arr[0]].append(arr[5])
 		else:
@@ -238,7 +247,7 @@ def carticle1():
 		arr=eval(line)
 		arr[5]=arr[5].replace("'","")
 		arr[5]=arr[5].replace('"','')
-		
+
 		if dic2.has_key(arr[0]):
 			dic2[arr[0]].append(arr[5])
 		else:
@@ -269,7 +278,7 @@ def carticle2():
 		arr=eval(line)
 		arr[5]=arr[5].replace("'","")
 		arr[5]=arr[5].replace('"','')
-		
+
 		if dic2.has_key(arr[0]):
 			dic2[arr[0]].append(arr[5])
 		else:
@@ -298,7 +307,7 @@ def carticle3():
 		arr=eval(line)
 		arr[5]=arr[5].replace("'","")
 		arr[5]=arr[5].replace('"','')
-		
+
 		if dic2.has_key(arr[0]):
 			dic2[arr[0]].append(arr[5])
 		else:
@@ -327,7 +336,7 @@ def carticle4():
 		arr=eval(line)
 		arr[5]=arr[5].replace("'","")
 		arr[5]=arr[5].replace('"','')
-		
+
 		if dic2.has_key(arr[0]):
 			dic2[arr[0]].append(arr[5])
 		else:
@@ -368,7 +377,7 @@ def carticle4():
 def share():
 	#create table share (Username VARCHAR(255) NOT NULL, Post int,Sentiment VARCHAR(255),Aspect VARCHAR(255),Comment TEXT,Whowhy TEXT);
 	#create table share_control2 (Username VARCHAR(255) NOT NULL, Post int,Sentiment VARCHAR(255),Aspect VARCHAR(255),Comment TEXT,Whowhy TEXT);
-	
+
 	post=session['post']
 	username = session['username']
 	selection = session['selection']
@@ -381,7 +390,7 @@ def share():
 		elif selection == 'control':
 		#	sql= "INSERT INTO share_control (Username,Post,Sentiment,Comment,whowhy) VALUES ('"+username+"','"+str(post)+"','"+user_data[0]+"','"+user_data[1].replace("'","")+"','"+whowhy_data+"');"
 			sql= "INSERT INTO share_control2 (Username,Post,Sentiment,Aspect,Comment,whowhy) VALUES ('"+username+"','"+str(post)+"','"+user_data[1]+"','"+user_data[0]+"','"+user_data[2].replace("'","")+"','"+whowhy_data+"');"
-		
+
 		run_sql(sql)
 		return 'OK'
 
@@ -470,15 +479,15 @@ def replycomment():
 	if request.method == 'POST':
 		post=session['post']
 		username = session['username']
-		selection=session['selection'] 
+		selection=session['selection']
 
 		all_data=[]
 		all_data= request.form.getlist('all_data[]')
 		reply_data = request.form['reply_data']
-		print reply_data 
+		print reply_data
 		if selection == 'worldviewlenses':
 			sql= "INSERT INTO reply_comment (Username,Post,Aspect,Sentiment,Comment,Reply) VALUES ('"+username+"','"+str(post)+"','"+all_data[0][5:]+"','"+all_data[1]+"','"+all_data[2].replace("'","")+"','"+reply_data.replace("'","")+"');"
-			print sql 
+			print sql
 		elif selection == 'control':
 			sql= "INSERT INTO reply_comment_control (Username,Post,Aspect,Sentiment,Comment,Reply) VALUES ('"+username+"','"+str(post)+"','"+all_data[0][5:]+"','"+all_data[1]+"','"+all_data[2].replace("'","")+"','"+reply_data.replace("'","")+"');"
 		else:
@@ -487,7 +496,37 @@ def replycomment():
 		run_sql(sql)
 	return 'OK'
 
+@app.route('/readmore', methods=['GET', 'POST'])
+def readmore():
+	if request.method == 'POST':
+		post=session['post']
+		username = session['username']
+		selection=session['selection']
+		read_data= request.form.get('read_data')
+		all_data=read_data.split("\t\t")
+		print all_data
+		sql= "INSERT INTO readmore (Username,Post,Sentiment,Aspect,Comment) VALUES ('"+username+"','"+str(post)+"','"+all_data[0]+"','"+all_data[1]+"','"+all_data[2]+"');"
+		#print sql
+		run_sql(sql)
 
+		print read_data
+	return 'OK'
+
+@app.route('/readmore_control', methods=['GET', 'POST'])
+def readmore_control():
+	if request.method == 'POST':
+		post=session['post']
+		username = session['username']
+		selection=session['selection']
+		read_data= request.form.get('read_data')
+		all_data=read_data.split("\t\t")
+		print all_data
+		sql= "INSERT INTO readmore_control (Username,Post,Sentiment,Aspect,Comment) VALUES ('"+username+"','"+str(post)+"','"+all_data[0]+"','"+all_data[1]+"','"+all_data[2]+"');"
+		#print sql
+		run_sql(sql)
+
+		print read_data
+	return 'OK'
 if __name__ == '__main__':
 	# Bind to PORT if defined, otherwise default to 5000.
 	port = int(os.environ.get('PORT', 5000))

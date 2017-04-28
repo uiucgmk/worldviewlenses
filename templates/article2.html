@@ -11,7 +11,7 @@ It's official: Clinton swamps Trump in popular vote-->
 <h4>Clinton outpaced Trump by almost 2.9 million votes. She lost the Electoral College, however.</h4>
 {% endblock post %}
 {% block postimage %}
-<td width="40%" rowspan="2"><a href="http://www.cnn.com/2016/12/21/politics/donald-trump-hillary-clinton-popular-vote-final-count/index.html?sr=fbCNN122216donald-trump-hillary-clinton-popular-vote-final-count0110AMStoryLink&linkId=32646908" target="_blank"><img src="../static/images/post2.png"  width="100%" height="100%" alt="Trump claims fraud cost him popular vote" ></a></td>
+<td width="40%" rowspan="2"><a href="http://www.cnn.com/2016/12/21/politics/donald-trump-hillary-clinton-popular-vote-final-count/index.html?sr=fbCNN122216donald-trump-hillary-clinton-popular-vote-final-count0110AMStoryLink&linkId=32646908" target="_blank"><img src="../static/images/thumb2.png"  width="100%" height="100%" alt="Trump claims fraud cost him popular vote" ></a></td>
 {% endblock postimage %}
 
 
@@ -33,23 +33,44 @@ It's official: Clinton swamps Trump in popular vote-->
 
                           {% for list in dic[aspect] %}
                           {% if list[0]=='positive' %}
-                          
+
                             <tr height="20">
 
                               <td class="newstd" height="20" ><input type="checkbox" id="positive" value="{{list[1]}}" name="{{aspect}}">
 
-                               {{list[1]}}
 
-                               
+
+
                                {% set shareid=aspect+"\t\tpositive\t\t"+list[1].replace("'", "") %}
+                               {% set readmoreid="positive\t\t"+aspect+"\t\t"+list[1].replace("'", "") %}
+                               <div class="wrapper">
+                                 <div class="smallgmk">
+                                   {{list[1]}}
+                                 </div> <a href="{{readmoreid}}">Click to read more</a>
+                               </div>
+                               <script>
+                               $('.wrapper').find('a[href="{{readmoreid}}"]').on('click', function (e) {
+                                 console.log("hahah")
+                                 e.preventDefault();
+                                 if (this.text == "Click to read more"){
+                                   var read_data = "{{readmoreid}}"
+                                   $.post( "/readmore", { 'read_data': read_data} );
+                                   console.log(read_data)
+                                 }
+                                 this.expand = !this.expand;
+
+                                 $(this).text(this.expand?"Click to collapse":"Click to read more");
+                                 $(this).closest('.wrapper').find('.smallgmk, .biggmk').toggleClass('smallgmk biggmk');
+                               });
+                             </script>
                                <button type="button" class="commentsharebutton" onclick="shareFunction('{{shareid}}')">Share</button>
-                              
+
                               <button type="button" class="commentreplybutton" onclick="replyFunction('{{shareid}}')">Reply</button>
                                      <div id="{{shareid}}" style = "display: none">
                                      <span><input id="input{{shareid}}" type="text" name="test" size = "60">
                                      <button type="button" class="subreplybutton" onclick="subreplyFunction('input{{shareid}}')">Submit</button></span>
 
-                                     
+
 
                                      <ul class="square">
                                       {% if replydic[list[2]]|length > 1 %}
@@ -88,17 +109,38 @@ It's official: Clinton swamps Trump in popular vote-->
                               {% if list[0]=='negative' %}
                             <tr height="20">
                               <td class="newstd" height="20" ><input type="checkbox" id="negative" value="{{list[1]}}" name="{{aspect}}">
-                               {{list[1]}}
+                              
                                {% set shareid=aspect+"\t\tnegative\t\t"+list[1] %}
+                               {% set readmoreid="negative\t\t"+aspect+"\t\t"+list[1].replace("'", "") %}
+                               <div class="wrapper">
+                                 <div class="smallgmk">
+                                   {{list[1]}}
+                                 </div> <a href="{{readmoreid}}">Click to read more</a>
+                               </div>
+                               <script>
+                               $('.wrapper').find('a[href="{{readmoreid}}"]').on('click', function (e) {
+                                 console.log("hahah")
+                                 e.preventDefault();
+                                 if (this.text == "Click to read more"){
+                                   var read_data = "{{readmoreid}}"
+                                   $.post( "/readmore", { 'read_data': read_data} );
+                                   console.log(read_data)
+                                 }
+                                 this.expand = !this.expand;
+
+                                 $(this).text(this.expand?"Click to collapse":"Click to read more");
+                                 $(this).closest('.wrapper').find('.smallgmk, .biggmk').toggleClass('smallgmk biggmk');
+                               });
+                             </script>
                                <button type="button" class="commentsharebutton" onclick="shareFunction('{{shareid}}')">Share</button>
 
-                              
+
                               <button type="button" class="commentreplybutton" onclick="replyFunction('{{shareid}}')">Reply</button>
                                      <div id="{{shareid}}" style = "display: none">
 
                                      <span><input id="input{{shareid}}" type="text" name="test" size = "60">
                                      <button type="button" class="subreplybutton" onclick="subreplyFunction('input{{shareid}}')">Submit</button></span>
-                                     
+
 
                                      <ul class="square">
                                       {% if replydic[list[2]]|length > 1 %}

@@ -538,4 +538,15 @@ nav ul li {
 }
 }
 
+.smallgmk {
+  font-family: 'Droid Serif', serif;
+  height: 10px;
+  overflow:hidden;
+}
+.biggmk   {
+  font-family: 'Droid Serif', serif;
+  height: auto;
+}
+
+
 /*COMMENTS*/

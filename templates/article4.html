@@ -3,7 +3,7 @@
 <!doctype html>
  {% block title %}
  <!--title of the facebook post news article link
-Ivanka Trump meeting with Al Gore on climate change  -->    
+Ivanka Trump meeting with Al Gore on climate change  -->
 {% endblock title %}
 {% block post %}
 <!--facebook post summart-->
@@ -12,7 +12,7 @@ Ivanka Trump meeting with Al Gore on climate change  -->
 <h4> Republicans are critical of the scientific consensus that human activities are exacerbating global climate change. Trump has been skeptical of climate change, though his position has softened since the election</h4>
 {% endblock post %}
 {% block postimage %}
-<td width="40%" rowspan="2"><a href="http://www.cnn.com/2016/12/05/politics/ivanka-trump-al-gore-climate-change/index.html?sr=fbCNN120516ivanka-trump-al-gore-climate-change0528PMStoryLink&linkId=31977886" target="_blank"><img src="../static/images/post4.png"  width="100%" height="100%" alt="Donald Trump's Cabinet takes shape" ></a></td>
+<td width="40%" rowspan="2"><a href="http://www.cnn.com/2016/12/05/politics/ivanka-trump-al-gore-climate-change/index.html?sr=fbCNN120516ivanka-trump-al-gore-climate-change0528PMStoryLink&linkId=31977886" target="_blank"><img src="../static/images/thumb4.png"  width="100%" height="100%" alt="Donald Trump's Cabinet takes shape" ></a></td>
 {% endblock postimage %}
 
 
@@ -22,27 +22,48 @@ Ivanka Trump meeting with Al Gore on climate change  -->
  <tr class="bigtr">
 
 <td  class = "bigtd">{{aspect}}</td>
-        
-        
+
+
         <td class="newstd"><div style="height: 250px; width:600px;overflow-y: auto; overflow-x: hidden">
                   <table class="pos" border="0" cellpadding="20" cellspacing="0" >
-                          <colgroup><col ></colgroup>    
+                          <colgroup><col ></colgroup>
                           <tbody>
                           {% for list in dic[aspect] %}
                           {% if list[0]=='positive' %}
                             <tr height="20">
-                              <td class="newstd" height="20" ><input type="checkbox" id="positive" value="{{list[1]}}" name="{{aspect}}">       
-                               {{list[1]}}
-                               
+                              <td class="newstd" height="20" ><input type="checkbox" id="positive" value="{{list[1]}}" name="{{aspect}}">
+
+
                                                              {% set shareid=aspect+"\t\tpositive\t\t"+list[1].replace("'", "") %}
+                                                             {% set readmoreid="positive\t\t"+aspect+"\t\t"+list[1].replace("'", "") %}
+                                                             <div class="wrapper">
+                                                               <div class="smallgmk">
+                                                                 {{list[1]}}
+                                                               </div> <a href="{{readmoreid}}">Click to read more</a>
+                                                             </div>
+                                                             <script>
+                                                             $('.wrapper').find('a[href="{{readmoreid}}"]').on('click', function (e) {
+                                                               console.log("hahah")
+                                                               e.preventDefault();
+                                                               if (this.text == "Click to read more"){
+                                                                 var read_data = "{{readmoreid}}"
+                                                                 $.post( "/readmore", { 'read_data': read_data} );
+                                                                 console.log(read_data)
+                                                               }
+                                                               this.expand = !this.expand;
+
+                                                               $(this).text(this.expand?"Click to collapse":"Click to read more");
+                                                               $(this).closest('.wrapper').find('.smallgmk, .biggmk').toggleClass('smallgmk biggmk');
+                                                             });
+                                                           </script>
                                <button type="button" class="commentsharebutton" onclick="shareFunction('{{shareid}}')">Share</button>
-                              
+
                               <button type="button" class="commentreplybutton" onclick="replyFunction('{{shareid}}')">Reply</button>
                                      <div id="{{shareid}}" style = "display: none">
 
                                      <span><input id="input{{shareid}}" type="text" name="test" size = "60">
                                      <button type="button" class="subreplybutton" onclick="subreplyFunction('input{{shareid}}')">Submit</button></span>
-                                     
+
 
                                      <ul class="square">
                                       {% if replydic[list[2]]|length > 1 %}
@@ -67,9 +88,9 @@ Ivanka Trump meeting with Al Gore on climate change  -->
                             </tr> -->
                           </tbody>
                   </table></div></td>
-        
-        
-        
+
+
+
         <td class="newstd">
           <div style="height: 250px; width:600px;overflow-y: auto; overflow-x: hidden">
                   <table class="neg" border="0" cellpadding="20" cellspacing="0" >
@@ -78,18 +99,39 @@ Ivanka Trump meeting with Al Gore on climate change  -->
                           {% for list in dic[aspect] %}
                               {% if list[0]=='negative' %}
                             <tr height="20">
-                              <td class="newstd" height="20" ><input type="checkbox" id="negative" value="{{list[1]}}" name="{{aspect}}">    
-                               {{list[1]}}
+                              <td class="newstd" height="20" ><input type="checkbox" id="negative" value="{{list[1]}}" name="{{aspect}}">
                                
+
                             {% set shareid=aspect+"\t\tnegative\t\t"+list[1].replace("'", "") %}
+                            {% set readmoreid="negative\t\t"+aspect+"\t\t"+list[1].replace("'", "") %}
+                            <div class="wrapper">
+                              <div class="smallgmk">
+                                {{list[1]}}
+                              </div> <a href="{{readmoreid}}">Click to read more</a>
+                            </div>
+                            <script>
+                            $('.wrapper').find('a[href="{{readmoreid}}"]').on('click', function (e) {
+                              console.log("hahah")
+                              e.preventDefault();
+                              if (this.text == "Click to read more"){
+                                var read_data = "{{readmoreid}}"
+                                $.post( "/readmore", { 'read_data': read_data} );
+                                console.log(read_data)
+                              }
+                              this.expand = !this.expand;
+
+                              $(this).text(this.expand?"Click to collapse":"Click to read more");
+                              $(this).closest('.wrapper').find('.smallgmk, .biggmk').toggleClass('smallgmk biggmk');
+                            });
+                          </script>
                                <button type="button" class="commentsharebutton" onclick="shareFunction('{{shareid}}')">Share</button>
-                              
+
                               <button type="button" class="commentreplybutton" onclick="replyFunction('{{shareid}}')">Reply</button>
                                      <div id="{{shareid}}" style = "display: none">
 
                                      <span><input id="input{{shareid}}" type="text" name="test" size = "60">
                                      <button type="button" class="subreplybutton" onclick="subreplyFunction('input{{shareid}}')">Submit</button></span>
-                                     
+
 
                                      <ul class="square">
                                       {% if replydic[list[2]]|length > 1 %}
@@ -113,11 +155,8 @@ Ivanka Trump meeting with Al Gore on climate change  -->
                     </table>
             </div>
         </td>
-        
+
 </tr>
 {% endfor %}
 </form>
 {% endblock content %}
-
-
-
