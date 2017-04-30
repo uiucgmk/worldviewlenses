@@ -1,6 +1,14 @@
 {% extends './base.html' %}
 
 <!doctype html>
+<script type="text/javascript">
+
+function popup(){
+  cuteLittleWindow = window.open("./nocnn4", "littleWindow", "location=no,width=760,height=500");
+}
+
+</script>
+
  {% block title %}
  <!--title of the facebook post news article link
 Ivanka Trump meeting with Al Gore on climate change  -->
@@ -12,7 +20,7 @@ Ivanka Trump meeting with Al Gore on climate change  -->
 <h4> Republicans are critical of the scientific consensus that human activities are exacerbating global climate change. Trump has been skeptical of climate change, though his position has softened since the election</h4>
 {% endblock post %}
 {% block postimage %}
-<td width="40%" rowspan="2"><a href="./nocnn4" target="_blank"><img src="../static/images/thumb4.png"  width="100%" height="100%" alt="Donald Trump's Cabinet takes shape" ></a></td> <!--../templates/nocnn4.html-->
+<td width="40%" rowspan="2"><a href="javascript:popup()"><img src="../static/images/thumb4.png"  width="100%" height="100%" alt="Donald Trump's Cabinet takes shape" ></a></td> <!--../templates/nocnn4.html-->
 {% endblock postimage %}
 
 

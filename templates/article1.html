@@ -3,6 +3,13 @@
 <!doctype html>
 <script type="text/javascript"
   src="http://viralpatel.net/blogs/demo/jquery/jquery.shorten.1.0.js"></script>
+<script type="text/javascript">
+
+function popup(){
+  cuteLittleWindow = window.open("./nocnn1", "littleWindow", "location=no,width=760,height=500");
+}
+
+</script>
 
 {% block title %}
 America, meet your new first lady
@@ -12,7 +19,8 @@ America, meet your new first lady
 <h4>Melania Trump will become just the second foreign-born first lady in US history. She has been a balancing force for her husband.</h4>
 {% endblock post %}
 {% block postimage %}
-<td width="40%" rowspan="2"><a href="./nocnn1"" target="_blank"><img src="../static/images/thumb1.png"   height="100%" alt="Melania Trump: From Slovenia to the White House" ></a></td> <!--../templates/nocnn1.html-->
+
+<td width="40%" rowspan="2"><a href="javascript:popup()"><img src="../static/images/thumb1.png"   height="100%" alt="Melania Trump: From Slovenia to the White House" ></a></td> <!--../templates/nocnn1.html-->
 {% endblock postimage %}
 
 
