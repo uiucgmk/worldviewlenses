@@ -13,7 +13,12 @@ It's official: Clinton swamps Trump in popular vote-->
 {% block postimage %}
 <td width="40%" rowspan="2"><a href="nocnn2" target="_blank"><img src="../static/images/post2.png"  width="100%" height="100%" alt="Trump claims fraud cost him popular vote" ></a></td> <!--../templates/nocnn2.html-->
 {% endblock postimage %}
-
+{% block postsurvey %}
+  <button type="button" onclick="popup('w',2)">Post Survey</button></span>
+{% endblock postsurvey %}
+{% block commentsurvey %}
+  <button type="button" onclick="popup_comment('w',2)">Comment Survey</button></span>
+{% endblock commentsurvey %}
 
 {% block content %}
 <form>

@@ -23,6 +23,9 @@
 <script type="text/javascript" src="../static/js/share.js"></script>
 <script type="text/javascript" src="../static/js/reply.js"></script>
 <script type="text/javascript" src="../static/js/readmore.js"></script>
+
+<script type="text/javascript" src="../static/js/postsurvey.js"></script>
+<script type="text/javascript" src="../static/js/commentsurvey.js"></script>
 <!-- Libraries -->
 <!--The following script tag downloads a font from the Adobe Edge Web Fonts server for use within the web page. We recommend that you do not modify it. (DREAMWEAVER DEFAULT)-->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
@@ -345,7 +348,7 @@ a.commentsharebutton:hover {text-decoration:underline; color:#ddd;}
 </style>
 
 <!--Checkbox-->
-<script>
+<!-- <script>
 function myFunction() {
     var x = document.getElementById("Check");
     x.checked = true;
@@ -357,7 +360,7 @@ function popup(){
   cuteLittleWindow = window.open("https://goo.gl/forms/IGkiVFpYqP98tPdo2", "littleWindow", "location=no,width=760,height=500");
 }
 
-</script>
+</script> -->
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -468,7 +471,10 @@ function popup(){
               <!--/section-->
 
           </td>
-          <td><a href="javascript:popup()"><ul class="sharebutton">Share on Facebook</ul></a></td>
+          <td>
+
+      {% block postsurvey %}
+      {% endblock postsurvey %}
         </tr>
       </table>
 
@@ -528,6 +534,8 @@ function popup(){
   <footer>
 <hr color="#9BC1BC">
     <button type="button" onclick='storeChecked_and_reaction()' >Submit</button>
+        {% block commentsurvey %}
+        {% endblock commentsurvey %}
     <p id="result"></p>
     <script>
 

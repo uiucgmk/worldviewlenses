@@ -14,7 +14,12 @@ Ivanka Trump meeting with Al Gore on climate change  -->
 {% block postimage %}
 <td width="40%" rowspan="2"><a href="nocnn5" target="_blank"><img src="../static/images/post5.png"  width="100%" height="100%" alt="" ></a></td> <!--../templates/nocnn4.html-->
 {% endblock postimage %}
-
+{% block postsurvey %}
+  <button type="button" onclick="popup('w',5)">Post Survey</button></span>
+{% endblock postsurvey %}
+{% block commentsurvey %}
+  <button type="button" onclick="popup_comment('w',5)">Comment Survey</button></span>
+{% endblock commentsurvey %}
 
 {% block content %}
 <form>
