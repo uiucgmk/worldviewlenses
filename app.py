@@ -228,7 +228,7 @@ def article5():
 	username = session['username']
 	session['post'] = 5
 	dic={}
-	f=open("static/article/NEW_4.txt","r")
+	f=open("static/article/NEW_final_out_15704546335_10155095856676336.txt","r")
 	for line in f.readlines():
 		arr=eval(line)
 		#print arr[0]
@@ -238,7 +238,7 @@ def article5():
 			dic[arr[0]]=[arr[1:]]
 
 	#replies
-	f_reply=open("static/article/2_replies_to_comment_5550296508_10155699096601509.txt","r")
+	f_reply=open("static/article/2_replies_to_comment_15704546335_10155095856676336.txt","r")
 	arr=[]
 	dic2={}
 	for line in f_reply.readlines():
@@ -399,7 +399,7 @@ def carticle5():
 	session['post'] = 5
 	username = session['username']
 	dic={}
-	f=open("static/article/NEW_final_out_10155699096601509.txt","r")
+	f=open("static/article/NEW_final_out_15704546335_10155095856676336.txt","r")
 	for line in f.readlines():
 		arr=eval(line)
 		if not dic.has_key(arr[3]):
@@ -408,7 +408,7 @@ def carticle5():
 			dic[arr[3]].append(arr[0])
 
 	#replies
-	f_reply=open("static/article/2_replies_to_comment_5550296508_10155699096601509.txt","r")
+	f_reply=open("static/article/2_replies_to_comment_15704546335_10155095856676336.txt","r")
 	arr=[]
 	dic2={}
 	for line in f_reply.readlines():
