@@ -222,6 +222,55 @@ def article4():
 
 	return render_template('article4.html',user=username,dic=dic,replydic=dic2)
 
+
+@app.route('/article5', methods=['GET', 'POST'])
+def article5():
+	username = session['username']
+	session['post'] = 5
+	dic={}
+	f=open("static/article/NEW_4.txt","r")
+	for line in f.readlines():
+		arr=eval(line)
+		#print arr[0]
+		if dic.has_key(arr[0]):
+			dic[arr[0]].append(arr[1:])
+		else:
+			dic[arr[0]]=[arr[1:]]
+
+	#replies
+	f_reply=open("static/article/2_replies_to_comment_5550296508_10155699096601509.txt","r")
+	arr=[]
+	dic2={}
+	for line in f_reply.readlines():
+		arr=eval(line)
+		arr[5]=arr[5].replace("'","")
+		arr[5]=arr[5].replace('"','')
+
+		if dic2.has_key(arr[0]):
+			dic2[arr[0]].append(arr[5])
+		else:
+			dic2[arr[0]]=[arr[5]]
+
+
+	return render_template('article5.html',user=username,dic=dic,replydic=dic2)
+
+@app.route('/nocnn', methods=['GET', 'POST'])
+def nocnn():
+	return render_template('nocnn.html')
+@app.route('/nocnn2', methods=['GET', 'POST'])
+def nocnn2():
+	return render_template('nocnn2.html')
+@app.route('/nocnn3', methods=['GET', 'POST'])
+def nocnn3():
+	return render_template('nocnn3.html')
+@app.route('/nocnn4', methods=['GET', 'POST'])
+def nocnn4():
+	return render_template('nocnn4.html')
+@app.route('/nocnn5', methods=['GET', 'POST'])
+def nocnn5():
+	return render_template('nocnn5.html')
+
+
 @app.route('/carticle1', methods=['GET', 'POST'])
 def carticle1():
 	session['post'] = 1
@@ -345,7 +394,34 @@ def carticle4():
 	return render_template('carticle4.html',user=username,dic=dic,replydic=dic2)
 
 
+@app.route('/carticle5', methods=['GET', 'POST'])
+def carticle5():
+	session['post'] = 5
+	username = session['username']
+	dic={}
+	f=open("static/article/NEW_final_out_10155699096601509.txt","r")
+	for line in f.readlines():
+		arr=eval(line)
+		if not dic.has_key(arr[3]):
+			dic[arr[3]]=[arr[2],arr[1],arr[0]]
+		else:
+			dic[arr[3]].append(arr[0])
 
+	#replies
+	f_reply=open("static/article/2_replies_to_comment_5550296508_10155699096601509.txt","r")
+	arr=[]
+	dic2={}
+	for line in f_reply.readlines():
+		arr=eval(line)
+		arr[5]=arr[5].replace("'","")
+		arr[5]=arr[5].replace('"','')
+
+		if dic2.has_key(arr[0]):
+			dic2[arr[0]].append(arr[5])
+		else:
+			dic2[arr[0]]=[arr[5]]
+
+	return render_template('carticle5.html',user=username,dic=dic,replydic=dic2)
 
 
 

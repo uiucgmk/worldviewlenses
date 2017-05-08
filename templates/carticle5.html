@@ -5,14 +5,15 @@
   src="http://viralpatel.net/blogs/demo/jquery/jquery.shorten.1.0.js"></script>
 
 {% block title %}
-It's official: Clinton swamps Trump in popular vote
+<!-- Ivanka Trump meeting with Al Gore on climate change -->
 {% endblock title %}
 {% block post %}
-<h3>More Americans voted for Hillary Clinton than any other losing presidential candidate in US history</h3>
-<h4>Clinton outpaced Trump by almost 2.9 million votes. She lost the Electoral College, however.</h4>
+<h3>German Chancellor Angela Merkel is stepping up efforts to speed up deportations of rejected asylum seekers after a terror attack in Berlin last year cast a sharp light on the potential risks of letting failed refugees remain in the country. What do you think of the move?</h3>
+<!--summary of the news article-->
+<h4> The chancellor Thursday called on the country's 16 federal states to back fresh measures expediting deportations.</h4>
 {% endblock post %}
 {% block postimage %}
-<td width="40%" rowspan="2"><a href="nocnn2" target="_blank"><img src="../static/images/post2.png"  width="100%" height="100%" alt="Trump claims fraud cost him popular vote" ></a></td>
+<td width="40%" rowspan="2"><a href="nocnn5" target="_blank"><img src="../static/images/post5.png"  width="100%" height="100%" alt="" ></a></td>
 {% endblock postimage %}
 
 {% block content %}
@@ -41,7 +42,7 @@ It's official: Clinton swamps Trump in popular vote
                            <td class="newstd" height="20" width="100%">
                                 <input type="checkbox" id="{{list[0]}}" value="{{list[1]}}">
 
-                                
+
 
                                <!--{% set shareid=list[0]+"\t\t"+list[1].replace("'","") %}-->
                                {% set shareid=dic[list][2:]|join('/')+"\t\t"+dic[list][1]+"\t\t"+dic[list][0].replace("'", "") %}
@@ -66,7 +67,7 @@ It's official: Clinton swamps Trump in popular vote
                                  $(this).closest('.wrapper').find('.smallgmk, .biggmk').toggleClass('smallgmk biggmk');
                                });
                              </script>
-
+                               
                                <button type="button" class="commentsharebutton" onclick="shareFunction('{{shareid}}')">Share</button>
 
                               <button type="button" class="commentreplybutton" onclick="replyFunction('{{shareid}}')">Reply</button>
