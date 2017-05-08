@@ -41,7 +41,7 @@ It's official: Clinton swamps Trump in popular vote-->
 
                             <tr height="20">
 
-                              <td class="newstd" height="20" ><input type="checkbox" id="positive" value="{{list[1]}}" name="{{aspect}}">
+                              <td class="newstd" height="20" ><!-- <input type="checkbox" id="positive" value="{{list[1]}}" name="{{aspect}}"> -->
 
 
 
@@ -113,7 +113,7 @@ It's official: Clinton swamps Trump in popular vote-->
                           {% for list in dic[aspect] %}
                               {% if list[0]=='negative' %}
                             <tr height="20">
-                              <td class="newstd" height="20" ><input type="checkbox" id="negative" value="{{list[1]}}" name="{{aspect}}">
+                              <td class="newstd" height="20" ><!-- <input type="checkbox" id="negative" value="{{list[1]}}" name="{{aspect}}"> -->
                               
                                {% set shareid=aspect+"\t\tnegative\t\t"+list[1] %}
                                {% set readmoreid="negative\t\t"+aspect+"\t\t"+list[1].replace("'", "") %}
