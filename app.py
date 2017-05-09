@@ -228,7 +228,7 @@ def article5():
 	username = session['username']
 	session['post'] = 5
 	dic={}
-	f=open("static/article/NEW_final_out_15704546335_10155095856676336.txt","r")
+	f=open("static/article/NEW_5.txt","r")
 	for line in f.readlines():
 		arr=eval(line)
 		#print arr[0]
@@ -280,7 +280,7 @@ def carticle1():
 	# return render_template('carticle1.html',user=username,dic=dic)
 
 	dic={}
-	f=open("static/article/NEW_final_out_10155584306476509.txt","r")
+	f=open("static/article/C_NEW_1.txt","r")
 	for line in f.readlines():
 		arr=eval(line)
 		if not dic.has_key(arr[3]):
@@ -311,7 +311,7 @@ def carticle2():
 	session['post'] = 2
 	username = session['username']
 	dic={}
-	f=open("static/article/NEW_final_out_10155792006356509.txt","r")
+	f=open("static/article/C_NEW_2.txt","r")
 	for line in f.readlines():
 		arr=eval(line)
 		if not dic.has_key(arr[3]):
@@ -340,7 +340,7 @@ def carticle3():
 	session['post'] = 3
 	username = session['username']
 	dic={}
-	f=open("static/article/NEW_final_out_10155749891186509.txt","r")
+	f=open("static/article/C_NEW_3.txt","r")
 	for line in f.readlines():
 		arr=eval(line)
 		if not dic.has_key(arr[3]):
@@ -369,7 +369,7 @@ def carticle4():
 	session['post'] = 4
 	username = session['username']
 	dic={}
-	f=open("static/article/NEW_final_out_10155699096601509.txt","r")
+	f=open("static/article/C_NEW_4.txt","r")
 	for line in f.readlines():
 		arr=eval(line)
 		if not dic.has_key(arr[3]):
@@ -399,7 +399,7 @@ def carticle5():
 	session['post'] = 5
 	username = session['username']
 	dic={}
-	f=open("static/article/NEW_final_out_15704546335_10155095856676336.txt","r")
+	f=open("static/article/C_NEW_5.txt","r")
 	for line in f.readlines():
 		arr=eval(line)
 		if not dic.has_key(arr[3]):
