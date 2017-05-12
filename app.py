@@ -56,8 +56,8 @@ def run_sql(sql):
 @app.route("/",methods=['GET', 'POST'])
 def login():
 
-#create table user_info ( Username VARCHAR(255) NOT NULL, Password VARCHAR(255) NOT NULL, Interface VARCHAR(255), Post1 int, Post2 int, Post3 int, Post4 int);
-#create table user_info_control ( Username VARCHAR(255) NOT NULL, Password VARCHAR(255) NOT NULL, Interface VARCHAR(255), Post1 int, Post2 int, Post3 int, Post4 int);
+#create table user_info_new ( Username VARCHAR(255) NOT NULL, Password VARCHAR(255) NOT NULL, Interface VARCHAR(255), Post3 int, Post5 int);
+#create table user_info_control_new ( Username VARCHAR(255) NOT NULL, Password VARCHAR(255) NOT NULL, Interface VARCHAR(255), Post3 int,Post5 int);
 
 
 	if request.method == 'POST':
@@ -70,9 +70,9 @@ def login():
 		session['selection'] = selection
 		#sql= "INSERT INTO users (Username,Password, Happy, Love, Surprise, Cry,Angry) VALUES ('"+username+"','"+password+"', 0,0,0,0,0);"
 		if selection == 'worldviewlenses':
-			sql= "INSERT INTO user_info (Username,Password,Interface,Post1, Post2, Post3, Post4 ) VALUES ('"+username+"','"+password+"', 'worldviewlenses',0,0,0,0);"
+			sql= "INSERT INTO user_info_new (Username,Password,Interface,Post3, Post5 ) VALUES ('"+username+"','"+password+"', 'worldviewlenses',0,0);"
 		elif selection == 'control':
-			sql= "INSERT INTO user_info_control (Username,Password,Interface,Post1, Post2, Post3, Post4 ) VALUES ('"+username+"','"+password+"', 'control',0,0,0,0);"
+			sql= "INSERT INTO user_info_control_new (Username,Password,Interface,Post3, Post5 ) VALUES ('"+username+"','"+password+"', 'control',0,0);"
 
 		print sql
 		run_sql(sql)
@@ -496,7 +496,7 @@ def checkeditems():
 		run_sql(sql)
 
 		#update the worked post 0-->1
-		sql= "UPDATE user_info SET Post"+str(post)+"= 1 WHERE Username='"+username+"';"
+		sql= "UPDATE user_info_new SET Post"+str(post)+"= 1 WHERE Username='"+username+"';"
 		run_sql(sql)
 
 		return 'OK'
@@ -543,7 +543,7 @@ def checkeditems_control():
 		run_sql(sql)
 
 		#update the worked post 0-->1
-		sql= "UPDATE user_info_control SET Post"+str(post)+"= 1 WHERE Username='"+username+"';"
+		sql= "UPDATE user_info_control_new SET Post"+str(post)+"= 1 WHERE Username='"+username+"';"
 		run_sql(sql)
 
 		return 'OK'
