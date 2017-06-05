@@ -1,5 +1,14 @@
 function popup_comment(interface,post){
-  var link="https://goo.gl/forms/vrqxPzOCBcT94QPz2";
+  
+
+  var link="";
+  if (post=="3"){
+  link="https://goo.gl/forms/Zg9nG0XfY7XVRjiM2";
+ }else{ //post==5
+  link="https://goo.gl/forms/Zx7DbfFyjgWiJrMZ2";
+ }
+
+  //var link="https://goo.gl/forms/vrqxPzOCBcT94QPz2";
 /*if (interface=="w" && post=="1"){
   link="https://goo.gl/forms/IGkiVFpYqP98tPdo2";
  }

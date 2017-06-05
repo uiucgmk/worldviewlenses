@@ -1,5 +1,13 @@
 function popup(interface,post){
-  var link="https://goo.gl/forms/MCBNHeGsa2HTjaP63";
+  var link="";
+  if (post=="3"){
+  link="https://goo.gl/forms/Rvs7hih9fNXyiPzt2";
+ }else{ //post==5
+  link="https://goo.gl/forms/ZU3GLrcNAEa7aMax2";
+ }
+
+
+ //var link="https://goo.gl/forms/MCBNHeGsa2HTjaP63";
 /*if (interface=="w" && post=="1"){
   link="https://goo.gl/forms/IGkiVFpYqP98tPdo2";
  }
