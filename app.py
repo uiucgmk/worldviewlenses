@@ -12,7 +12,7 @@ import sys
 import urlparse
 import psycopg2
 import json
-
+from collections import OrderedDict
 reload(sys)
 sys.setdefaultencoding("utf-8")
 # try:
@@ -166,7 +166,7 @@ def article3():
 	username = session['username']
 	session['post'] = 3
 	dic={}
-	f=open("static/article/NEW_3.txt","r")
+	f=open("static/article/NEW_NEW_3.txt","r")
 	for line in f.readlines():
 		arr=eval(line)
 		if dic.has_key(arr[0]):
@@ -228,7 +228,7 @@ def article5():
 	username = session['username']
 	session['post'] = 5
 	dic={}
-	f=open("static/article/NEW_5.txt","r")
+	f=open("static/article/NEW_NEW_5.txt","r")
 	for line in f.readlines():
 		arr=eval(line)
 		#print arr[0]
@@ -339,15 +339,24 @@ def carticle2():
 def carticle3():
 	session['post'] = 3
 	username = session['username']
-	dic={}
-	f=open("static/article/C_NEW_3.txt","r")
+	# dic={}
+	# #f=open("static/article/C_NEW_3.txt","r")
+	# f=open("static/article/NEW_NEW_3.txt","r")
+	# for line in f.readlines():
+	# 	arr=eval(line)
+	# 	if not dic.has_key(arr[3]):
+	# 		dic[arr[3]]=[arr[2],arr[1],arr[0]]
+	# 	else:
+	# 		dic[arr[3]].append(arr[0])
+###########################
+	dic=OrderedDict()
+	f=open("static/article/ordered_comments_post_3.txt","r")
 	for line in f.readlines():
 		arr=eval(line)
-		if not dic.has_key(arr[3]):
-			dic[arr[3]]=[arr[2],arr[1],arr[0]]
-		else:
-			dic[arr[3]].append(arr[0])
+		dic[arr[3]]=[arr[0],arr[1],arr[2]]
 
+
+################
 	#replies
 	f_reply=open("static/article/2_replies_to_comment_5550296508_10155749891186509.txt","r")
 	arr=[]
@@ -398,14 +407,26 @@ def carticle4():
 def carticle5():
 	session['post'] = 5
 	username = session['username']
-	dic={}
-	f=open("static/article/C_NEW_5.txt","r")
+	#dic={}
+
+#	f=open("static/article/C_NEW_5.txt","r")
+	# f=open("static/article/NEW_NEW_5.txt","r")
+	# for line in f.readlines():
+	# 	arr=eval(line)
+	# 	if not dic.has_key(arr[3]):
+	# 		dic[arr[3]]=[arr[2],arr[1],arr[0]]
+	# 	else:
+	# 		dic[arr[3]].append(arr[0])
+
+###########################
+	dic=OrderedDict()
+	f=open("static/article/ordered_comments_post_5.txt","r")
 	for line in f.readlines():
 		arr=eval(line)
-		if not dic.has_key(arr[3]):
-			dic[arr[3]]=[arr[2],arr[1],arr[0]]
-		else:
-			dic[arr[3]].append(arr[0])
+		dic[arr[3]]=[arr[0],arr[1],arr[2]]
+
+
+################
 
 	#replies
 	f_reply=open("static/article/2_replies_to_comment_15704546335_10155095856676336.txt","r")
