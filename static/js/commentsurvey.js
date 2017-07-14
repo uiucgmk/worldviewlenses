@@ -3,9 +3,11 @@ function popup_comment(interface,post){
 
   var link="";
   if (post=="3"){
-  link="https://goo.gl/forms/Zg9nG0XfY7XVRjiM2";
+//  link="https://goo.gl/forms/Zg9nG0XfY7XVRjiM2";
+  link="https://goo.gl/forms/fgWD0oipEdjjCUN63";
  }else{ //post==5
-  link="https://goo.gl/forms/Zx7DbfFyjgWiJrMZ2";
+ // link="https://goo.gl/forms/Zx7DbfFyjgWiJrMZ2";
+  link="https://goo.gl/forms/pElQcZBGmUadGwTj1";
  }
 
   //var link="https://goo.gl/forms/vrqxPzOCBcT94QPz2";
