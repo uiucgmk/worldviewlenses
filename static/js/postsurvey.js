@@ -2,11 +2,11 @@ function popup(interface,post){
   var link="";
   if (post=="3"){
   //link="https://goo.gl/forms/Rvs7hih9fNXyiPzt2";
-  link="https://goo.gl/forms/egYUXNVNZ0aNIDi82";
+  link="https://goo.gl/forms/VSzRDTpiIcD7LFZo2";
 
  }else{ //post==5
   //link="https://goo.gl/forms/ZU3GLrcNAEa7aMax2";
-  link="https://goo.gl/forms/yNj4jVLGdHSGiMcC2";
+  link="https://goo.gl/forms/IbUaROWnQ68QCUSr2";
  }
 
 

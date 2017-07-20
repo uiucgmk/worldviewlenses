@@ -4,10 +4,10 @@ function popup_comment(interface,post){
   var link="";
   if (post=="3"){
 //  link="https://goo.gl/forms/Zg9nG0XfY7XVRjiM2";
-  link="https://goo.gl/forms/IvNRGFQUWIasIYvE2";
+  link="https://goo.gl/forms/wxjWZ1VMoeNTnNot1";
  }else{ //post==5
  // link="https://goo.gl/forms/Zx7DbfFyjgWiJrMZ2";
-  link="https://goo.gl/forms/k5dAAcM67MY82uj73";
+  link="https://goo.gl/forms/cNKitThXeqcO1brK2";
  }
 
   //var link="https://goo.gl/forms/vrqxPzOCBcT94QPz2";
