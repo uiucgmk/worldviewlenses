@@ -1,25 +1,25 @@
-{% extends './cbase.html' %}
+{% extends './cbase_AMT.html' %}
 
 <!doctype html>
 <script type="text/javascript"
   src="http://viralpatel.net/blogs/demo/jquery/jquery.shorten.1.0.js"></script>
 
 {% block title %}
-<!-- Ivanka Trump meeting with Al Gore on climate change -->
+Ohio governor vetoes 'heartbeat' abortion bill
 {% endblock title %}
 {% block post %}
-<h3>German Chancellor Angela Merkel is stepping up efforts to speed up deportations of rejected asylum seekers after a terror attack in Berlin last year cast a sharp light on the potential risks of letting failed refugees remain in the country. What do you think of the move?</h3>
+<h2> <- click the picture</h2>
+
+<h3>Ohio Gov. John Kasich vetoes measure that would have banned abortions after a fetal heartbeat is detected, but signs a bill outlawing abortions after 20 weeks.</h3>
 <!--summary of the news article-->
-<h4> The chancellor Thursday called on the country's 16 federal states to back fresh measures expediting deportations.</h4>
+<h4>While vetoing "heartbeat bill" Ohio governor signs bill that outlaws abortion after 20 weeks. His approval of 20-week bill makes Ohio one of the strictest states for abortion.</h4>
 {% endblock post %}
 {% block postimage %}
-<td width="40%" rowspan="2"><a href="nocnn5" target="_blank"><img src="../static/images/post5.png"  width="100%" height="100%" alt="" ></a></td>
+<td width="40%" rowspan="2"><a href="nocnn3" target="_blank"><img src="../static/images/post3.png"  width="100%" height="100%" alt="Ohio governor bans abortions after 20 weeks while vetoing heartbeat bill" ></a></td>
 {% endblock postimage %}
 {% block postsurvey %}
-  <button type="button" onclick="popup('c',5)">Post Survey</button></span>
 {% endblock postsurvey %}
 {% block commentsurvey %}
-  <button type="button" onclick="popup_comment('c',5)">Comment Survey</button></span>
 {% endblock commentsurvey %}
 {% block content %}
 <form>
@@ -45,7 +45,7 @@
 
 
                            <td class="newstd" height="20" width="100%">
-                               <!--  <input type="checkbox" id="{{list[0]}}" value="{{list[1]}}"> -->
+                                <!-- <input type="checkbox" id="{{list[0]}}" value="{{list[1]}}"> -->
 
 
 
@@ -84,7 +84,7 @@
 
                                      <ul class="square">
                                       {% if replydic[list]|length > 1 %}
-                                      {% set replies= replydic[list][0:10] %}
+                                      {% set replies=replydic[list][0:10] %}
                                       {% else %}
                                       {% set replies=replydic[list] %}
                                       {% endif %}

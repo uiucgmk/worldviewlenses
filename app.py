@@ -13,6 +13,7 @@ import urlparse
 import psycopg2
 import json
 from collections import OrderedDict
+import random
 reload(sys)
 sys.setdefaultencoding("utf-8")
 # try:
@@ -80,7 +81,8 @@ def login():
 			return redirect(url_for('index'))
 		if selection == 'control':
 			return redirect(url_for('cindex'))
-	return render_template('login.html')
+	#####FOR AMT: later replace with login.html (change:this one, 2 carticle.html)
+	return render_template('login_AMT.html')
 
 @app.route('/index', methods=['GET', 'POST'])
 def index():
@@ -92,81 +94,72 @@ def cindex():
 	username = session['username']
 	return render_template('cindex.html')
 
-@app.route('/article1', methods=['GET', 'POST'])
-def article1():
-	session['post'] = 1
-	username = session['username']
-	dic={}
-	f=open("static/article/NEW_1.txt","r")
-	for line in f.readlines():
-		arr=eval(line)
-		if dic.has_key(arr[0]):
-			dic[arr[0]].append(arr[1:])
-		else:
-			dic[arr[0]]=[arr[1:]]
+# @app.route('/article1', methods=['GET', 'POST'])
+# def article1():
+# 	session['post'] = 1
+# 	username = session['username']
+# 	dic={}
+# 	f=open("static/article/NEW_1.txt","r")
+# 	for line in f.readlines():
+# 		arr=eval(line)
+# 		if dic.has_key(arr[0]):
+# 			dic[arr[0]].append(arr[1:])
+# 		else:
+# 			dic[arr[0]]=[arr[1:]]
 
-#<<<<<<< HEAD
-#    return render_template('article1.html',user=username,dic=dic)
-#=======
-	#replies
-	f_reply=open("static/article/2_replies_to_comment_5550296508_10155584306476509.txt","r")
-	arr=[]
-	dic2={}
-	for line in f_reply.readlines():
-		arr=eval(line)
-		arr[5]=arr[5].replace("'","")
-		arr[5]=arr[5].replace('"','')
 
-		if dic2.has_key(arr[0]):
-			dic2[arr[0]].append(arr[5])
-		else:
-			dic2[arr[0]]=[arr[5]]
+# 	f_reply=open("static/article/2_replies_to_comment_5550296508_10155584306476509.txt","r")
+# 	arr=[]
+# 	dic2={}
+# 	for line in f_reply.readlines():
+# 		arr=eval(line)
+# 		arr[5]=arr[5].replace("'","")
+# 		arr[5]=arr[5].replace('"','')
 
-	return render_template('article1.html',user=username,dic=dic,replydic=dic2)
-#>>>>>>> dev
+# 		if dic2.has_key(arr[0]):
+# 			dic2[arr[0]].append(arr[5])
+# 		else:
+# 			dic2[arr[0]]=[arr[5]]
 
-@app.route('/article2', methods=['GET', 'POST'])
-def article2():
-	username = session['username']
-	session['post'] = 2
-	dic={}
-	f=open("static/article/NEW_2.txt","r")
-	for line in f.readlines():
-		arr=eval(line)
-		if dic.has_key(arr[0]):
-			dic[arr[0]].append(arr[1:])
-		else:
-			dic[arr[0]]=[arr[1:]]
-#<<<<<<< HEAD
+# 	return render_template('article1.html',user=username,dic=dic,replydic=dic2)
 
-#    return render_template('article2.html',user=username,dic=dic)
-#=======
-#>>>>>>> dev
 
-	#replies
-	f_reply=open("static/article/2_replies_to_comment_5550296508_10155792006356509.txt","r")
-	arr=[]
-	dic2={}
-	for line in f_reply.readlines():
-		arr=eval(line)
-		arr[5]=arr[5].replace("'","")
-		arr[5]=arr[5].replace('"','')
+# @app.route('/article2', methods=['GET', 'POST'])
+# def article2():
+# 	username = session['username']
+# 	session['post'] = 2
+# 	dic={}
+# 	f=open("static/article/NEW_2.txt","r")
+# 	for line in f.readlines():
+# 		arr=eval(line)
+# 		if dic.has_key(arr[0]):
+# 			dic[arr[0]].append(arr[1:])
+# 		else:
+# 			dic[arr[0]]=[arr[1:]]
 
-		if dic2.has_key(arr[0]):
-			dic2[arr[0]].append(arr[5])
-		else:
-			dic2[arr[0]]=[arr[5]]
+# 	f_reply=open("static/article/2_replies_to_comment_5550296508_10155792006356509.txt","r")
+# 	arr=[]
+# 	dic2={}
+# 	for line in f_reply.readlines():
+# 		arr=eval(line)
+# 		arr[5]=arr[5].replace("'","")
+# 		arr[5]=arr[5].replace('"','')
+
+# 		if dic2.has_key(arr[0]):
+# 			dic2[arr[0]].append(arr[5])
+# 		else:
+# 			dic2[arr[0]]=[arr[5]]
 
 
 
-	return render_template('article2.html',user=username,dic=dic,replydic=dic2)
+# 	return render_template('article2.html',user=username,dic=dic,replydic=dic2)
 
 @app.route('/article3', methods=['GET', 'POST'])
 def article3():
 	username = session['username']
 	session['post'] = 3
 	dic={}
-	f=open("static/article/NEW_NEW_3.txt","r")
+	f=open("static/article/BALANCED_3.txt","r")
 	for line in f.readlines():
 		arr=eval(line)
 		if dic.has_key(arr[0]):
@@ -191,36 +184,36 @@ def article3():
 
 	return render_template('article3.html',user=username,dic=dic,replydic=dic2)
 
-@app.route('/article4', methods=['GET', 'POST'])
-def article4():
-	username = session['username']
-	session['post'] = 4
-	dic={}
-	f=open("static/article/NEW_4.txt","r")
-	for line in f.readlines():
-		arr=eval(line)
-		#print arr[0]
-		if dic.has_key(arr[0]):
-			dic[arr[0]].append(arr[1:])
-		else:
-			dic[arr[0]]=[arr[1:]]
+# @app.route('/article4', methods=['GET', 'POST'])
+# def article4():
+# 	username = session['username']
+# 	session['post'] = 4
+# 	dic={}
+# 	f=open("static/article/NEW_4.txt","r")
+# 	for line in f.readlines():
+# 		arr=eval(line)
+# 		#print arr[0]
+# 		if dic.has_key(arr[0]):
+# 			dic[arr[0]].append(arr[1:])
+# 		else:
+# 			dic[arr[0]]=[arr[1:]]
 
-	#replies
-	f_reply=open("static/article/2_replies_to_comment_5550296508_10155699096601509.txt","r")
-	arr=[]
-	dic2={}
-	for line in f_reply.readlines():
-		arr=eval(line)
-		arr[5]=arr[5].replace("'","")
-		arr[5]=arr[5].replace('"','')
+# 	#replies
+# 	f_reply=open("static/article/2_replies_to_comment_5550296508_10155699096601509.txt","r")
+# 	arr=[]
+# 	dic2={}
+# 	for line in f_reply.readlines():
+# 		arr=eval(line)
+# 		arr[5]=arr[5].replace("'","")
+# 		arr[5]=arr[5].replace('"','')
 
-		if dic2.has_key(arr[0]):
-			dic2[arr[0]].append(arr[5])
-		else:
-			dic2[arr[0]]=[arr[5]]
+# 		if dic2.has_key(arr[0]):
+# 			dic2[arr[0]].append(arr[5])
+# 		else:
+# 			dic2[arr[0]]=[arr[5]]
 
 
-	return render_template('article4.html',user=username,dic=dic,replydic=dic2)
+# 	return render_template('article4.html',user=username,dic=dic,replydic=dic2)
 
 
 @app.route('/article5', methods=['GET', 'POST'])
@@ -228,7 +221,8 @@ def article5():
 	username = session['username']
 	session['post'] = 5
 	dic={}
-	f=open("static/article/NEW_NEW_5.txt","r")
+#	f=open("static/article/NEW_NEW_5.txt","r")
+	f=open("static/article/BALANCED_5.txt","r")
 	for line in f.readlines():
 		arr=eval(line)
 		#print arr[0]
@@ -271,93 +265,100 @@ def nocnn5():
 	return render_template('nocnn5.html')
 
 
-@app.route('/carticle1', methods=['GET', 'POST'])
-def carticle1():
-	session['post'] = 1
-	username = session['username']
-	# dic = pickle.load(open( "./static/article/article1.p", "rb" ))
-	# print dic
-	# return render_template('carticle1.html',user=username,dic=dic)
+# @app.route('/carticle1', methods=['GET', 'POST'])
+# def carticle1():
+# 	session['post'] = 1
+# 	username = session['username']
+# 	# dic = pickle.load(open( "./static/article/article1.p", "rb" ))
+# 	# print dic
+# 	# return render_template('carticle1.html',user=username,dic=dic)
 
-	dic={}
-	f=open("static/article/C_NEW_1.txt","r")
-	for line in f.readlines():
-		arr=eval(line)
-		if not dic.has_key(arr[3]):
-			dic[arr[3]]=[arr[2],arr[1],arr[0]]
-		else:
-			dic[arr[3]].append(arr[0])
+# 	dic={}
+# 	f=open("static/article/C_NEW_1.txt","r")
+# 	for line in f.readlines():
+# 		arr=eval(line)
+# 		if not dic.has_key(arr[3]):
+# 			dic[arr[3]]=[arr[2],arr[1],arr[0]]
+# 		else:
+# 			dic[arr[3]].append(arr[0])
 
-	#replies
-	f_reply=open("static/article/2_replies_to_comment_5550296508_10155584306476509.txt","r")
-	arr=[]
-	dic2={}
-	for line in f_reply.readlines():
-		arr=eval(line)
-		arr[5]=arr[5].replace("'","")
-		arr[5]=arr[5].replace('"','')
+# 	#replies
+# 	f_reply=open("static/article/2_replies_to_comment_5550296508_10155584306476509.txt","r")
+# 	arr=[]
+# 	dic2={}
+# 	for line in f_reply.readlines():
+# 		arr=eval(line)
+# 		arr[5]=arr[5].replace("'","")
+# 		arr[5]=arr[5].replace('"','')
 
-		if dic2.has_key(arr[0]):
-			dic2[arr[0]].append(arr[5])
-		else:
-			dic2[arr[0]]=[arr[5]]
+# 		if dic2.has_key(arr[0]):
+# 			dic2[arr[0]].append(arr[5])
+# 		else:
+# 			dic2[arr[0]]=[arr[5]]
 
-	return render_template('carticle1.html',user=username,dic=dic,replydic=dic2)
+# 	return render_template('carticle1.html',user=username,dic=dic,replydic=dic2)
 
 
 
-@app.route('/carticle2', methods=['GET', 'POST'])
-def carticle2():
-	session['post'] = 2
-	username = session['username']
-	dic={}
-	f=open("static/article/C_NEW_2.txt","r")
-	for line in f.readlines():
-		arr=eval(line)
-		if not dic.has_key(arr[3]):
-			dic[arr[3]]=[arr[2],arr[1],arr[0]]
-		else:
-			dic[arr[3]].append(arr[0])
+# @app.route('/carticle2', methods=['GET', 'POST'])
+# def carticle2():
+# 	session['post'] = 2
+# 	username = session['username']
+# 	dic={}
+# 	f=open("static/article/C_NEW_2.txt","r")
+# 	for line in f.readlines():
+# 		arr=eval(line)
+# 		if not dic.has_key(arr[3]):
+# 			dic[arr[3]]=[arr[2],arr[1],arr[0]]
+# 		else:
+# 			dic[arr[3]].append(arr[0])
 
-	#replies
-	f_reply=open("static/article/2_replies_to_comment_5550296508_10155792006356509.txt","r")
-	arr=[]
-	dic2={}
-	for line in f_reply.readlines():
-		arr=eval(line)
-		arr[5]=arr[5].replace("'","")
-		arr[5]=arr[5].replace('"','')
+# 	#replies
+# 	f_reply=open("static/article/2_replies_to_comment_5550296508_10155792006356509.txt","r")
+# 	arr=[]
+# 	dic2={}
+# 	for line in f_reply.readlines():
+# 		arr=eval(line)
+# 		arr[5]=arr[5].replace("'","")
+# 		arr[5]=arr[5].replace('"','')
 
-		if dic2.has_key(arr[0]):
-			dic2[arr[0]].append(arr[5])
-		else:
-			dic2[arr[0]]=[arr[5]]
+# 		if dic2.has_key(arr[0]):
+# 			dic2[arr[0]].append(arr[5])
+# 		else:
+# 			dic2[arr[0]]=[arr[5]]
 
-	return render_template('carticle2.html',user=username,dic=dic,replydic=dic2)
+# 	return render_template('carticle2.html',user=username,dic=dic,replydic=dic2)
 
 @app.route('/carticle3', methods=['GET', 'POST'])
 def carticle3():
 	session['post'] = 3
 	username = session['username']
-	# dic={}
-	# #f=open("static/article/C_NEW_3.txt","r")
-	# f=open("static/article/NEW_NEW_3.txt","r")
-	# for line in f.readlines():
-	# 	arr=eval(line)
-	# 	if not dic.has_key(arr[3]):
-	# 		dic[arr[3]]=[arr[2],arr[1],arr[0]]
-	# 	else:
-	# 		dic[arr[3]].append(arr[0])
-###########################
-	dic=OrderedDict()
-	f=open("static/article/ordered_comments_post_3.txt","r")
+#random:
+	dic={}
+	#f=open("static/article/NEW_NEW_3.txt","r")
+	fw3=open("static/article/BALANCED_C_3.txt","w")
+	f=open("static/article/BALANCED_3.txt","r")
 	for line in f.readlines():
 		arr=eval(line)
-		dic[arr[3]]=[arr[0],arr[1],arr[2]]
+		if not dic.has_key(arr[3]):
+			dic[arr[3]]=[arr[2],arr[1],arr[0]]
+			fw3.write(str([arr[2],arr[1],arr[0],arr[3]])+"\n")
+	fw3.close()
+	keys =  list(dic.keys())
+	random.shuffle(keys)
+	randomdic=OrderedDict()
+	for key in keys:
+		randomdic[key]=dic[key] 
+# ###########################
+# ordered:
+# 	dic=OrderedDict()
+# 	f=open("static/article/ordered_comments_post_3.txt","r")
+# 	for line in f.readlines():
+# 		arr=eval(line)
+# 		dic[arr[3]]=[arr[0],arr[1],arr[2]]
 
+# #######################
 
-################
-	#replies
 	f_reply=open("static/article/2_replies_to_comment_5550296508_10155749891186509.txt","r")
 	arr=[]
 	dic2={}
@@ -371,36 +372,39 @@ def carticle3():
 		else:
 			dic2[arr[0]]=[arr[5]]
 
-	return render_template('carticle3.html',user=username,dic=dic,replydic=dic2)
+	#return render_template('carticle3.html',user=username,dic=dic,replydic=dic2)
+	#####FOR AMT: later replace the upper one 
+	#return render_template('carticle3.html',user=username,dic=randomdic,replydic=dic2)
+	return render_template('carticle3_AMT.html',user=username,dic=randomdic,replydic=dic2)
 
-@app.route('/carticle4', methods=['GET', 'POST'])
-def carticle4():
-	session['post'] = 4
-	username = session['username']
-	dic={}
-	f=open("static/article/C_NEW_4.txt","r")
-	for line in f.readlines():
-		arr=eval(line)
-		if not dic.has_key(arr[3]):
-			dic[arr[3]]=[arr[2],arr[1],arr[0]]
-		else:
-			dic[arr[3]].append(arr[0])
+# @app.route('/carticle4', methods=['GET', 'POST'])
+# def carticle4():
+# 	session['post'] = 4
+# 	username = session['username']
+# 	dic={}
+# 	f=open("static/article/C_NEW_4.txt","r")
+# 	for line in f.readlines():
+# 		arr=eval(line)
+# 		if not dic.has_key(arr[3]):
+# 			dic[arr[3]]=[arr[2],arr[1],arr[0]]
+# 		else:
+# 			dic[arr[3]].append(arr[0])
 
-	#replies
-	f_reply=open("static/article/2_replies_to_comment_5550296508_10155699096601509.txt","r")
-	arr=[]
-	dic2={}
-	for line in f_reply.readlines():
-		arr=eval(line)
-		arr[5]=arr[5].replace("'","")
-		arr[5]=arr[5].replace('"','')
+# 	#replies
+# 	f_reply=open("static/article/2_replies_to_comment_5550296508_10155699096601509.txt","r")
+# 	arr=[]
+# 	dic2={}
+# 	for line in f_reply.readlines():
+# 		arr=eval(line)
+# 		arr[5]=arr[5].replace("'","")
+# 		arr[5]=arr[5].replace('"','')
 
-		if dic2.has_key(arr[0]):
-			dic2[arr[0]].append(arr[5])
-		else:
-			dic2[arr[0]]=[arr[5]]
+# 		if dic2.has_key(arr[0]):
+# 			dic2[arr[0]].append(arr[5])
+# 		else:
+# 			dic2[arr[0]]=[arr[5]]
 
-	return render_template('carticle4.html',user=username,dic=dic,replydic=dic2)
+# 	return render_template('carticle4.html',user=username,dic=dic,replydic=dic2)
 
 
 @app.route('/carticle5', methods=['GET', 'POST'])
@@ -408,6 +412,8 @@ def carticle5():
 	session['post'] = 5
 	username = session['username']
 	#dic={}
+
+
 
 #	f=open("static/article/C_NEW_5.txt","r")
 	# f=open("static/article/NEW_NEW_5.txt","r")
@@ -418,12 +424,28 @@ def carticle5():
 	# 	else:
 	# 		dic[arr[3]].append(arr[0])
 
-###########################
-	dic=OrderedDict()
-	f=open("static/article/ordered_comments_post_5.txt","r")
+	dic={}
+	#f=open("static/article/NEW_NEW_3.txt","r")
+	fw5=open("static/article/BALANCED_C_5.txt","w")
+	f=open("static/article/BALANCED_5.txt","r")
 	for line in f.readlines():
 		arr=eval(line)
-		dic[arr[3]]=[arr[0],arr[1],arr[2]]
+		if not dic.has_key(arr[3]):
+			dic[arr[3]]=[arr[2],arr[1],arr[0]]
+			fw5.write(str([arr[2],arr[1],arr[0],arr[3]])+"\n")
+	fw5.close()
+	keys =  list(dic.keys())
+	random.shuffle(keys)
+	randomdic=OrderedDict()
+	for key in keys:
+		randomdic[key]=dic[key] 
+
+###########################
+	# dic=OrderedDict()
+	# f=open("static/article/ordered_comments_post_5.txt","r")
+	# for line in f.readlines():
+	# 	arr=eval(line)
+	# 	dic[arr[3]]=[arr[0],arr[1],arr[2]]
 
 
 ################
@@ -442,8 +464,9 @@ def carticle5():
 		else:
 			dic2[arr[0]]=[arr[5]]
 
-	return render_template('carticle5.html',user=username,dic=dic,replydic=dic2)
-
+	#####FOR AMT: later replace the upper one 
+	#return render_template('carticle5.html',user=username,dic=randomdic,replydic=dic2)
+	return render_template('carticle5_AMT.html',user=username,dic=randomdic,replydic=dic2)
 
 
 # @app.route('/carticle2', methods=['GET', 'POST'])
