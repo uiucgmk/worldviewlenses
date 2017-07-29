@@ -158,35 +158,7 @@ a.commentsharebutton:hover {text-decoration:underline; color:#ddd;}
 }
 </style>
 <!--comment function-->
-<script type="text/javascript">
-      $(function() {
-        var saveComment = function(data) {
 
-          // Convert pings to human readable format
-          $(data.pings).each(function(index, id) {
-            var user = usersArray.filter(function(user){return user.id == id})[0];
-            data.content = data.content.replace('@' + id, '@' + user.fullname);
-          });
-
-          return data;
-        }
-        $('#comments-container').comments({
-    /*profilePictureURL: 'https://app.viima.com/../static/media/user_profiles/user-icon.png',
-    getComments: function(success, error) {
-        var commentsArray = [{
-            id: 1,
-            created: '2017-03-06',
-            content: 'TEST',
-            fullname: 'TEST',
-            upvote_count: 1,
-            user_has_upvoted: false
-        }];
-
-        success(commentsArray);
-    }*/
-});;
-      });
-    </script>
 
 
 <style class="cp-pen-styles">body {
@@ -429,13 +401,7 @@ function popup(){
 
 
 
-<hr color="#9BC1BC">
-  <!--Commenting here-->
-   <div id="comments-container">
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-  </div>
-<br>
+
 
   <hr color="#9BC1BC">
    <table class="comments" height: 250px; width="500px" border="0" cellpadding="5" align = "center">
