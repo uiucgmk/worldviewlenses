@@ -50,7 +50,7 @@
 
                                <!--{% set shareid=list[0]+"\t\t"+list[1].replace("'","") %}-->
                                {% set shareid=dic[list][2:]|join('/')+"\t\t"+dic[list][1]+"\t\t"+dic[list][0][0].replace("'", "") %}
-                               {% set readmoreid=dic[list][1]+"\t\t"+dic[list][2]+"\t\t"+dic[list][0][0].replace("'", "") %}
+                               {% set readmoreid=dic[list][1]+"\t\t"+dic[list][2]+"\t\t"+dic[list][0].replace("'", "") %}
                                <div class="wrapper">
                                  <div class="smallgmk">
                                    {{dic[list][0]}}
