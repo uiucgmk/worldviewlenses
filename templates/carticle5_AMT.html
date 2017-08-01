@@ -72,14 +72,11 @@
                                });
                              </script>
                                
-                               <button type="button" class="commentsharebutton" onclick="shareFunction('{{shareid}}')">Share</button>
-
-                              <button type="button" class="commentreplybutton" onclick="replyFunction('{{shareid}}')">Reply</button>
+                         
                                      <div id="{{shareid}}" style = "display: none">
 
                                      <span><input id="input{{shareid}}" type="text" name="test" size = "60">
-                                     <button type="button" class="subreplybutton" onclick="subreplyFunction('input{{shareid}}')">Submit</button></span>
-
+                                 
 
                                      <ul class="square">
                                       {% if replydic[list]|length > 1 %}

@@ -81,7 +81,7 @@ def login():
 			return redirect(url_for('index'))
 		if selection == 'control':
 			return redirect(url_for('cindex'))
-	#####FOR AMT: later replace with login.html (change:this one, 2 carticle.html)
+	#####FOR AMT: later replace with login.html (change:this one, 4 article.html)
 	return render_template('login_AMT.html')
 
 @app.route('/index', methods=['GET', 'POST'])
@@ -181,8 +181,9 @@ def article3():
 		else:
 			dic2[arr[0]]=[arr[5]]
 
-
-	return render_template('article3.html',user=username,dic=dic,replydic=dic2)
+	#####FOR AMT: later replace the upper one 
+	#return render_template('article3.html',user=username,dic=dic,replydic=dic2)
+	return render_template('article3_AMT.html',user=username,dic=dic,replydic=dic2)
 
 # @app.route('/article4', methods=['GET', 'POST'])
 # def article4():
@@ -245,8 +246,9 @@ def article5():
 		else:
 			dic2[arr[0]]=[arr[5]]
 
-
-	return render_template('article5.html',user=username,dic=dic,replydic=dic2)
+	#####FOR AMT: later replace the upper one 
+	#return render_template('article5.html',user=username,dic=dic,replydic=dic2)
+	return render_template('article5_AMT.html',user=username,dic=dic,replydic=dic2)
 
 @app.route('/nocnn', methods=['GET', 'POST'])
 def nocnn():

@@ -1,0 +1,489 @@
+
+<!doctype html>
+<html lang="en-US">
+ <!--including html files-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+
+<link href="../static/css/articlestyles.css" rel="stylesheet" type="text/css">
+<!--For comment-->
+<link rel="stylesheet" type="text/css" href="../static/css/jquery-comments.css">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Droid+Serif&amp;lang=en" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900&amp;lang=en" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900&amp;lang=en" />
+
+<!-- Data -->
+<script type="text/javascript" src="../static/js/comments-data.js"></script>
+<script type="text/javascript" src="../static/js/reaction.js"></script>
+<script type="text/javascript" src="../static/js/share.js"></script>
+<script type="text/javascript" src="../static/js/reply.js"></script>
+<script type="text/javascript" src="../static/js/readmore.js"></script>
+
+<!-- Libraries -->
+<!--The following script tag downloads a font from the Adobe Edge Web Fonts server for use within the web page. We recommend that you do not modify it. (DREAMWEAVER DEFAULT)-->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.textcomplete/1.8.0/jquery.textcomplete.js"></script>
+<!--For comment-->
+<script type="text/javascript" src="../static/js/jquery-comments.js"></script>
+
+<!--React Imojis-->
+<script src="//production-assets.codepen.io/assets/editor/live/css_live_reload_init-2c0dc5167d60a5af3ee189d570b1835129687ea2a61bee3513dee3a50c115a77.js">
+</script>
+
+<style type="text/css">
+
+ul.square {
+  list-style-type: circle;
+  color: #000080;
+  padding-left: 60px;
+    }
+
+table.bigtable{
+  font-family: "Droid Serif",arial,serif;
+  font-size:15px;
+  line-height: 1.25;
+  width:80%;
+}
+
+iframe {
+    border: none;
+}
+h3{
+  font-size: 30px;
+  font-weight: 900;
+}
+h4{
+  font-size: 18px;
+  font-weight: 400;
+}
+ul{
+  margin-left: -35px;
+}
+.comments {
+  font-family: "Droid Serif",arial,serif;
+  font-size:15px;
+  line-height: 1.25;
+  color:#000;
+  border-width: 1px;
+  border-color: #666666;
+  border-collapse: collapse;
+  border-top: 1px solid #9BC1BC;
+
+}
+th{
+  font-size: 21px;
+  font-weight: bold;
+  text-align: center;
+
+}
+
+/*tr.bigtr:nth-child(even) {
+    background-color: #8F9F88;
+}*/
+tr{border-top: 3px solid #9BC1BC;
+  padding: 20px;
+}
+td{
+}
+td.newstd{border-top: 1px solid #9BC1BC;
+}
+tr.bigtr:{
+  border-top: 1px solid #9BC1BC;
+}
+td.bigtd{
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.sharebutton {
+  cursor: pointer;
+  display: inline-block;
+  padding: 0.3em;
+
+  margin-left: 5px;
+  margin-top: -30px;
+  color: #8F9F88;
+  font-size: 1em;
+  line-height: 1.5;
+  border: 2px solid #8F9F88;
+  border-radius: .1em;
+}
+
+.commentsharebutton {
+    color: #000;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+}
+a.commentsharebutton:link {color:#ddd;text-decoration:underline;}
+a.commentsharebutton:visited {color:#666;text-decoration:underline;}
+a.commentsharebutton:hover {text-decoration:underline; color:#ddd;}
+/*if we need table selection : not too needed now*/
+
+  table.pos {
+  border-width: 0px;
+  border-style: solid;
+  border-color: #666666;
+}
+  table.neg {
+  border-width: 0px;
+  border-color: #666666;
+}
+.smallgmk {
+  height: 20px;
+  overflow:hidden;
+}
+.biggmk   {
+  height: auto;
+}
+</style>
+<!--comment function-->
+
+
+<style class="cp-pen-styles">body {
+  font-family: 'Lato', sans-serif;
+}
+
+.center-div {
+  position: relative;
+  margin: auto;
+  text-align: center;
+  top: -30px;
+  right: 0;
+  bottom: 0;
+  left: -30px;
+  width: 100%;
+  height: auto;
+  border-radius: 3px;
+}
+
+.top-emoji-div {
+  float:left;
+}
+
+.top-emoji {
+  height: 30px;
+  margin: 15px;
+  margin-bottom: 0px;
+}
+
+.top-emoji:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.emoji-count p {
+  text-align: center;
+  font-weight: bold;
+  font-size: 0.9em;
+  padding-top: 5px;
+  color: #fff;
+  font-weight: 400;
+}
+
+.emoji-count {
+  margin-left: 2px;
+  position: relative;
+  background: #2c3e50;
+  width: 65px;
+  height: 28px;
+  border-radius: 7px;
+}
+
+.emoji-count:after,
+.emoji-count:before {
+  bottom: 100%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+}
+
+.emoji-count:after {
+  border-bottom-color: #2c3e50;
+  border-width: 6px;
+  left: 50%;
+  margin-left: -6px;
+}
+
+.add-answer p {
+  float: left;
+  margin-top: 23px;
+  margin-left: 15px;
+  font-size: 1.1em;
+}
+
+.add-answer .button {
+  margin-top: 7px;
+  background-color: #526A80;
+  border-radius: 5px;
+  color: #fff;
+  display: inline-block;
+  font-weight: bold;
+  padding: 5px 22px;
+  font-size: 0.8em;
+  text-decoration: none;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.add-answer .button:hover {
+  background-color: #728CA3;
+}
+
+.add-answer .cancel {
+  background-color: #2C3E50;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.add-answer {
+  margin-left: 15px;
+  background-color: #F0F2F2;
+  height: 80px;
+  width: 380px;
+  border-radius: 10px;
+  float: left;
+  margin-top: 20px;
+}
+
+.add-reaction-div {
+  width: 60px;
+  height: 60px;
+  background-color: #D6D6D6;
+  color: #333;
+  float: left;
+  margin: 10px;
+  border-radius: 10px;
+}
+.clear {
+  clear: both;
+  display: inline-block;
+}
+</style>
+
+<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css'><script src='https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js'></script>
+
+
+<style class="cp-pen-styles">.read-more-state {
+  display: none;
+}
+
+.read-more-target {
+  opacity: 0;
+  max-height: 0;
+  font-size: 0;
+  transition: .25s ease;
+}
+
+.read-more-state:checked ~ .read-more-wrap .read-more-target {
+  opacity: 1;
+  font-size: inherit;
+  max-height: 999em;
+}
+
+.read-more-state ~ .read-more-trigger:before {
+  content: 'Show more';
+}
+
+.read-more-state:checked ~ .read-more-trigger:before {
+  content: 'Show less';
+}
+
+.read-more-trigger {
+  cursor: pointer;
+  display: inline-block;
+  margin-left: 85%;
+  padding: 0 .5em;
+  color: #666;
+  font-size: .9em;
+  line-height: 2;
+  border: 1px solid #ddd;
+  border-radius: .25em;
+}
+#test{
+  background-color: #333;
+}
+
+
+
+</style>
+
+<!--Checkbox-->
+<!-- <script>
+function myFunction() {
+    var x = document.getElementById("Check");
+    x.checked = true;
+}
+</script>
+<script type="text/javascript">
+
+function popup(){
+  cuteLittleWindow = window.open("https://goo.gl/forms/IGkiVFpYqP98tPdo2", "littleWindow", "location=no,width=760,height=500");
+}
+
+</script> -->
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+
+
+
+<body>
+<!-- Main Container -->
+<div class="container" style="text-align:center;" >
+<a href="index"><img src="../static/images/logo_color.png" alt="home" width="100" height="100" margin="0"></a>
+<!--<div class="header">
+<h2 class="title">
+        {% block title %}
+
+        {% endblock title %}
+
+    </h2>
+    </div> -->
+</div>
+<div>
+<!--<div class="container"> -->
+  <!-- Navigation -->
+
+  <!-- news Section -->
+  <section class="news" id="news" style="text-align:left;" >
+  <table class="fixed" width="90%" border="0" cellpadding="5" align="center">
+  <tr>
+    <!--<td width="40%" rowspan="2"><a href="http://cnn.it/2hv6Avo" target="_blank"><img src="../static/images/placeholder.png"  width="100%" height="30%" alt="Obama" ></a></td>-->
+    {% block postimage %}
+    {% endblock postimage %}
+    <td>
+      {% block post %}
+      {% endblock post %}
+     </td>
+  </tr>
+  <tr>
+    <td height = "10%">
+    <table width="100%" border="0" cellpadding="50" align="left">
+  <tbody>
+    <tr>
+      <td>
+
+        <table align="left">
+        <tr>
+        </tr>
+      </table>
+
+
+
+
+
+  </td>
+    </tr>
+  </tbody>
+</table>
+
+    </td>
+  </tr>
+  </table>
+  </section>
+
+
+
+
+
+<hr color="#9BC1BC">
+  <!--Commenting here-->
+   <div id="comments-container" >
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+<br>
+
+
+  <hr color="#9BC1BC">
+
+   <table class="bigtable" width="80%" border="0" cellpadding="5" align="center" bgcolor="#fff" > <!--efeeed-->
+
+    <tbody>
+      <tr class="bigtr" width="80%">
+
+        <th >Keywords</th>
+        <th >Positive</th>
+        <th >Negative</th>
+
+      </tr>
+
+        {% block content %}
+
+        {% endblock content %}
+
+
+    </tbody>
+  </table>
+
+
+
+
+
+  <!-- About Section --><!-- Stats Gallery Section --><!-- Parallax Section --><!-- More Info Section -->
+  <footer>
+<hr color="#9BC1BC">
+    <a href="index">Go back</a>
+        {% block commentsurvey %}
+        {% endblock commentsurvey %}
+    <p id="result"></p>
+    <script>
+
+function storeChecked_and_reaction() {
+    //for checked items
+    var x = document.forms[0];
+    var textappend;
+    var content=[];
+    for (i = 0; i < x.length; i++) {
+        if (x[i].checked) {
+           textappend=x[i].id+"\t\t"+x[i].name+"\t\t"+x[i].value;
+           content.push(textappend);
+
+        }
+    }
+
+    //document.getElementById("result").innerHTML = "You selected : " + content;
+
+    //for reactions
+    var reaction=[];
+    var count=0;
+    var divName;
+    for (id = 1; id < 8; id++) {
+      divName = "emoji-" + id;
+      count = document.getElementById(divName).innerHTML;
+      reaction.push(count);
+    }
+    $.post( "/checkeditems", { 'all_data[]': content, 'reaction_data[]':reaction } );
+
+    alert("Your response is submitted!");
+    //$.post( "/checkeditems", { 'all_data[]': content } );
+    //alert("Your response is submitted!"+reaction);
+}
+    </script>
+
+    {% block footer %}
+    {% endblock footer %}
+    <p></p>
+  </footer>
+</div>
+<!-- Main Container Ends -->
+<!--Script for imoji-->
+<script src="//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script><script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script><script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+</body>
+</html>
