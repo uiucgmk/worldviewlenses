@@ -5,10 +5,10 @@ import pickle
 import ast
 
 #article1 = "/Users/GMK/Documents/Research/Facebook/data/article/NEW_final_out_10155584306476509.txt"
-article2 = "./NEW_final_out_10155699096601509.txt"
-article3 = "./NEW_final_out_10155749891186509.txt"
+#article2 = "./NEW_final_out_10155699096601509.txt"
+article3 = "./final_5550296508_10155749891186509.txt"
 #article4 = "/Users/GMK/Documents/Research/Facebook/data/article/NEW_final_out_10155792006356509.txt"
-article5 = "./NEW_final_out_15704546335_10155095856676336.txt"
+article5 = "./final_15704546335_10155095856676336.txt"
 
 def build_corpus(txtfile,wrtfile):
     f=open(txtfile,"r")
@@ -36,9 +36,10 @@ def build_corpus(txtfile,wrtfile):
                 document = document.replace('&','and')
             docs.append((sentiment,document, ids))
 
-
+        x=x.replace("'","")
         key_list = x.split(',')
-        #print key_list
+
+        print key_list
 
         key_set = list(set([item.lower().strip() for item in key_list]))
 
@@ -78,6 +79,7 @@ def build_corpus(txtfile,wrtfile):
         for doc in new_keys_dic[key]:
             fwrite.write(str([key,doc[0],doc[1],doc[2]])+'\n')
     fwrite.close()
+
 def build_corpus_control(txtfile,wrtfile):
     f=open(txtfile,"r")
     keys_dic = {}
@@ -104,11 +106,14 @@ def build_corpus_control(txtfile,wrtfile):
 if __name__ == "__main__":
     #build_corpus(article1,'NEW_1.txt')
     #build_corpus(article2,'NEW_4.txt')
-    #build_corpus(article3,'NEW_3.txt')
+    build_corpus(article3,'NEW_3.txt')
     #build_corpus(article4,'NEW_2.txt')
     build_corpus(article5,'NEW_5.txt')
+    build_corpus(article3,'BALANCED_3.txt')
+    #build_corpus(article4,'NEW_2.txt')
+    build_corpus(article5,'BALANCED_5.txt')
     # build_corpus_control(article1,'C_NEW_1.txt')
     #build_corpus_control(article2,'C_NEW_4.txt')
-    #build_corpus_control(article3,'C_NEW_3.txt')
+    build_corpus_control(article3,'C_NEW_3.txt')
     #build_corpus_control(article4,'C_NEW_2.txt')
     build_corpus_control(article5,'C_NEW_5.txt')

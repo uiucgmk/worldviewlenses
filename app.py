@@ -82,7 +82,7 @@ def login():
 		if selection == 'control':
 			return redirect(url_for('cindex'))
 	#####FOR AMT: later replace with login.html (change:this one, 4 article.html)
-	return render_template('login_AMT.html')
+	return render_template('login.html')
 
 @app.route('/index', methods=['GET', 'POST'])
 def index():
@@ -183,7 +183,7 @@ def article3():
 
 	#####FOR AMT: later replace the upper one 
 	#return render_template('article3.html',user=username,dic=dic,replydic=dic2)
-	return render_template('article3_AMT.html',user=username,dic=dic,replydic=dic2)
+	return render_template('article3.html',user=username,dic=dic,replydic=dic2)
 
 # @app.route('/article4', methods=['GET', 'POST'])
 # def article4():
@@ -248,7 +248,7 @@ def article5():
 
 	#####FOR AMT: later replace the upper one 
 	#return render_template('article5.html',user=username,dic=dic,replydic=dic2)
-	return render_template('article5_AMT.html',user=username,dic=dic,replydic=dic2)
+	return render_template('article5.html',user=username,dic=dic,replydic=dic2)
 
 @app.route('/nocnn', methods=['GET', 'POST'])
 def nocnn():
@@ -377,7 +377,7 @@ def carticle3():
 	#return render_template('carticle3.html',user=username,dic=dic,replydic=dic2)
 	#####FOR AMT: later replace the upper one 
 	#return render_template('carticle3.html',user=username,dic=randomdic,replydic=dic2)
-	return render_template('carticle3_AMT.html',user=username,dic=randomdic,replydic=dic2)
+	return render_template('carticle3.html',user=username,dic=randomdic,replydic=dic2)
 
 # @app.route('/carticle4', methods=['GET', 'POST'])
 # def carticle4():
@@ -468,7 +468,7 @@ def carticle5():
 
 	#####FOR AMT: later replace the upper one 
 	#return render_template('carticle5.html',user=username,dic=randomdic,replydic=dic2)
-	return render_template('carticle5_AMT.html',user=username,dic=randomdic,replydic=dic2)
+	return render_template('carticle5.html',user=username,dic=randomdic,replydic=dic2)
 
 
 # @app.route('/carticle2', methods=['GET', 'POST'])
