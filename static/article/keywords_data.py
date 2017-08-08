@@ -109,9 +109,7 @@ if __name__ == "__main__":
     build_corpus(article3,'NEW_3.txt')
     #build_corpus(article4,'NEW_2.txt')
     build_corpus(article5,'NEW_5.txt')
-    build_corpus(article3,'BALANCED_3.txt')
-    #build_corpus(article4,'NEW_2.txt')
-    build_corpus(article5,'BALANCED_5.txt')
+    
     # build_corpus_control(article1,'C_NEW_1.txt')
     #build_corpus_control(article2,'C_NEW_4.txt')
     build_corpus_control(article3,'C_NEW_3.txt')
