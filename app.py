@@ -77,84 +77,49 @@ def login():
 
 		print sql
 		run_sql(sql)
-		if selection == 'worldviewlenses':
-			return redirect(url_for('index'))
-		if selection == 'control':
-			return redirect(url_for('cindex'))
+		if selection:
+			session['interface']=selection  #selection is A,B,C,D
+			redirect(url_for('index'))
+
+		# if selection == 'control':
+		# 	return redirect(url_for('indexA'))
+		# if selection == 'sentiment':
+		# 	return redirect(url_for('indexB'))
+		# if selection == 'keyword':
+		# 	return redirect(url_for('indexC'))
+		# if selection == 'worldviewlenses':
+		# 	return redirect(url_for('indexD'))
 	#####FOR AMT: later replace with login.html (change:this one, 4 article.html)
 	return render_template('login.html')
 
 @app.route('/index', methods=['GET', 'POST'])
-def index():
+def indexA():
 	username = session['username']
-	return render_template('index.html')
+	return render_template('index.html', interface=session['interface'])
 
-@app.route('/cindex', methods=['GET', 'POST'])
-def cindex():
-	username = session['username']
-	return render_template('cindex.html')
-
-# @app.route('/article1', methods=['GET', 'POST'])
-# def article1():
-# 	session['post'] = 1
+# @app.route('/indexA', methods=['GET', 'POST'])
+# def indexA():
 # 	username = session['username']
-# 	dic={}
-# 	f=open("static/article/NEW_1.txt","r")
-# 	for line in f.readlines():
-# 		arr=eval(line)
-# 		if dic.has_key(arr[0]):
-# 			dic[arr[0]].append(arr[1:])
-# 		else:
-# 			dic[arr[0]]=[arr[1:]]
+# 	return render_template('indexA.html')
 
-
-# 	f_reply=open("static/article/2_replies_to_comment_5550296508_10155584306476509.txt","r")
-# 	arr=[]
-# 	dic2={}
-# 	for line in f_reply.readlines():
-# 		arr=eval(line)
-# 		arr[5]=arr[5].replace("'","")
-# 		arr[5]=arr[5].replace('"','')
-
-# 		if dic2.has_key(arr[0]):
-# 			dic2[arr[0]].append(arr[5])
-# 		else:
-# 			dic2[arr[0]]=[arr[5]]
-
-# 	return render_template('article1.html',user=username,dic=dic,replydic=dic2)
-
-
-# @app.route('/article2', methods=['GET', 'POST'])
-# def article2():
+# @app.route('/indexB', methods=['GET', 'POST'])
+# def indexB():
 # 	username = session['username']
-# 	session['post'] = 2
-# 	dic={}
-# 	f=open("static/article/NEW_2.txt","r")
-# 	for line in f.readlines():
-# 		arr=eval(line)
-# 		if dic.has_key(arr[0]):
-# 			dic[arr[0]].append(arr[1:])
-# 		else:
-# 			dic[arr[0]]=[arr[1:]]
+# 	return render_template('indexB.html')
 
-# 	f_reply=open("static/article/2_replies_to_comment_5550296508_10155792006356509.txt","r")
-# 	arr=[]
-# 	dic2={}
-# 	for line in f_reply.readlines():
-# 		arr=eval(line)
-# 		arr[5]=arr[5].replace("'","")
-# 		arr[5]=arr[5].replace('"','')
+# @app.route('/indexC', methods=['GET', 'POST'])
+# def indexC():
+# 	username = session['username']
+# 	return render_template('indexC.html')
 
-# 		if dic2.has_key(arr[0]):
-# 			dic2[arr[0]].append(arr[5])
-# 		else:
-# 			dic2[arr[0]]=[arr[5]]
+# @app.route('/indexD', methods=['GET', 'POST'])
+# def indexD():
+# 	username = session['username']
+# 	return render_template('indexD.html')
 
 
 
-# 	return render_template('article2.html',user=username,dic=dic,replydic=dic2)
-
-@app.route('/article3', methods=['GET', 'POST'])
+@app.route('/D_article3', methods=['GET', 'POST'])
 def article3():
 	username = session['username']
 	session['post'] = 3
@@ -185,39 +150,8 @@ def article3():
 	#return render_template('article3.html',user=username,dic=dic,replydic=dic2)
 	return render_template('article3.html',user=username,dic=dic,replydic=dic2)
 
-# @app.route('/article4', methods=['GET', 'POST'])
-# def article4():
-# 	username = session['username']
-# 	session['post'] = 4
-# 	dic={}
-# 	f=open("static/article/NEW_4.txt","r")
-# 	for line in f.readlines():
-# 		arr=eval(line)
-# 		#print arr[0]
-# 		if dic.has_key(arr[0]):
-# 			dic[arr[0]].append(arr[1:])
-# 		else:
-# 			dic[arr[0]]=[arr[1:]]
 
-# 	#replies
-# 	f_reply=open("static/article/2_replies_to_comment_5550296508_10155699096601509.txt","r")
-# 	arr=[]
-# 	dic2={}
-# 	for line in f_reply.readlines():
-# 		arr=eval(line)
-# 		arr[5]=arr[5].replace("'","")
-# 		arr[5]=arr[5].replace('"','')
-
-# 		if dic2.has_key(arr[0]):
-# 			dic2[arr[0]].append(arr[5])
-# 		else:
-# 			dic2[arr[0]]=[arr[5]]
-
-
-# 	return render_template('article4.html',user=username,dic=dic,replydic=dic2)
-
-
-@app.route('/article5', methods=['GET', 'POST'])
+@app.route('/D_article5', methods=['GET', 'POST'])
 def article5():
 	username = session['username']
 	session['post'] = 5
@@ -331,7 +265,7 @@ def nocnn5():
 
 # 	return render_template('carticle2.html',user=username,dic=dic,replydic=dic2)
 
-@app.route('/carticle3', methods=['GET', 'POST'])
+@app.route('/A_article3', methods=['GET', 'POST'])
 def carticle3():
 	session['post'] = 3
 	username = session['username']
@@ -409,7 +343,7 @@ def carticle3():
 # 	return render_template('carticle4.html',user=username,dic=dic,replydic=dic2)
 
 
-@app.route('/carticle5', methods=['GET', 'POST'])
+@app.route('/A_article5', methods=['GET', 'POST'])
 def carticle5():
 	session['post'] = 5
 	username = session['username']
