@@ -51,6 +51,7 @@ def run_sql(sql):
 		print 'Exception-----'
 		print 'sql: ' + str(sql)
 		print 'error: '+ str(e)
+		return 
 	cursor.close()
 	return records
 
@@ -65,20 +66,22 @@ def login():
 		username =  request.form['username']
 		password =  request.form['password']
 		selection = request.form['selection']
+
 		#print username
 		#print intertype
 		session['username'] = username
-		session['selection'] = selection
-		#sql= "INSERT INTO users (Username,Password, Happy, Love, Surprise, Cry,Angry) VALUES ('"+username+"','"+password+"', 0,0,0,0,0);"
-		if selection == 'worldviewlenses':
-			sql= "INSERT INTO user_info_new (Username,Password,Interface,Post3, Post5 ) VALUES ('"+username+"','"+password+"', 'worldviewlenses',0,0);"
-		elif selection == 'control':
-			sql= "INSERT INTO user_info_control_new (Username,Password,Interface,Post3, Post5 ) VALUES ('"+username+"','"+password+"', 'control',0,0);"
+		session['selection'] = selection#selection is A,B,C,D 
+			
+		sql= "INSERT INTO new_user (Username,Password,Interface,Post3, Post5 ) VALUES ('"+username+"','"+password+"','"+selection+"' ,0,0);"
+
+		# if selection == 'D':
+		# 	sql= "INSERT INTO user_info_new (Username,Password,Interface,Post3, Post5 ) VALUES ('"+username+"','"+password+"', 'worldviewlenses',0,0);"
+		# elif selection == 'A':
+		# 	sql= "INSERT INTO user_info_control_new (Username,Password,Interface,Post3, Post5 ) VALUES ('"+username+"','"+password+"', 'control',0,0);"
 
 		print sql
 		run_sql(sql)
-		if selection:
-			session['interface']=selection  #selection is A,B,C,D
+		if selection == ('A' or 'B' or 'C' or 'D'):
 			redirect(url_for('index'))
 
 		# if selection == 'control':
@@ -93,9 +96,9 @@ def login():
 	return render_template('login.html')
 
 @app.route('/index', methods=['GET', 'POST'])
-def indexA():
+def index():
 	username = session['username']
-	return render_template('index.html', interface=session['interface'])
+	return render_template('index.html', interface=session['selection'])
 
 # @app.route('/indexA', methods=['GET', 'POST'])
 # def indexA():
