@@ -1,0 +1,165 @@
+{% extends './B_base.html' %}
+
+<!doctype html>
+ {% block title %}
+  <!--title of the facebook post news article link
+Ohio governor vetoes 'heartbeat' abortion bill -->
+{% endblock title %}
+{% block post %}
+<!--facebook post summart-->
+<h3>Ohio Gov. John Kasich vetoes measure that would have banned abortions after a fetal heartbeat is detected, but signs a bill outlawing abortions after 20 weeks.</h3>
+<!--summary of the news article-->
+<h4>While vetoing "heartbeat bill" Ohio governor signs bill that outlaws abortion after 20 weeks. His approval of 20-week bill makes Ohio one of the strictest states for abortion.</h4>
+{% endblock post %}
+{% block postimage %}
+<td width="40%" rowspan="2"><a href="nocnn3" target="_blank"><img src="../static/images/post3.png"  width="100%" height="100%" alt="Ohio governor bans abortions after 20 weeks while vetoing heartbeat bill" ></a></td> <!--../templates/nocnn3.html-->
+{% endblock postimage %}
+{% block postsurvey %}
+  <button type="button" onclick="popup('w',3)">Post Survey</button></span>
+{% endblock postsurvey %}
+{% block commentsurvey %}
+  <button type="button" onclick="popup_comment('w',3)">Comment Survey</button></span>
+{% endblock commentsurvey %}
+
+{% block content %}
+<form>
+
+
+{% for aspect in dic %}
+ <tr class="newstr">
+
+        <td class="newstd"><div style="height: auto; width:550px;overflow-y: auto; overflow-x: hidden">
+                  <table class="neg" border="0" cellpadding="20" cellspacing="0" >
+                          <colgroup><col ></colgroup>
+                          <tbody>
+                          {% for list in dic[aspect] %}
+                          {% if list[0]=='negative' %}
+                            <tr height="20">
+                              <td class="newstd" height="20" ><!-- <input type="checkbox" id="positive" value="{{list[1]}}" name="{{aspect}}"> -->
+
+                               {% set shareid=aspect+"\t\tnegative\t\t"+list[1].replace("'", "") %}
+                               {% set readmoreid="negative\t\t"+aspect+"\t\t"+list[1].replace("'", "") %}
+                               <div class="wrapper">
+                                 <div class="smallgmk">
+                                   {{list[1]}}
+                                 </div> <a href="{{readmoreid}}">Click to read more</a>
+                               </div>
+                               <script>
+                               $('.wrapper').find('a[href="{{readmoreid}}"]').on('click', function (e) {
+                                 console.log("hahah")
+                                 e.preventDefault();
+                                 if (this.text == "Click to read more"){
+                                   var read_data = "{{readmoreid}}"
+                                   $.post( "/readmore", { 'read_data': read_data} );
+                                   console.log(read_data)
+                                 }
+                                 this.expand = !this.expand;
+
+                                 $(this).text(this.expand?"Click to collapse":"Click to read more");
+                                 $(this).closest('.wrapper').find('.smallgmk, .biggmk').toggleClass('smallgmk biggmk');
+                               });
+                             </script>
+                               <button type="button" class="commentsharebutton" onclick="shareFunction('{{shareid}}')">Share</button>
+
+                              <button type="button" class="commentreplybutton" onclick="replyFunction('{{shareid}}')">Reply</button>
+                                     <div id="{{shareid}}" style = "display: none">
+
+                                     <span><input id="input{{shareid}}" type="text" name="test" size = "60">
+                                     <button type="button" class="subreplybutton" onclick="subreplyFunction('input{{shareid}}')">Submit</button></span>
+
+
+                                     <ul class="square">
+                                      {% if replydic[list[2]]|length > 1 %}
+                                      {% set replies=replydic[list[2]][0:10] %}
+                                      {% else %}
+                                      {% set replies=replydic[list[2]] %}
+                                      {% endif %}
+
+                                      {% for reply in replies %}
+                                        <li>{{reply}}</li>
+                                      {% endfor %}
+                                    </ul>
+                                   </div>
+                           </td>
+
+
+                            </tr>
+                          {% endif %}
+                          {% endfor %}
+                            <!-- <tr height="20">
+                              <td height="20"><input type="checkbox" id="Check"> &nbsp;Content2 &nbsp;<a href="#" class="commentsharebutton" onclick="alert('Shared!')">Share</a></td>
+                            </tr> -->
+                          </tbody>
+                  </table></div></td>
+
+
+
+        <td class="newstd">
+          <div style="height: auto;width:550px; overflow-y: auto; overflow-x: hidden">
+                  <table class="pos" border="0" cellpadding="20" cellspacing="0" >
+                          <colgroup><col ></colgroup>
+                          <tbody>
+                          {% for list in dic[aspect] %}
+                              {% if list[0]=='positive' %}
+                            <tr height="20">
+                              <td class="newstd" height="20" ><!-- <input type="checkbox" id="negative" value="{{list[1]}}" name="{{aspect}}"> -->
+                               
+                          {% set shareid=aspect+"\t\tpositive\t\t"+list[1].replace("'", "") %}
+                          {% set readmoreid="positive\t\t"+aspect+"\t\t"+list[1].replace("'", "") %}
+                          <div class="wrapper">
+                            <div class="smallgmk">
+                              {{list[1]}}
+                            </div> <a href="{{readmoreid}}">Click to read more</a>
+                          </div>
+                          <script>
+                          $('.wrapper').find('a[href="{{readmoreid}}"]').on('click', function (e) {
+                            console.log("hahah")
+                            e.preventDefault();
+                            if (this.text == "Click to read more"){
+                              var read_data = "{{readmoreid}}"
+                              $.post( "/readmore", { 'read_data': read_data} );
+                              console.log(read_data)
+                            }
+                            this.expand = !this.expand;
+
+                            $(this).text(this.expand?"Click to collapse":"Click to read more");
+                            $(this).closest('.wrapper').find('.smallgmk, .biggmk').toggleClass('smallgmk biggmk');
+                          });
+                        </script>
+
+                               <button type="button" class="commentsharebutton" onclick="shareFunction('{{shareid}}')">Share</button>
+
+                              <button type="button" class="commentreplybutton" onclick="replyFunction('{{shareid}}')">Reply</button>
+                                     <div id="{{shareid}}" style = "display: none">
+
+                                     <span><input id="input{{shareid}}" type="text" name="test" size = "60">
+                                     <button type="button" class="subreplybutton" onclick="subreplyFunction('input{{shareid}}')">Submit</button></span>
+
+
+                                     <ul class="square">
+                                      {% if replydic[list[2]]|length > 1 %}
+                                      {% set replies=replydic[list[2]][0:10] %}
+                                      {% else %}
+                                      {% set replies=replydic[list[2]] %}
+                                      {% endif %}
+
+                                      {% for reply in replies %}
+                                        <li>{{reply}}</li>
+                                      {% endfor %}
+                                    </ul>
+                                   </div>
+                           </td>
+
+
+                            </tr>
+                          {% endif %}
+                          {% endfor %}
+                          </tbody>
+                    </table>
+            </div>
+        </td>
+
+</tr>
+{% endfor %}
+</form>
+{% endblock content %}
