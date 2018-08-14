@@ -1,4 +1,4 @@
 1. new_user
-create table new_user( Username VARCHAR(255) NOT NULL, Password VARCHAR(255) NOT NULL, Interface VARCHAR(255), Post3 int, Post5 int);
+create table new_user( Username VARCHAR(255) NOT NULL, Interface VARCHAR(255), Post3 int, Post5 int);
 Select * from new_user;
 Delete from new_user;

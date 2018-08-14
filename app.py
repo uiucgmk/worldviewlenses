@@ -55,13 +55,13 @@ def login():
 
 	if request.method == 'POST':
 		username =  request.form['username']
-		password =  request.form['password']
+		# password =  request.form['password']
 		selection = request.form['selection']
 
 		session['username'] = username
 		session['selection'] = selection #selection is A,B,C,D 
 			
-		sql= "INSERT INTO new_user (Username,Password,Interface,Post3, Post5 ) VALUES ('"+username+"','"+password+"','"+selection+"' ,0,0);"
+		sql= "INSERT INTO new_user (Username,Interface,Post3, Post5 ) VALUES ('"+username+"','"+selection+"' ,0,0);"
 
 		print sql
 		run_sql(sql)
