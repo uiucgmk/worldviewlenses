@@ -33,8 +33,8 @@ Ohio governor vetoes 'heartbeat' abortion bill -->
                           <colgroup><col ></colgroup>
                           <tbody>
                           {% for list in dic %}
-                          {% if dic[list][1]=='negative' %}
-                            <tr height="20">
+                                {% if dic[list][1]==sentiment[0] %}
+                             <tr height="20">
                               <td class="newstd" height="20" ><!-- <input type="checkbox" id="positive" value="{{list[1]}}" name="{{aspect}}"> -->
 
                                
@@ -101,7 +101,7 @@ Ohio governor vetoes 'heartbeat' abortion bill -->
                           <colgroup><col ></colgroup>
                           <tbody>
                           {% for list in dic %}
-                              {% if dic[list][1]=='positive' %}
+                              {% if dic[list][1]==sentiment[1] %}
                             <tr height="20">
                               <td class="newstd" height="20" ><!-- <input type="checkbox" id="negative" value="{{list[1]}}" name="{{aspect}}"> -->
                                

@@ -512,9 +512,10 @@ function popup(){
     <tbody>
       <tr class="bigtr" width="80%">
 
-        <th >Negative</th>
-        <th >Positive</th>
-
+        <!-- <th >Negative</th>
+        <th >Positive</th> -->
+  <th> {{sentiment[0]|upper}} </th>
+        <th> {{sentiment[1]|upper}} </th>
       </tr>
 
         {% block content %}

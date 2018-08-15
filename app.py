@@ -14,6 +14,7 @@ import psycopg2
 import json
 from collections import OrderedDict
 import random
+import time
 reload(sys)
 sys.setdefaultencoding("utf-8")
 
@@ -100,6 +101,9 @@ def aarticle3():
 			dic[arr[3]]=[arr[2],arr[1],arr[0]]
 			#fw3.write(str([arr[2],arr[1],arr[0],arr[3]])+"\n")
 	#fw3.close()
+
+	#randomize
+	random.seed(time.clock())
 	keys =  list(dic.keys())
 	random.shuffle(keys)
 	randomdic=OrderedDict()
@@ -138,6 +142,7 @@ def aarticle5():
 			dic[arr[3]]=[arr[2],arr[1],arr[0]]
 			#fw5.write(str([arr[2],arr[1],arr[0],arr[3]])+"\n")
 	#fw5.close()
+	random.seed(time.clock())
 	keys =  list(dic.keys())
 	random.shuffle(keys)
 	randomdic=OrderedDict()
@@ -175,6 +180,14 @@ def barticle3():
 		if not dic.has_key(arr[3]):
 			dic[arr[3]]=[arr[2],arr[1],arr[0]] #key=id, comment[0], sentiment[1]. keyword[2]
 	
+	
+	#randomize
+	random.seed(time.clock())
+	randint=random.randint(0,1) #0 or 1
+	if randint==0:
+		sent=["negative","positive"]
+	else:
+		sent=["positive","negative"]
 	keys =  list(dic.keys())
 	random.shuffle(keys)
 	randomdic=OrderedDict()
@@ -196,7 +209,7 @@ def barticle3():
 		else:
 			dic2[arr[0]]=[arr[5]]
 
-	return render_template('B_article3.html',user=username,dic=randomdic,replydic=dic2)
+	return render_template('B_article3.html',user=username,dic=randomdic,replydic=dic2,sentiment=sent)
 
 @app.route('/B_article5', methods=['GET', 'POST'])
 def barticle5():
@@ -209,6 +222,12 @@ def barticle5():
 		if not dic.has_key(arr[3]):
 			dic[arr[3]]=[arr[2],arr[1],arr[0]]
 	
+	random.seed(time.clock())
+	randint=random.randint(0,1) #0 or 1
+	if randint==0:
+		sent=["negative","positive"]
+	else:
+		sent=["positive","negative"]
 	keys =  list(dic.keys())
 	random.shuffle(keys)
 	randomdic=OrderedDict()
@@ -228,7 +247,7 @@ def barticle5():
 		else:
 			dic2[arr[0]]=[arr[5]]
 
-	return render_template('B_article5.html',user=username,dic=randomdic,replydic=dic2)
+	return render_template('B_article5.html',user=username,dic=randomdic,replydic=dic2, sentiment=sent)
 
 @app.route('/C_article3', methods=['GET', 'POST'])
 def carticle3():
@@ -245,6 +264,7 @@ def carticle3():
 			dic[arr[0]]=[arr[1:]]
 	
 	#randomize
+	random.seed(time.clock())
 	keywords =  list(dic.keys())
 	random.shuffle(keywords)
 	randomdic=OrderedDict()
@@ -288,6 +308,7 @@ def carticle5():
 
 
 	#randomize
+	random.seed(time.clock())
 	keywords =  list(dic.keys())
 	random.shuffle(keywords)
 	randomdic=OrderedDict()
@@ -328,6 +349,12 @@ def darticle3():
 			dic[arr[0]]=[arr[1:]]
 
 	#randomize
+	random.seed(time.clock())
+	randint=random.randint(0,1) #0 or 1
+	if randint==0:
+		sent=["negative","positive"]
+	else:
+		sent=["positive","negative"]
 	keywords =  list(dic.keys())
 	random.shuffle(keywords)
 	randomdic=OrderedDict()
@@ -351,7 +378,7 @@ def darticle3():
 		else:
 			dic2[arr[0]]=[arr[5]]
 
-	return render_template('article3.html',user=username,dic=randomdic,replydic=dic2)
+	return render_template('article3.html',user=username,dic=randomdic,replydic=dic2,sentiment=sent)
 
 
 @app.route('/D_article5', methods=['GET', 'POST'])
@@ -369,6 +396,12 @@ def darticle5():
 			dic[arr[0]]=[arr[1:]]
 
 	#randomize
+	random.seed(time.clock())
+	randint=random.randint(0,1) #0 or 1
+	if randint==0:
+		sent=["negative","positive"]
+	else:
+		sent=["positive","negative"]
 	keywords =  list(dic.keys())
 	random.shuffle(keywords)
 	randomdic=OrderedDict()
@@ -394,7 +427,7 @@ def darticle5():
 
 	#####FOR AMT: later replace the upper one 
 	#return render_template('article5.html',user=username,dic=dic,replydic=dic2)
-	return render_template('article5.html',user=username,dic=randomdic,replydic=dic2)
+	return render_template('article5.html',user=username,dic=randomdic,replydic=dic2,sentiment=sent)
 
 
 

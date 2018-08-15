@@ -30,7 +30,7 @@ Ivanka Trump meeting with Al Gore on climate change  -->
                           <colgroup><col ></colgroup>
                           <tbody>
                           {% for list in dic %}
-                          {% if dic[list][1]=='negative' %}
+                          {% if dic[list][1]==sentiment[0] %}
                             <tr height="20">
                               <td class="newstd" height="20" >
 
@@ -97,7 +97,7 @@ Ivanka Trump meeting with Al Gore on climate change  -->
                           <colgroup><col ></colgroup>
                           <tbody>
                           {% for list in dic %}
-                              {% if dic[list][1]=='positive' %}
+                              {% if dic[list][1]==sentiment[1] %}
                             <tr height="20">
                               <td class="newstd" height="20" ><!-- <input type="checkbox" id="negative" value="{{list[1]}}" name="{{aspect}}"> -->
                                
