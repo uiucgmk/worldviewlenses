@@ -39,16 +39,15 @@ def run_sql(sql):
 	cursor = conn.cursor()
 	cursor.execute(sql)
 	conn.commit()
-
-	try:
-		records = cursor.fetchall()
-	except Exception as e:
-		records = []
-		print 'Exception-----'
-		print 'sql: ' + str(sql)
-		print 'error: '+ str(e)
+	# records=[]
+	# try:
+	# 	records = cursor.fetchall()
+	# except Exception as e:
+	# 	print 'Exception-----'
+	# 	pass
 	cursor.close()
-	return records
+	return
+	# return records
 
 
 @app.route("/",methods=['GET', 'POST'])
@@ -468,6 +467,7 @@ def checkeditems():
 		run_sql(sql)
 
 		return 'OK'
+		
 
 
 @app.route('/postcomment', methods=['GET', 'POST'])
