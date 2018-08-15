@@ -39,28 +39,28 @@ Ivanka Trump meeting with Al Gore on climate change  -->
                               <td class="newstd" height="20" ><!-- <input type="checkbox" id="positive" value="{{list[1]}}" name="{{aspect}}"> -->
 
 
-                                                             {% set shareid=aspect+"\t\tnegative\t\t"+list[1].replace("'", "") %}
-                                                             {% set readmoreid="negative\t\t"+aspect+"\t\t"+list[1].replace("'", "") %}
-                                                             <div class="wrapper">
-                                                               <div class="smallgmk">
-                                                                 {{list[1]}}
-                                                               </div> <a href="{{readmoreid}}">Click to read more</a>
-                                                             </div>
-                                                             <script>
-                                                             $('.wrapper').find('a[href="{{readmoreid}}"]').on('click', function (e) {
-                                                               console.log("hahah")
-                                                               e.preventDefault();
-                                                               if (this.text == "Click to read more"){
-                                                                 var read_data = "{{readmoreid}}"
-                                                                 $.post( "/readmore", { 'read_data': read_data} );
-                                                                 console.log(read_data)
-                                                               }
-                                                               this.expand = !this.expand;
+                                {% set shareid=list[0]+"\t\t"+aspect+"\t\t"+list[2] %}
+                                {% set readmoreid=list[0]+"\t\t"+aspect+"\t\t"+list[2] %}
+                                     <div class="wrapper">
+                                       <div class="smallgmk">
+                                         {{list[1]}}
+                                       </div> <a href="{{readmoreid}}">Click to read more</a>
+                                     </div>
+                                     <script>
+                                     $('.wrapper').find('a[href="{{readmoreid}}"]').on('click', function (e) {
+                                       
+                                       e.preventDefault();
+                                       if (this.text == "Click to read more"){
+                                         var read_data = "{{readmoreid}}"
+                                         $.post( "/readmore", { 'read_data': read_data} );
+                                         console.log(read_data)
+                                       }
+                                       this.expand = !this.expand;
 
-                                                               $(this).text(this.expand?"Click to collapse":"Click to read more");
-                                                               $(this).closest('.wrapper').find('.smallgmk, .biggmk').toggleClass('smallgmk biggmk');
-                                                             });
-                                                           </script>
+                                       $(this).text(this.expand?"Click to collapse":"Click to read more");
+                                       $(this).closest('.wrapper').find('.smallgmk, .biggmk').toggleClass('smallgmk biggmk');
+                                     });
+                                   </script>
                                <button type="button" class="commentsharebutton" onclick="shareFunction('{{shareid}}')">Share</button>
 
                               <button type="button" class="commentreplybutton" onclick="replyFunction('{{shareid}}')">Reply</button>
@@ -107,8 +107,9 @@ Ivanka Trump meeting with Al Gore on climate change  -->
                               <td class="newstd" height="20" ><!-- <input type="checkbox" id="negative" value="{{list[1]}}" name="{{aspect}}"> -->
                                
 
-                            {% set shareid=aspect+"\t\tpositive\t\t"+list[1].replace("'", "") %}
-                            {% set readmoreid="positive\t\t"+aspect+"\t\t"+list[1].replace("'", "") %}
+                            
+                                {% set shareid=list[0]+"\t\t"+aspect+"\t\t"+list[2] %}
+                                {% set readmoreid=list[0]+"\t\t"+aspect+"\t\t"+list[2] %}
                             <div class="wrapper">
                               <div class="smallgmk">
                                 {{list[1]}}

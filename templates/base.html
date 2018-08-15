@@ -540,20 +540,7 @@ function popup(){
     <script>
 
 function storeChecked_and_reaction() {
-    //for checked items
-    var x = document.forms[0];
-    var textappend;
-    var content=[];
-    for (i = 0; i < x.length; i++) {
-        if (x[i].checked) {
-           textappend=x[i].id+"\t\t"+x[i].name+"\t\t"+x[i].value;
-           content.push(textappend);
-
-        }
-    }
-
-    //document.getElementById("result").innerHTML = "You selected : " + content;
-
+   
     //for reactions
     var reaction=[];
     var count=0;
@@ -563,7 +550,7 @@ function storeChecked_and_reaction() {
       count = document.getElementById(divName).innerHTML;
       reaction.push(count);
     }
-    $.post( "/checkeditems", { 'all_data[]': content, 'reaction_data[]':reaction } );
+    $.post( "/checkeditems", { 'reaction_data[]':reaction } );
 
     alert("Your response is submitted!");
     //$.post( "/checkeditems", { 'all_data[]': content } );

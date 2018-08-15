@@ -37,9 +37,9 @@ Ohio governor vetoes 'heartbeat' abortion bill -->
                           {% if list[0]=='negative' %}
                             <tr height="20">
                               <td class="newstd" height="20" ><!-- <input type="checkbox" id="positive" value="{{list[1]}}" name="{{aspect}}"> -->
-
-                               {% set shareid=aspect+"\t\tnegative\t\t"+list[1].replace("'", "") %}
-                               {% set readmoreid="negative\t\t"+aspect+"\t\t"+list[1].replace("'", "") %}
+                                
+                                {% set shareid=list[0]+"\t\t"+aspect+"\t\t"+list[2] %}
+                                {% set readmoreid=list[0]+"\t\t"+aspect+"\t\t"+list[2] %}
                                <div class="wrapper">
                                  <div class="smallgmk">
                                    {{list[1]}}
@@ -105,8 +105,9 @@ Ohio governor vetoes 'heartbeat' abortion bill -->
                             <tr height="20">
                               <td class="newstd" height="20" ><!-- <input type="checkbox" id="negative" value="{{list[1]}}" name="{{aspect}}"> -->
                                
-                          {% set shareid=aspect+"\t\tpositive\t\t"+list[1].replace("'", "") %}
-                          {% set readmoreid="positive\t\t"+aspect+"\t\t"+list[1].replace("'", "") %}
+                          
+                                {% set shareid=list[0]+"\t\t"+aspect+"\t\t"+list[2] %}
+                                {% set readmoreid=list[0]+"\t\t"+aspect+"\t\t"+list[2] %}
                           <div class="wrapper">
                             <div class="smallgmk">
                               {{list[1]}}

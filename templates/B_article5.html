@@ -34,8 +34,8 @@ Ivanka Trump meeting with Al Gore on climate change  -->
                             <tr height="20">
                               <td class="newstd" height="20" >
 
-                             {% set shareid=list%}
-                             {% set readmoreid=list %}
+                             {% set shareid=dic[list][1]+"\t\t"+dic[list][2]+"\t\t"+list %}
+                                {% set readmoreid=dic[list][1]+"\t\t"+dic[list][2]+"\t\t"+list %}
                              <div class="wrapper">
                                <div class="smallgmk">
                                  {{dic[list][0]}}
@@ -102,8 +102,8 @@ Ivanka Trump meeting with Al Gore on climate change  -->
                               <td class="newstd" height="20" ><!-- <input type="checkbox" id="negative" value="{{list[1]}}" name="{{aspect}}"> -->
                                
 
-                            {% set shareid=list %}
-                            {% set readmoreid=list %}
+                            {% set shareid=dic[list][1]+"\t\t"+dic[list][2]+"\t\t"+list %}
+                                {% set readmoreid=dic[list][1]+"\t\t"+dic[list][2]+"\t\t"+list %}
                             <div class="wrapper">
                               <div class="smallgmk">
                                 {{dic[list][0]}}

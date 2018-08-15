@@ -92,14 +92,14 @@ def aarticle3():
 	username = session['username']
 
 	dic={}
-	fw3=open("static/article/BALANCED_C_3.txt","w")
+	#fw3=open("static/article/BALANCED_C_3.txt","w")
 	f=open("static/article/BALANCED_3.txt","r")
 	for line in f.readlines():
 		arr=eval(line)
 		if not dic.has_key(arr[3]):
 			dic[arr[3]]=[arr[2],arr[1],arr[0]]
-			fw3.write(str([arr[2],arr[1],arr[0],arr[3]])+"\n")
-	fw3.close()
+			#fw3.write(str([arr[2],arr[1],arr[0],arr[3]])+"\n")
+	#fw3.close()
 	keys =  list(dic.keys())
 	random.shuffle(keys)
 	randomdic=OrderedDict()
@@ -130,14 +130,14 @@ def aarticle5():
 	session['post'] = 5
 	username = session['username']
 	dic={}
-	fw5=open("static/article/BALANCED_C_5.txt","w")
+	#fw5=open("static/article/BALANCED_C_5.txt","w")
 	f=open("static/article/BALANCED_5.txt","r")
 	for line in f.readlines():
 		arr=eval(line)
 		if not dic.has_key(arr[3]):
 			dic[arr[3]]=[arr[2],arr[1],arr[0]]
-			fw5.write(str([arr[2],arr[1],arr[0],arr[3]])+"\n")
-	fw5.close()
+			#fw5.write(str([arr[2],arr[1],arr[0],arr[3]])+"\n")
+	#fw5.close()
 	keys =  list(dic.keys())
 	random.shuffle(keys)
 	randomdic=OrderedDict()
@@ -173,12 +173,13 @@ def barticle3():
 	for line in f.readlines():
 		arr=eval(line)
 		if not dic.has_key(arr[3]):
-			dic[arr[3]]=[arr[2],arr[1],arr[0]] #comment[0], sentiment[1]. keyword[2]
-		keys =  list(dic.keys())
-		random.shuffle(keys)
-		randomdic=OrderedDict()
-		for key in keys:
-			randomdic[key]=dic[key]
+			dic[arr[3]]=[arr[2],arr[1],arr[0]] #key=id, comment[0], sentiment[1]. keyword[2]
+	
+	keys =  list(dic.keys())
+	random.shuffle(keys)
+	randomdic=OrderedDict()
+	for key in keys:
+		randomdic[key]=dic[key]
 	
 		
 	#replies
@@ -207,11 +208,12 @@ def barticle5():
 		arr=eval(line)
 		if not dic.has_key(arr[3]):
 			dic[arr[3]]=[arr[2],arr[1],arr[0]]
-		keys =  list(dic.keys())
-		random.shuffle(keys)
-		randomdic=OrderedDict()
-		for key in keys:
-			randomdic[key]=dic[key]
+	
+	keys =  list(dic.keys())
+	random.shuffle(keys)
+	randomdic=OrderedDict()
+	for key in keys:
+		randomdic[key]=dic[key]
 
 	f_reply=open("static/article/2_replies_to_comment_15704546335_10155095856676336.txt","r")
 	arr=[]
@@ -242,6 +244,18 @@ def carticle3():
 		else:
 			dic[arr[0]]=[arr[1:]]
 	
+	#randomize
+	keywords =  list(dic.keys())
+	random.shuffle(keywords)
+	randomdic=OrderedDict()
+	for keyword in keywords:
+		#randomize the aspect
+		randomdic[keyword]=dic[keyword]
+		#randomize the comments within one aspect
+		random.shuffle(randomdic[keyword])
+
+
+
 
 	f_reply=open("static/article/2_replies_to_comment_5550296508_10155749891186509.txt","r")
 	arr=[]
@@ -256,7 +270,7 @@ def carticle3():
 		else:
 			dic2[arr[0]]=[arr[5]]
 
-	return render_template('C_article3.html',user=username,dic=dic,replydic=dic2)
+	return render_template('C_article3.html',user=username,dic=randomdic,replydic=dic2)
 
 
 @app.route('/C_article5', methods=['GET', 'POST'])
@@ -272,6 +286,17 @@ def carticle5():
 		else:
 			dic[arr[0]]=[arr[1:]]
 
+
+	#randomize
+	keywords =  list(dic.keys())
+	random.shuffle(keywords)
+	randomdic=OrderedDict()
+	for keyword in keywords:
+		#randomize the aspect
+		randomdic[keyword]=dic[keyword]
+		#randomize the comments within one aspect
+		random.shuffle(randomdic[keyword])
+
 	#replies
 	f_reply=open("static/article/2_replies_to_comment_15704546335_10155095856676336.txt","r")
 	arr=[]
@@ -286,7 +311,7 @@ def carticle5():
 		else:
 			dic2[arr[0]]=[arr[5]]
 
-	return render_template('C_article5.html',user=username,dic=dic,replydic=dic2)
+	return render_template('C_article5.html',user=username,dic=randomdic,replydic=dic2)
 
 
 @app.route('/D_article3', methods=['GET', 'POST'])
@@ -302,6 +327,17 @@ def darticle3():
 		else:
 			dic[arr[0]]=[arr[1:]]
 
+	#randomize
+	keywords =  list(dic.keys())
+	random.shuffle(keywords)
+	randomdic=OrderedDict()
+	for keyword in keywords:
+		#randomize the aspect
+		randomdic[keyword]=dic[keyword]
+		#randomize the comments within one aspect
+		random.shuffle(randomdic[keyword])
+
+
 	f_reply=open("static/article/2_replies_to_comment_5550296508_10155749891186509.txt","r")
 	arr=[]
 	dic2={}
@@ -315,7 +351,7 @@ def darticle3():
 		else:
 			dic2[arr[0]]=[arr[5]]
 
-	return render_template('article3.html',user=username,dic=dic,replydic=dic2)
+	return render_template('article3.html',user=username,dic=randomdic,replydic=dic2)
 
 
 @app.route('/D_article5', methods=['GET', 'POST'])
@@ -331,6 +367,16 @@ def darticle5():
 			dic[arr[0]].append(arr[1:])
 		else:
 			dic[arr[0]]=[arr[1:]]
+
+	#randomize
+	keywords =  list(dic.keys())
+	random.shuffle(keywords)
+	randomdic=OrderedDict()
+	for keyword in keywords:
+		#randomize the aspect
+		randomdic[keyword]=dic[keyword]
+		#randomize the comments within one aspect
+		random.shuffle(randomdic[keyword])
 
 	#replies
 	f_reply=open("static/article/2_replies_to_comment_15704546335_10155095856676336.txt","r")
@@ -348,7 +394,7 @@ def darticle5():
 
 	#####FOR AMT: later replace the upper one 
 	#return render_template('article5.html',user=username,dic=dic,replydic=dic2)
-	return render_template('article5.html',user=username,dic=dic,replydic=dic2)
+	return render_template('article5.html',user=username,dic=randomdic,replydic=dic2)
 
 
 
@@ -363,13 +409,8 @@ def share():
 	if request.method == 'POST':
 		user_data = request.form.getlist('shareid[]')
 		print user_data
-		whowhy_data = request.form['whowhy']
-		if selection == 'worldviewlenses':
-			sql= "INSERT INTO share (Username,Post,Sentiment,Aspect,Comment,whowhy) VALUES ('"+username+"','"+str(post)+"','"+user_data[1]+"','"+user_data[0]+"','"+user_data[2].replace("'","")+"','"+whowhy_data+"');"
-		elif selection == 'control':
-		#	sql= "INSERT INTO share_control (Username,Post,Sentiment,Comment,whowhy) VALUES ('"+username+"','"+str(post)+"','"+user_data[0]+"','"+user_data[1].replace("'","")+"','"+whowhy_data+"');"
-			sql= "INSERT INTO share_control2 (Username,Post,Sentiment,Aspect,Comment,whowhy) VALUES ('"+username+"','"+str(post)+"','"+user_data[1]+"','"+user_data[0]+"','"+user_data[2].replace("'","")+"','"+whowhy_data+"');"
-
+		sql= "INSERT INTO new_share (Username,Post,Sentiment,Aspect,Comment) VALUES ('"+username+"','"+str(post)+"','"+user_data[0]+"','"+user_data[1]+"','"+user_data[2]+"');"
+		
 		run_sql(sql)
 		return 'OK'
 
@@ -378,28 +419,19 @@ def checkeditems():
 	#create table checkeditems ( Username VARCHAR(255),Post int,Sentiment VARCHAR(255),Aspect VARCHAR(255),Comment TEXT );
 	if request.method == 'POST':
 		post=session['post']
-		all_data=[]
-		all_data_raw=[]
 		reaction_data=[]
 		username = session['username']
-		all_data_raw = request.form.getlist('all_data[]')
 		reaction_data = request.form.getlist('reaction_data[]')
-		#for checked items
-		for i in range(0,len(all_data_raw)):
-			all_data=all_data_raw[i].split("\t\t")
-			sql= "INSERT INTO checkeditems (Username,Post,Sentiment,Aspect,Comment) VALUES ('"+username+"','"+str(post)+"','"+all_data[0]+"','"+all_data[1]+"','"+all_data[2]+"');"
-			#print sql
-			run_sql(sql)
-
+		
 
 		#for reaction data
 		#create table reactions ( Username VARCHAR(255) NOT NULL, Post int, Like_reaction int, Love int, Haha int, Surprise int, Sad int, Anger int, Neutral int);
-		sql= "INSERT INTO reactions (Username,Post, Like_reaction, Love, Haha, Surprise, Sad, Anger,Neutral ) VALUES ('"+username+"','"+str(post)+"','"+str(reaction_data[0].split(":")[1])+"','"+str(reaction_data[1].split(":")[1])+"','"+str(reaction_data[2].split(":")[1])+"','"+str(reaction_data[3].split(":")[1])+"','"+str(reaction_data[4].split(":")[1])+"','"+str(reaction_data[5].split(":")[1])+"','"+str(reaction_data[6].split(":")[1])+"');"
+		sql= "INSERT INTO new_reactions (Username,Post, Like_reaction, Love, Haha, Surprise, Sad, Anger,Neutral ) VALUES ('"+username+"','"+str(post)+"','"+str(reaction_data[0].split(":")[1])+"','"+str(reaction_data[1].split(":")[1])+"','"+str(reaction_data[2].split(":")[1])+"','"+str(reaction_data[3].split(":")[1])+"','"+str(reaction_data[4].split(":")[1])+"','"+str(reaction_data[5].split(":")[1])+"','"+str(reaction_data[6].split(":")[1])+"');"
 		#print sql
 		run_sql(sql)
 
 		#update the worked post 0-->1
-		sql= "UPDATE user_info_new SET Post"+str(post)+"= 1 WHERE Username='"+username+"';"
+		sql= "UPDATE new_user SET Post"+str(post)+"= 1 WHERE Username='"+username+"';"
 		run_sql(sql)
 
 		return 'OK'
@@ -413,43 +445,11 @@ def postcomment():
 	selection = session['selection']
 	if request.method == 'POST':
 		comment_data = request.form['post_comment']
-		if selection == 'worldviewlenses':
-			sql= "INSERT INTO postcomment (Username,Post,Comment) VALUES ('"+username+"','"+str(post)+"','"+comment_data+"');"
-		elif selection == 'control':
-			sql= "INSERT INTO postcomment_control (Username,Post,Comment) VALUES ('"+username+"','"+str(post)+"','"+comment_data+"');"
+		sql= "INSERT INTO new_postcomment (Username,Post,Comment) VALUES ('"+username+"','"+str(post)+"','"+comment_data+"');"
 		run_sql(sql)
 		return 'OK'
 
-@app.route('/checkeditems_control', methods=['GET', 'POST'])
-def checkeditems_control():
-	#create table checkeditems ( Username VARCHAR(255),Post int,Sentiment VARCHAR(255),Aspect VARCHAR(255),Comment TEXT );
-	if request.method == 'POST':
-		post=session['post']
-		all_data=[]
-		all_data_raw=[]
-		reaction_data=[]
-		username = session['username']
-		all_data_raw = request.form.getlist('all_data[]')
-		reaction_data = request.form.getlist('reaction_data[]')
-		#for checked items
-		for i in range(0,len(all_data_raw)):
-			all_data=all_data_raw[i].split("\t\t")
-			sql= "INSERT INTO checkeditems_control (Username,Post,Sentiment,Comment) VALUES ('"+username+"','"+str(post)+"','"+all_data[0]+"','"+all_data[1].replace("'","")+"');"
-			print sql
-			run_sql(sql)
 
-
-		#for reaction data
-		#create table reactions ( Username VARCHAR(255) NOT NULL, Post int, Like_reaction int, Love int, Haha int, Surprise int, Sad int, Anger int, Neutral int);
-		sql= "INSERT INTO reactions_control (Username,Post, Like_reaction, Love, Haha, Surprise, Sad, Anger,Neutral ) VALUES ('"+username+"','"+str(post)+"','"+str(reaction_data[0].split(":")[1])+"','"+str(reaction_data[1].split(":")[1])+"','"+str(reaction_data[2].split(":")[1])+"','"+str(reaction_data[3].split(":")[1])+"','"+str(reaction_data[4].split(":")[1])+"','"+str(reaction_data[5].split(":")[1])+"','"+str(reaction_data[6].split(":")[1])+"');"
-		#print sql
-		run_sql(sql)
-
-		#update the worked post 0-->1
-		sql= "UPDATE user_info_control_new SET Post"+str(post)+"= 1 WHERE Username='"+username+"';"
-		run_sql(sql)
-
-		return 'OK'
 
 @app.route('/replycomment', methods=['GET', 'POST'])
 def replycomment():
@@ -464,14 +464,8 @@ def replycomment():
 		all_data= request.form.getlist('all_data[]')
 		reply_data = request.form['reply_data']
 		print reply_data
-		if selection == 'worldviewlenses':
-			sql= "INSERT INTO reply_comment (Username,Post,Aspect,Sentiment,Comment,Reply) VALUES ('"+username+"','"+str(post)+"','"+all_data[0][5:]+"','"+all_data[1]+"','"+all_data[2].replace("'","")+"','"+reply_data.replace("'","")+"');"
-			print sql
-		elif selection == 'control':
-			sql= "INSERT INTO reply_comment_control (Username,Post,Aspect,Sentiment,Comment,Reply) VALUES ('"+username+"','"+str(post)+"','"+all_data[0][5:]+"','"+all_data[1]+"','"+all_data[2].replace("'","")+"','"+reply_data.replace("'","")+"');"
-		else:
-			print "error occurred in /replycomment"
-
+		sql= "INSERT INTO new_reply_comment (Username,Post,Sentiment,Aspect,Comment,Reply) VALUES ('"+username+"','"+str(post)+"','"+all_data[0][5:]+"','"+all_data[1]+"','"+all_data[2]+"','"+reply_data.replace("'","")+"');"
+		
 		run_sql(sql)
 	return 'OK'
 
@@ -483,29 +477,15 @@ def readmore():
 		selection=session['selection']
 		read_data= request.form.get('read_data')
 		all_data=read_data.split("\t\t")
-		print all_data
-		sql= "INSERT INTO readmore (Username,Post,Sentiment,Aspect,Comment) VALUES ('"+username+"','"+str(post)+"','"+all_data[0]+"','"+all_data[1]+"','"+all_data[2]+"');"
+		
+		sql= "INSERT INTO new_readmore (Username,Post,Sentiment,Aspect,Comment) VALUES ('"+username+"','"+str(post)+"','"+all_data[0]+"','"+all_data[1]+"','"+all_data[2]+"');"
 		#print sql
 		run_sql(sql)
 
 		print read_data
 	return 'OK'
 
-@app.route('/readmore_control', methods=['GET', 'POST'])
-def readmore_control():
-	if request.method == 'POST':
-		post=session['post']
-		username = session['username']
-		selection=session['selection']
-		read_data= request.form.get('read_data')
-		all_data=read_data.split("\t\t")
-		print all_data
-		sql= "INSERT INTO readmore_control (Username,Post,Sentiment,Aspect,Comment) VALUES ('"+username+"','"+str(post)+"','"+all_data[0]+"','"+all_data[1]+"','"+all_data[2]+"');"
-		#print sql
-		run_sql(sql)
 
-		print read_data
-	return 'OK'
 if __name__ == '__main__':
 	# Bind to PORT if defined, otherwise default to 5000.
 	port = int(os.environ.get('PORT', 5000))

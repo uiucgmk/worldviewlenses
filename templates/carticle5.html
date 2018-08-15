@@ -50,8 +50,8 @@
 
 
                                <!--{% set shareid=list[0]+"\t\t"+list[1].replace("'","") %}-->
-                               {% set shareid=dic[list][2:]|join('/')+"\t\t"+dic[list][1]+"\t\t"+dic[list][0].replace("'", "") %}
-                               {% set readmoreid=dic[list][1]+"\t\t"+dic[list][2]+"\t\t"+dic[list][0].replace("'", "") %}
+                               {% set shareid=dic[list][1]+"\t\t"+dic[list][2]+"\t\t"+list %}
+                                {% set readmoreid=dic[list][1]+"\t\t"+dic[list][2]+"\t\t"+list %}
                                <div class="wrapper">
                                  <div class="smallgmk">
                                    {{dic[list][0]}}
@@ -63,7 +63,7 @@
                                  e.preventDefault();
                                  if (this.text == "Click to read more"){
                                    var read_data = "{{readmoreid}}"
-                                   $.post( "/readmore_control", { 'read_data': read_data} );
+                                   $.post( "/readmore", { 'read_data': read_data} );
                                    console.log(read_data)
                                  }
                                  this.expand = !this.expand;
