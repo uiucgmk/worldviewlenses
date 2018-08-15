@@ -1,6 +1,6 @@
 1. new_user
 create table new_user( Username VARCHAR(255) NOT NULL, Interface VARCHAR(255), Post3 int, Post5 int);
-Select * from new_user;
+
 
 
 2. Share
@@ -27,3 +27,13 @@ Delete from new_readmore;
 Delete from new_reactions;
 Delete from new_postcomment;
 Delete from new_reply_comment;
+
+
+>> check all tables;
+Select * from new_user; 
+Select * from new_share; 
+Select * from new_readmore; 
+Select * from new_reactions;
+
+Select * from new_postcomment; 
+Select * from new_reply_comment;
