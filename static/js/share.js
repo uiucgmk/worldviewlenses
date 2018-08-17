@@ -7,9 +7,11 @@ function shareFunction(shareid) {
 
      if (whowhy_data == null || whowhy_data==""){
      	alert("Canceled")
+     	print "cancelllllled"
      }
      else{
      	alert("Shared!")
+     	print "shareeeed"
 	 	$.post( "/share", { 'shareid[]': id_share, whowhy: whowhy_data} );
      }
 	 

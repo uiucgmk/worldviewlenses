@@ -4,7 +4,7 @@ create table new_user( Username VARCHAR(255) NOT NULL, Interface VARCHAR(255), P
 
 
 2. Share
-create table new_share (Username VARCHAR(255) NOT NULL,Post VARCHAR(255), Sentiment VARCHAR(255),Aspect VARCHAR(255), Comment VARCHAR(255), Whowhy TEXT);
+create table new_share (Username VARCHAR(255) NOT NULL,Post VARCHAR(255), Sentiment VARCHAR(255),Aspect VARCHAR(255), Comment VARCHAR(255), Why TEXT);
 
 3. Readmore
 create table new_readmore (Username VARCHAR(255) NOT NULL,Post VARCHAR(255) NOT NULL, Sentiment VARCHAR(255) NOT NULL,Aspect VARCHAR(255) NOT NULL, Comment VARCHAR(255) NOT NULL);
