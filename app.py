@@ -440,8 +440,9 @@ def share():
 	selection = session['selection']
 	if request.method == 'POST':
 		user_data = request.form.getlist('shareid[]')
+		whowhy_data = request.form['whowhy']
 		print user_data
-		sql= "INSERT INTO new_share (Username,Post,Sentiment,Aspect,Comment) VALUES ('"+username+"','"+str(post)+"','"+user_data[0]+"','"+user_data[1]+"','"+user_data[2]+"');"
+		sql= "INSERT INTO new_share (Username,Post,Sentiment,Aspect,Comment,Why) VALUES ('"+username+"','"+str(post)+"','"+user_data[0]+"','"+user_data[1]+"','"+user_data[2]+"','"+whowhy_data+"');"
 		
 		run_sql(sql)
 		return 'OK'

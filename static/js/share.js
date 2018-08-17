@@ -4,8 +4,13 @@ function shareFunction(shareid) {
      
      var id_share=shareid.split("\t\t");
 
-     alert("Shared!")
-	 $.post( "/share", { 'shareid[]': id_share, whowhy: whowhy_data} );
-     
+
+     if (whowhy_data == null || whowhy_data==""){
+     	alert("Canceled")
+     }
+     else{
+     	alert("Shared!")
+	 	$.post( "/share", { 'shareid[]': id_share, whowhy: whowhy_data} );
+     }
 	 
     }
